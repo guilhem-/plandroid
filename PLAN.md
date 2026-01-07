@@ -24,6 +24,47 @@ A simple multiplayer trivia game with the following features:
 - **Theme**: Fun, colorful single theme
 - **Effects**: Sound effects + winner celebration animation
 
+### Gameplay Mechanics
+
+#### Answering System
+- Each question displays simultaneously to all players
+- First player to tap correct answer scores the point
+- **Wrong answer penalty**: 1-second lockout with red fade overlay
+- Players can answer as soon as lockout expires
+
+#### Scoring & Winner Determination
+```
+Primary:   Most correct answers wins
+Tiebreak:  Fastest total response time wins
+```
+
+| Scenario | Winner |
+|----------|--------|
+| Player A: 7 correct, Player B: 5 correct | Player A |
+| Both: 6 correct, A: 15s total, B: 18s total | Player A (faster) |
+| Both: 6 correct, same time | Both declared winners |
+
+#### Wrong Answer Penalty Animation
+```
+┌─────────────────────┐
+│  Player Zone        │    Normal state
+│  [Answer Button]    │
+└─────────────────────┘
+         │
+         ▼ (wrong answer)
+┌─────────────────────┐
+│ ██████████████████ │    Red overlay (opacity: 0.7)
+│ ██ LOCKED 1s ████ │    Fades out over 1 second
+│ ██████████████████ │    Button disabled
+└─────────────────────┘
+         │
+         ▼ (after 1s)
+┌─────────────────────┐
+│  Player Zone        │    Back to normal
+│  [Answer Button]    │    Can answer again
+└─────────────────────┘
+```
+
 ### Game Flow
 
 ```
@@ -73,6 +114,62 @@ Player 4│                     │Player 2
         └─────────────────────┘
 ```
 
+### Responsive Typography
+
+Text size is **computed dynamically** to fit available space:
+
+```javascript
+// Font scaling algorithm
+function fitTextToContainer(element, container) {
+  const maxWidth = container.clientWidth * 0.9;  // 90% of container
+  const maxHeight = container.clientHeight * 0.8; // 80% of container
+
+  let fontSize = 48; // Start large
+  element.style.fontSize = fontSize + 'px';
+
+  while ((element.scrollWidth > maxWidth ||
+          element.scrollHeight > maxHeight) &&
+          fontSize > 12) {
+    fontSize -= 2;
+    element.style.fontSize = fontSize + 'px';
+  }
+}
+```
+
+| Element | Min Size | Max Size | Behavior |
+|---------|----------|----------|----------|
+| Question text | 16px | 32px | Shrink to fit center area |
+| Answer buttons | 14px | 24px | Shrink to fit button bounds |
+| Player names | 12px | 18px | Truncate with ellipsis if needed |
+| Score display | 16px | 24px | Fixed per breakpoint |
+
+### Answer Format Guidelines
+
+Answers must be **SHORT** for readability around the phone:
+
+| Rule | Good | Bad |
+|------|------|-----|
+| Max characters | "Mars" (4) | "The planet Mars" (14) |
+| Single word preferred | "Blue" | "The color blue" |
+| Numbers are OK | "1969" | "The year 1969" |
+| Proper nouns | "Einstein" | "Albert Einstein" |
+
+```json
+// Example: Well-formatted answers
+{
+  "question": { "en": "What is the largest planet?" },
+  "answers": { "en": ["Jupiter", "Saturn", "Neptune", "Mars"] }
+}
+
+// Example: BAD - too long
+{
+  "question": { "en": "What is the largest planet?" },
+  "answers": { "en": ["The planet Jupiter", "The planet Saturn", ...] }
+}
+```
+
+**Target**: All answers should be **≤ 15 characters** when possible
+
 ---
 
 ## Technical Architecture
@@ -86,9 +183,10 @@ Player 4│                     │Player 2
 │   └── styles.css          # Styling (responsive, touch-friendly, fun theme)
 ├── js/
 │   ├── app.js              # Main application entry point
-│   ├── game.js             # Game state management
+│   ├── game.js             # Game state, scoring, response timers
 │   ├── i18n.js             # Internationalization logic
-│   └── animations.js       # Winner celebration effects
+│   ├── typography.js       # Dynamic text fitting
+│   └── animations.js       # Confetti & penalty effects
 ├── data/
 │   └── questions.json      # 1000 questions (all languages)
 ├── i18n/
@@ -104,7 +202,53 @@ Player 4│                     │Player 2
         └── victory.mp3     # Winner celebration sound
 ```
 
-### 2. Android Packaging Strategy
+### 2. Game State Schema
+
+```javascript
+const gameState = {
+  // Game setup
+  language: 'en',
+  playerCount: 4,
+  players: [
+    {
+      id: 0,
+      name: 'Player 1',
+      score: 0,
+      totalResponseTime: 0,    // Milliseconds (for tiebreaker)
+      isLocked: false,         // Penalty lockout active
+      lockoutEndTime: null     // When lockout expires
+    }
+    // ... up to 4 players
+  ],
+
+  // Current question state
+  currentQuestion: 0,         // 0-9 (10 questions)
+  questionStartTime: null,    // Timestamp when question displayed
+  questionAnswered: false,    // Has anyone answered correctly?
+  questions: [],              // 10 randomly selected questions
+
+  // Final results
+  winner: null,               // Player ID or array if tie
+  gameComplete: false
+};
+
+// Response time tracking
+function recordAnswer(playerId, isCorrect) {
+  const responseTime = Date.now() - gameState.questionStartTime;
+
+  if (isCorrect && !gameState.questionAnswered) {
+    gameState.players[playerId].score++;
+    gameState.players[playerId].totalResponseTime += responseTime;
+    gameState.questionAnswered = true;
+  } else if (!isCorrect) {
+    // Apply 1-second penalty lockout
+    gameState.players[playerId].isLocked = true;
+    gameState.players[playerId].lockoutEndTime = Date.now() + 1000;
+  }
+}
+```
+
+### 3. Android Packaging Strategy
 
 **Chosen Approach: Capacitor CLI**
 
@@ -250,9 +394,10 @@ export PATH=$PATH:$ANDROID_HOME/build-tools/33.0.0
 │   │   └── styles.css         # Fun theme styles
 │   ├── js/
 │   │   ├── app.js             # Main entry point
-│   │   ├── game.js            # Game logic & state
+│   │   ├── game.js            # Game logic, scoring, timers
 │   │   ├── i18n.js            # Language management
-│   │   └── animations.js      # Confetti & effects
+│   │   ├── typography.js      # Dynamic text fitting
+│   │   └── animations.js      # Confetti & penalty effects
 │   ├── data/
 │   │   └── questions.json     # 1000 questions (4 languages)
 │   ├── i18n/
@@ -331,9 +476,13 @@ cd android
 | Question Source | JSON file with 1000 questions |
 | Offline Support | Yes - fully offline capable |
 | Sound Effects | Yes - correct/wrong/victory sounds |
-| Animations | Yes - winner celebration (confetti) |
+| Animations | Yes - winner confetti + wrong answer red fade |
 | Theme | Single fun colorful theme |
 | Languages | FR, EN, ES, DE (auto-detect from device) |
+| Wrong Answer Penalty | 1-second lockout with red fade overlay |
+| Winner Logic | Most correct wins; fastest total time breaks ties |
+| Typography | Dynamic sizing to fit available space |
+| Answer Format | Short answers (≤15 chars recommended) |
 
 ---
 
