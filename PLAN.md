@@ -18,12 +18,18 @@ A simple multiplayer trivia game with the following features:
 - **Gameplay**: 10 random questions about fun topics
 - **Format**: Multiple choice (4 answers, 1 correct)
 - **Technology**: Pure HTML/CSS/JavaScript (no framework)
+- **Questions**: 1000 questions in JSON format, multi-language
+- **Offline**: Fully functional without internet
+- **i18n**: French, English, Spanish, German (auto-detect from device)
+- **Theme**: Fun, colorful single theme
+- **Effects**: Sound effects + winner celebration animation
 
 ### Game Flow
 
 ```
 ┌─────────────────────────────────────────────────────────┐
 │                    START SCREEN                         │
+│  - Auto-detect language (FR/EN/ES/DE) or manual select │
 │  - Select number of players (1-4)                       │
 │  - Enter player names                                   │
 │  - Start Game button                                    │
@@ -33,17 +39,19 @@ A simple multiplayer trivia game with the following features:
 ┌─────────────────────────────────────────────────────────┐
 │                   QUESTION SCREEN                       │
 │  - Question number (1/10)                               │
-│  - Question text                                        │
+│  - Question text (in selected language)                │
 │  - 4 answer buttons (positioned for multi-player)      │
-│  - Timer (optional)                                     │
-│  - Current scores                                       │
+│  - Timer countdown                                      │
+│  - Current scores per player                            │
+│  - Sound: correct ✓ / wrong ✗                          │
 └─────────────────────────────────────────────────────────┘
                           │
                           ▼ (after 10 questions)
 ┌─────────────────────────────────────────────────────────┐
 │                   RESULTS SCREEN                        │
-│  - Final scores                                         │
-│  - Winner announcement                                  │
+│  - Final scores ranking                                 │
+│  - 🎉 Winner celebration animation (confetti/fireworks)│
+│  - 🔊 Victory sound effect                             │
 │  - Play Again button                                    │
 └─────────────────────────────────────────────────────────┘
 ```
@@ -73,16 +81,27 @@ Player 4│                     │Player 2
 
 ```
 /src/
-├── index.html          # Main HTML file
+├── index.html              # Main HTML file
 ├── css/
-│   └── styles.css      # Styling (responsive, touch-friendly)
+│   └── styles.css          # Styling (responsive, touch-friendly, fun theme)
 ├── js/
-│   ├── app.js          # Main application logic
-│   ├── questions.js    # Question bank
-│   └── game.js         # Game state management
+│   ├── app.js              # Main application entry point
+│   ├── game.js             # Game state management
+│   ├── i18n.js             # Internationalization logic
+│   └── animations.js       # Winner celebration effects
+├── data/
+│   └── questions.json      # 1000 questions (all languages)
+├── i18n/
+│   ├── en.json             # English UI strings
+│   ├── fr.json             # French UI strings
+│   ├── es.json             # Spanish UI strings
+│   └── de.json             # German UI strings
 └── assets/
-    ├── icons/          # App icons (various sizes)
-    └── sounds/         # Optional sound effects
+    ├── icons/              # App icons (various sizes)
+    └── sounds/
+        ├── correct.mp3     # Correct answer sound
+        ├── wrong.mp3       # Wrong answer sound
+        └── victory.mp3     # Winner celebration sound
 ```
 
 ### 2. Android Packaging Strategy
@@ -222,32 +241,56 @@ export PATH=$PATH:$ANDROID_HOME/build-tools/33.0.0
 /plandroid/
 ├── PLAN.md                    # This plan document
 ├── CLAUDE.md                  # Agent instructions
-├── README.md                  # Project readme
 ├── package.json               # Node.js dependencies
 ├── capacitor.config.ts        # Capacitor configuration
+│
 ├── src/                       # Web application source
-│   ├── index.html
+│   ├── index.html             # Single page app entry
 │   ├── css/
-│   │   └── styles.css
+│   │   └── styles.css         # Fun theme styles
 │   ├── js/
-│   │   ├── app.js
-│   │   ├── questions.js
-│   │   └── game.js
+│   │   ├── app.js             # Main entry point
+│   │   ├── game.js            # Game logic & state
+│   │   ├── i18n.js            # Language management
+│   │   └── animations.js      # Confetti & effects
+│   ├── data/
+│   │   └── questions.json     # 1000 questions (4 languages)
+│   ├── i18n/
+│   │   ├── en.json            # English UI
+│   │   ├── fr.json            # French UI
+│   │   ├── es.json            # Spanish UI
+│   │   └── de.json            # German UI
 │   └── assets/
-│       └── icons/
+│       ├── icons/
+│       │   ├── icon-72.png
+│       │   ├── icon-96.png
+│       │   ├── icon-128.png
+│       │   ├── icon-192.png
+│       │   └── icon-512.png
+│       └── sounds/
+│           ├── correct.mp3
+│           ├── wrong.mp3
+│           └── victory.mp3
+│
 ├── android/                   # Generated by Capacitor
 │   ├── app/
 │   │   ├── build.gradle
 │   │   └── src/
 │   └── gradle/
+│
 ├── scripts/                   # Build helper scripts
-│   ├── setup-android-sdk.sh
-│   └── build-release.sh
+│   ├── setup-android-sdk.sh   # Android SDK installation
+│   └── build-release.sh       # Release build automation
+│
 └── store-assets/              # Play Store assets
-    ├── icon-512.png
-    ├── feature-graphic.png
-    ├── screenshots/
-    └── descriptions.md
+    ├── icon-512.png           # Store icon
+    ├── feature-graphic.png    # 1024x500 banner
+    ├── screenshots/           # App screenshots
+    └── descriptions/
+        ├── en.md              # English description
+        ├── fr.md              # French description
+        ├── es.md              # Spanish description
+        └── de.md              # German description
 ```
 
 ---
@@ -281,31 +324,132 @@ cd android
 
 ---
 
-## Open Questions / Decisions Needed
+## Decided Specifications
 
-1. **Question Source**:
-   - Hardcoded questions in JS?
-   - External JSON file?
-   - API call (requires internet)?
+| Decision | Choice |
+|----------|--------|
+| Question Source | JSON file with 1000 questions |
+| Offline Support | Yes - fully offline capable |
+| Sound Effects | Yes - correct/wrong/victory sounds |
+| Animations | Yes - winner celebration (confetti) |
+| Theme | Single fun colorful theme |
+| Languages | FR, EN, ES, DE (auto-detect from device) |
 
-2. **Offline Support**:
-   - Should work fully offline? (Recommended: Yes)
+---
 
-3. **Sound Effects**:
-   - Include audio feedback? (correct/wrong sounds)
+## Internationalization (i18n) Architecture
 
-4. **Theming**:
-   - Light/dark mode support?
-   - Single fun theme?
+### Language Detection
 
-5. **Localization**:
-   - English only?
-   - Multi-language support?
+```javascript
+// Priority order:
+// 1. User manual selection (stored in localStorage)
+// 2. Navigator language (navigator.language)
+// 3. Default: English
+
+const supportedLanguages = ['en', 'fr', 'es', 'de'];
+const userLang = navigator.language.slice(0, 2);
+const lang = supportedLanguages.includes(userLang) ? userLang : 'en';
+```
+
+### UI Strings Structure (i18n/*.json)
+
+```json
+{
+  "app": {
+    "title": "Fun Trivia",
+    "start": "Start Game",
+    "players": "Number of Players",
+    "playerName": "Player {{n}} Name",
+    "question": "Question {{current}} of {{total}}",
+    "score": "Score",
+    "winner": "{{name}} wins!",
+    "tie": "It's a tie!",
+    "playAgain": "Play Again",
+    "correct": "Correct!",
+    "wrong": "Wrong!",
+    "timeUp": "Time's up!",
+    "selectLanguage": "Language"
+  }
+}
+```
+
+### Questions JSON Structure (data/questions.json)
+
+```json
+{
+  "version": "1.0",
+  "totalQuestions": 1000,
+  "categories": ["science", "history", "geography", "entertainment", "sports", "nature"],
+  "questions": [
+    {
+      "id": 1,
+      "category": "science",
+      "difficulty": "easy",
+      "question": {
+        "en": "What planet is known as the Red Planet?",
+        "fr": "Quelle planète est connue comme la planète rouge?",
+        "es": "¿Qué planeta es conocido como el Planeta Rojo?",
+        "de": "Welcher Planet ist als der Rote Planet bekannt?"
+      },
+      "answers": {
+        "en": ["Mars", "Venus", "Jupiter", "Saturn"],
+        "fr": ["Mars", "Vénus", "Jupiter", "Saturne"],
+        "es": ["Marte", "Venus", "Júpiter", "Saturno"],
+        "de": ["Mars", "Venus", "Jupiter", "Saturn"]
+      },
+      "correct": 0
+    }
+  ]
+}
+```
+
+### Question Categories (Fun Topics)
+
+| Category | Count | Examples |
+|----------|-------|----------|
+| Science | ~170 | Space, physics, biology |
+| History | ~170 | World events, famous people |
+| Geography | ~170 | Countries, capitals, landmarks |
+| Entertainment | ~170 | Movies, music, TV |
+| Sports | ~160 | Olympics, football, records |
+| Nature | ~160 | Animals, plants, weather |
+
+---
+
+## Sound & Animation Specifications
+
+### Sound Effects
+
+| Sound | Trigger | Duration | Format |
+|-------|---------|----------|--------|
+| `correct.mp3` | Player answers correctly | ~0.5s | MP3, 44.1kHz |
+| `wrong.mp3` | Player answers wrong | ~0.5s | MP3, 44.1kHz |
+| `victory.mp3` | Winner celebration | ~3s | MP3, 44.1kHz |
+
+### Winner Celebration Animation
+
+```
+┌─────────────────────────────────────────┐
+│  ✨  🎊  ✨  🎊  ✨  🎊  ✨  🎊  ✨    │
+│                                         │
+│         🏆 WINNER! 🏆                   │
+│                                         │
+│         Player Name                     │
+│         Score: 8/10                     │
+│                                         │
+│  🎉  ✨  🎉  ✨  🎉  ✨  🎉  ✨  🎉    │
+└─────────────────────────────────────────┘
+
+Animation: CSS confetti particles falling
+Duration: 3-5 seconds
+Library: Pure CSS (no external deps) or canvas-confetti (~3KB)
+```
 
 ---
 
 ## Next Steps
 
-1. Review this plan
-2. Answer open questions
+1. ✅ Plan reviewed and specifications decided
+2. Create CLAUDE.md with agent instructions
 3. Begin Phase 1 implementation
