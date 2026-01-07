@@ -99,38 +99,62 @@ Tiebreak:  Fastest total response time wins
 
 ### UI Layout for Multiplayer
 
-Each player has their **own zone** with the question text and all 4 answer buttons. Players sit around the phone, each facing their own zone (rotated for readability):
+Each player has their **own zone** that should be **AS LARGE AS POSSIBLE** to maximize readability. Each zone contains:
+- Player name and current score
+- Question text
+- All 4 answer buttons in a 2x2 grid
+
+Players sit around the phone, each facing their own zone (rotated for readability):
 
 ```
 ┌───────────────────────────────────────────────────────┐
 │                  PLAYER 1 ZONE (Top)                  │
 │  ┌─────────────────────────────────────────────────┐  │
+│  │ [Name: Alice]                        [Score: 3] │  │
 │  │ Question: What is the capital of France?        │  │
-│  │ [Paris] [London] [Berlin] [Madrid]              │  │
+│  │ [Berlin] [Paris] [Madrid] [London]              │  │
 │  └─────────────────────────────────────────────────┘  │
 │                    (rotated 180°)                     │
 ├───────────────────────────────────────────────────────┤
 │ P4 ZONE │                             │ P2 ZONE      │
 │ (Left)  │       CENTER AREA           │ (Right)      │
-│ rotated │    (Question counter,       │ rotated      │
-│  90°    │     current scores)         │  -90°        │
-│ Q + 4   │                             │ Q + 4        │
-│ answers │                             │ answers      │
+│ rotated │    (Question counter)       │ rotated      │
+│  90°    │                             │  -90°        │
 ├───────────────────────────────────────────────────────┤
 │                  PLAYER 3 ZONE (Bottom)               │
 │  ┌─────────────────────────────────────────────────┐  │
+│  │ [Name: Bob]                          [Score: 2] │  │
 │  │ Question: What is the capital of France?        │  │
-│  │ [Paris] [London] [Berlin] [Madrid]              │  │
+│  │ [Madrid] [London] [Paris] [Berlin]              │  │
 │  └─────────────────────────────────────────────────┘  │
 │                    (normal orientation)               │
 └───────────────────────────────────────────────────────┘
 ```
 
 **Key Design Principles:**
-- Each player sees the SAME question with ALL 4 answer buttons
+- **Maximize zone size**: Zones should fill available screen space
+- **Player score in zone**: Each zone shows the player's name and current score
+- **Randomized questions**: Each player sees questions in a DIFFERENT random order
+- **Randomized answers**: Answer button positions are shuffled DIFFERENTLY for each player
 - Zones are rotated so each player can read from their sitting position
 - First correct answer from ANY player wins the point
 - Wrong answer locks only THAT player's zone for 1 second
+
+### Anti-Cheating: Randomization Strategy
+
+To prevent players from copying others:
+
+1. **Question Order**: Each player gets the same 10 questions but in a different random order
+2. **Answer Positions**: For each question, answer buttons are shuffled differently per player
+
+```javascript
+// Example: Same question, different answer positions
+Player 1: [Paris] [London] [Berlin] [Madrid]  // Paris is at index 0
+Player 2: [Berlin] [Paris] [Madrid] [London]  // Paris is at index 1
+Player 3: [Madrid] [Berlin] [London] [Paris]  // Paris is at index 3
+```
+
+This means watching another player's screen gives no advantage.
 
 ### Responsive Typography
 

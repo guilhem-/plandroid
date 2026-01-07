@@ -86,7 +86,7 @@ const App = (() => {
   };
 
   /**
-   * Update scores display
+   * Update scores display in center and in each zone
    */
   const updateScores = () => {
     const colors = ['#f472b6', '#60a5fa', '#34d399', '#fbbf24'];
@@ -99,22 +99,44 @@ const App = (() => {
           ${player.score}
         </div>
       `;
+
+      // Also update score in each zone
+      const zone = document.getElementById(`zone-${i}`);
+      if (zone) {
+        const scoreEl = zone.querySelector('.zone-score');
+        if (scoreEl) {
+          scoreEl.textContent = player.score;
+        }
+      }
     }
 
     elements.scores.innerHTML = html;
   };
 
   /**
-   * Display current question
+   * Update player names in zones
+   */
+  const updateZonePlayerNames = () => {
+    for (let i = 0; i < playerCount; i++) {
+      const player = Game.getPlayer(i);
+      const zone = document.getElementById(`zone-${i}`);
+      if (zone && player) {
+        const nameEl = zone.querySelector('.zone-player-name');
+        if (nameEl) {
+          nameEl.textContent = player.name;
+        }
+      }
+    }
+  };
+
+  /**
+   * Display current question - each player sees their own randomized version
    */
   const displayQuestion = () => {
-    const q = Game.getCurrentQuestion();
-    if (!q) return;
-
     const progress = Game.getProgress();
     elements.questionCounter.textContent = `${progress.current}/${progress.total}`;
 
-    // Update each player zone with question and all 4 answers
+    // Update each player zone with THEIR question and THEIR shuffled answers
     for (let p = 0; p < 4; p++) {
       const zone = document.getElementById(`zone-${p}`);
       if (!zone) continue;
@@ -123,13 +145,17 @@ const App = (() => {
         zone.classList.remove('hidden');
         zone.classList.remove('locked');
 
+        // Get this player's question (with their randomized answers)
+        const q = Game.getQuestionForPlayer(p);
+        if (!q) continue;
+
         // Set question text in this zone
         const questionEl = zone.querySelector('.zone-question');
         if (questionEl) {
           questionEl.textContent = q.question;
         }
 
-        // Set all 4 answers in this zone
+        // Set all 4 shuffled answers in this zone
         const buttons = zone.querySelectorAll('.btn-answer');
         buttons.forEach((btn, i) => {
           btn.textContent = q.answers[i] || '';
@@ -164,19 +190,24 @@ const App = (() => {
     }
 
     if (result.isCorrect) {
-      // Correct answer - highlight correct button in all zones
+      // Correct answer - highlight correct button in each zone
+      // Each zone has different answer positions, so find correct for each
       playSound('correct');
 
-      // Show correct answer in all zones
       for (let p = 0; p < playerCount; p++) {
         const z = document.getElementById(`zone-${p}`);
-        const correctBtn = z?.querySelector(`[data-answer="${answerIndex}"]`);
+        // Get this player's question to find THEIR correct answer position
+        const pQuestion = Game.getQuestionForPlayer(p);
+        const correctBtn = z?.querySelector(`[data-answer="${pQuestion.correct}"]`);
         if (correctBtn) {
           Animations.flashCorrect(correctBtn);
         }
         // Disable all buttons in all zones
         z?.querySelectorAll('.btn-answer').forEach(b => b.disabled = true);
       }
+
+      // Update scores immediately
+      updateScores();
 
       // Brief delay then next question
       setTimeout(() => {
@@ -258,6 +289,7 @@ const App = (() => {
 
     Game.init(playerCount, names, lang);
     showScreen('game');
+    updateZonePlayerNames();
     displayQuestion();
   };
 

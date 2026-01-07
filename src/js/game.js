@@ -18,6 +18,9 @@ const Game = (() => {
     questionStartTime: null,
     questionAnswered: false,
     questions: [],
+    // Per-player randomization
+    playerQuestionOrder: [],   // Each player's question order
+    playerAnswerMappings: [],  // Each player's answer shuffle per question
     winner: null,
     gameComplete: false
   };
@@ -38,6 +41,18 @@ const Game = (() => {
   };
 
   /**
+   * Shuffle an array (Fisher-Yates algorithm)
+   */
+  const shuffle = (array) => {
+    const result = [...array];
+    for (let i = result.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [result[i], result[j]] = [result[j], result[i]];
+    }
+    return result;
+  };
+
+  /**
    * Initialize a new game
    * @param {number} playerCount - Number of players (1-4)
    * @param {string[]} playerNames - Array of player names
@@ -52,6 +67,8 @@ const Game = (() => {
       questionStartTime: null,
       questionAnswered: false,
       questions: [],
+      playerQuestionOrder: [],
+      playerAnswerMappings: [],
       winner: null,
       gameComplete: false
     };
@@ -64,12 +81,29 @@ const Game = (() => {
         score: 0,
         totalResponseTime: 0,
         isLocked: false,
-        lockoutEndTime: null
+        lockoutEndTime: null,
+        currentQuestionIndex: 0  // Track each player's progress
       });
     }
 
-    // Select random questions
+    // Select random questions for the game
     state.questions = selectRandomQuestions(QUESTIONS_PER_GAME);
+
+    // Generate randomized question order for each player
+    const questionIndices = state.questions.map((_, i) => i);
+    for (let p = 0; p < playerCount; p++) {
+      state.playerQuestionOrder[p] = shuffle(questionIndices);
+    }
+
+    // Generate randomized answer mappings for each player for each question
+    for (let p = 0; p < playerCount; p++) {
+      state.playerAnswerMappings[p] = [];
+      for (let q = 0; q < state.questions.length; q++) {
+        // Create shuffle mapping: [0,1,2,3] -> shuffled positions
+        const answerIndices = [0, 1, 2, 3];
+        state.playerAnswerMappings[p][q] = shuffle(answerIndices);
+      }
+    }
 
     return state;
   };
@@ -83,20 +117,49 @@ const Game = (() => {
   };
 
   /**
-   * Get current question data in the current language
+   * Get the actual question index for a player at the current round
    */
-  const getCurrentQuestion = () => {
-    const q = state.questions[state.currentQuestion];
+  const getPlayerQuestionIndex = (playerId) => {
+    const order = state.playerQuestionOrder[playerId];
+    if (!order) return state.currentQuestion;
+    return order[state.currentQuestion];
+  };
+
+  /**
+   * Get current question data for a specific player (with their randomization)
+   */
+  const getQuestionForPlayer = (playerId) => {
+    const qIndex = getPlayerQuestionIndex(playerId);
+    const q = state.questions[qIndex];
     if (!q) return null;
 
     const lang = state.language;
+    const originalAnswers = q.answers[lang] || q.answers.en;
+    const answerMapping = state.playerAnswerMappings[playerId]?.[qIndex] || [0, 1, 2, 3];
+
+    // Shuffle answers according to player's mapping
+    const shuffledAnswers = answerMapping.map(i => originalAnswers[i]);
+
+    // Find where the correct answer ended up
+    const originalCorrect = q.correct;
+    const shuffledCorrect = answerMapping.indexOf(originalCorrect);
+
     return {
       id: q.id,
       category: q.category,
       question: q.question[lang] || q.question.en,
-      answers: q.answers[lang] || q.answers.en,
-      correct: q.correct
+      answers: shuffledAnswers,
+      correct: shuffledCorrect,
+      originalQuestionIndex: qIndex,
+      answerMapping: answerMapping
     };
+  };
+
+  /**
+   * Get current question data in the current language (legacy - uses first player's view)
+   */
+  const getCurrentQuestion = () => {
+    return getQuestionForPlayer(0);
   };
 
   /**
@@ -131,6 +194,8 @@ const Game = (() => {
 
   /**
    * Record a player's answer
+   * @param {number} playerId - The player ID
+   * @param {number} answerIndex - The shuffled answer index the player clicked
    * @returns {object} Result with isCorrect, alreadyAnswered, isLocked
    */
   const recordAnswer = (playerId, answerIndex) => {
@@ -147,9 +212,11 @@ const Game = (() => {
       return { alreadyAnswered: true };
     }
 
-    const question = getCurrentQuestion();
+    // Get this player's question (with their shuffled answers)
+    const question = getQuestionForPlayer(playerId);
     if (!question) return { error: 'No current question' };
 
+    // Check if the shuffled answer index matches the shuffled correct position
     const isCorrect = answerIndex === question.correct;
     const responseTime = Date.now() - state.questionStartTime;
 
@@ -157,7 +224,7 @@ const Game = (() => {
       player.score++;
       player.totalResponseTime += responseTime;
       state.questionAnswered = true;
-      return { isCorrect: true, responseTime };
+      return { isCorrect: true, responseTime, correctIndex: answerIndex };
     } else {
       // Apply lockout penalty
       player.isLocked = true;
@@ -252,6 +319,7 @@ const Game = (() => {
     loadQuestions,
     init,
     getCurrentQuestion,
+    getQuestionForPlayer,
     startQuestionTimer,
     isPlayerLocked,
     recordAnswer,

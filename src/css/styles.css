@@ -246,20 +246,49 @@ button:active {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
   width: 100%;
   height: 100%;
 }
 
+.zone-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 4px;
+  flex-shrink: 0;
+}
+
+.zone-player-name {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--color-text);
+  max-width: 60%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.zone-score {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--color-secondary);
+  background: rgba(0, 0, 0, 0.3);
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
 .zone-question {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 600;
   text-align: center;
   line-height: 1.2;
   color: var(--color-text);
   flex-shrink: 0;
-  max-height: 36px;
+  max-height: 32px;
   overflow: hidden;
+  padding: 0 4px;
 }
 
 .zone-answers {
@@ -270,14 +299,15 @@ button:active {
   width: 100%;
 }
 
-/* Zone positions with rotation for each player */
+/* Zone positions - MAXIMIZE SIZE */
 .zone-top {
-  top: 50px;
+  top: 8px;
   left: 50%;
   transform: translateX(-50%) rotate(180deg);
   width: calc(100% - 16px);
-  max-width: 400px;
-  height: 120px;
+  max-width: 500px;
+  height: calc(50vh - 60px);
+  max-height: 200px;
 }
 
 .zone-bottom {
@@ -285,24 +315,29 @@ button:active {
   left: 50%;
   transform: translateX(-50%);
   width: calc(100% - 16px);
-  max-width: 400px;
-  height: 120px;
+  max-width: 500px;
+  height: calc(50vh - 60px);
+  max-height: 200px;
 }
 
 .zone-left {
   left: 8px;
   top: 50%;
   transform: translateY(-50%) rotate(90deg);
-  width: 280px;
-  height: 120px;
+  width: calc(50vh - 40px);
+  max-width: 320px;
+  height: calc(50vw - 40px);
+  max-height: 180px;
 }
 
 .zone-right {
   right: 8px;
   top: 50%;
   transform: translateY(-50%) rotate(-90deg);
-  width: 280px;
-  height: 120px;
+  width: calc(50vh - 40px);
+  max-width: 320px;
+  height: calc(50vw - 40px);
+  max-height: 180px;
 }
 
 .btn-answer {
@@ -461,46 +496,72 @@ button:active {
 /* Responsive adjustments */
 @media (max-height: 600px) {
   .zone-question {
-    font-size: 10px;
-    max-height: 24px;
+    font-size: 9px;
+    max-height: 20px;
+  }
+
+  .zone-player-name {
+    font-size: 9px;
+  }
+
+  .zone-score {
+    font-size: 11px;
+    padding: 1px 6px;
   }
 
   .zone-top, .zone-bottom {
-    height: 100px;
+    height: calc(45vh - 40px);
+    max-height: 140px;
   }
 
   .zone-left, .zone-right {
-    width: 220px;
-    height: 100px;
+    width: calc(45vh - 30px);
+    max-width: 240px;
+    height: calc(45vw - 30px);
+    max-height: 120px;
   }
 
   .btn-answer {
-    font-size: 10px;
-    min-height: 28px;
+    font-size: 9px;
+    min-height: 24px;
+    padding: 4px 2px;
   }
 }
 
 @media (min-width: 768px) {
   .zone-question {
     font-size: 14px;
+    max-height: 40px;
+  }
+
+  .zone-player-name {
+    font-size: 14px;
+  }
+
+  .zone-score {
+    font-size: 18px;
   }
 
   .zone-top, .zone-bottom {
-    height: 140px;
-    max-width: 500px;
+    height: calc(50vh - 50px);
+    max-height: 250px;
+    max-width: 600px;
   }
 
   .zone-left, .zone-right {
-    width: 320px;
-    height: 140px;
+    width: calc(50vh - 30px);
+    max-width: 400px;
+    height: calc(50vw - 30px);
+    max-height: 220px;
   }
 
   .btn-answer {
-    font-size: 13px;
+    font-size: 14px;
+    min-height: 40px;
   }
 }
 
-/* Game header positioning */
+/* Game header positioning - compact center display */
 .game-header {
   position: fixed;
   top: 50%;
