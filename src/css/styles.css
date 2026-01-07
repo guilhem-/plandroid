@@ -1,0 +1,459 @@
+/* Fun Trivia - Main Styles */
+
+/* CSS Variables - Fun Theme */
+:root {
+  --color-primary: #6366f1;
+  --color-primary-dark: #4f46e5;
+  --color-secondary: #f59e0b;
+  --color-correct: #22c55e;
+  --color-wrong: #ef4444;
+  --color-background: #1e1b4b;
+  --color-surface: #312e81;
+  --color-text: #ffffff;
+  --color-text-muted: #a5b4fc;
+
+  --player-color-0: #f472b6;
+  --player-color-1: #60a5fa;
+  --player-color-2: #34d399;
+  --player-color-3: #fbbf24;
+
+  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --border-radius: 12px;
+  --transition-fast: 150ms ease;
+  --transition-normal: 300ms ease;
+}
+
+/* Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: var(--font-family);
+  background: linear-gradient(135deg, var(--color-background) 0%, var(--color-surface) 100%);
+  color: var(--color-text);
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+/* Screen Management */
+.screen {
+  display: none;
+  position: fixed;
+  inset: 0;
+  padding: 16px;
+  flex-direction: column;
+}
+
+.screen.active {
+  display: flex;
+}
+
+/* Buttons */
+button {
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: transform var(--transition-fast), background var(--transition-fast);
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  color: var(--color-text);
+  padding: 16px 32px;
+  border-radius: var(--border-radius);
+  font-size: 20px;
+  min-height: 56px;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.btn-primary:active {
+  background: var(--color-primary-dark);
+}
+
+.btn-icon {
+  background: var(--color-surface);
+  color: var(--color-text);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* START SCREEN */
+#screen-start {
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+}
+
+.start-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.start-header h1 {
+  font-size: 32px;
+  background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-primary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.player-setup {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.player-setup label {
+  font-size: 18px;
+  color: var(--color-text-muted);
+}
+
+.player-count-selector {
+  display: flex;
+  gap: 12px;
+}
+
+.btn-count {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--border-radius);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: 24px;
+}
+
+.btn-count.active {
+  background: var(--color-primary);
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+}
+
+.player-names {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.player-name-input {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.player-name-input .player-badge {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.player-name-input input {
+  flex: 1;
+  padding: 12px 16px;
+  border: none;
+  border-radius: var(--border-radius);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: 16px;
+}
+
+.player-name-input input::placeholder {
+  color: var(--color-text-muted);
+}
+
+/* GAME SCREEN */
+#screen-game {
+  padding: 8px;
+}
+
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  z-index: 10;
+}
+
+.question-counter {
+  background: var(--color-surface);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+.scores {
+  display: flex;
+  gap: 8px;
+}
+
+.score-badge {
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.question-area {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  max-width: 400px;
+  text-align: center;
+  z-index: 5;
+}
+
+.question-text {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.4;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Answer Zones - 4 corners */
+.answers-area {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+.player-zone {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+}
+
+.zone-top {
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 80px;
+}
+
+.zone-bottom {
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 80px;
+}
+
+.zone-left {
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%) rotate(-90deg);
+  width: 200px;
+  height: 60px;
+}
+
+.zone-right {
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%) rotate(90deg);
+  width: 200px;
+  height: 60px;
+}
+
+.btn-answer {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--border-radius);
+  font-size: 18px;
+  font-weight: 600;
+  padding: 12px;
+  transition: all var(--transition-fast);
+}
+
+.zone-top .btn-answer { background: var(--player-color-0); }
+.zone-right .btn-answer { background: var(--player-color-1); }
+.zone-bottom .btn-answer { background: var(--player-color-2); }
+.zone-left .btn-answer { background: var(--player-color-3); }
+
+.btn-answer:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-answer.correct {
+  background: var(--color-correct) !important;
+  animation: pulse-correct 0.5s ease;
+}
+
+.btn-answer.wrong {
+  background: var(--color-wrong) !important;
+}
+
+/* Lockout overlay */
+.player-zone.locked::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--color-wrong);
+  opacity: 0.7;
+  border-radius: var(--border-radius);
+  animation: fade-out 1s ease forwards;
+}
+
+@keyframes fade-out {
+  from { opacity: 0.7; }
+  to { opacity: 0; }
+}
+
+@keyframes pulse-correct {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+/* RESULTS SCREEN */
+#screen-results {
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.confetti-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.results-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  z-index: 1;
+}
+
+.winner-text {
+  font-size: 36px;
+  text-align: center;
+  background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-primary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: bounce 1s ease infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.final-scores {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.final-score-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background: var(--color-surface);
+  border-radius: var(--border-radius);
+}
+
+.final-score-row.winner {
+  border: 2px solid var(--color-secondary);
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.3);
+}
+
+.final-score-name {
+  font-weight: 600;
+}
+
+.final-score-value {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Confetti particle */
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  opacity: 0;
+  animation: confetti-fall 3s ease-out forwards;
+}
+
+@keyframes confetti-fall {
+  0% {
+    opacity: 1;
+    transform: translateY(-100px) rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(100vh) rotate(720deg);
+  }
+}
+
+/* Utility - Hide elements based on player count */
+.hidden {
+  display: none !important;
+}
+
+/* Responsive adjustments */
+@media (max-height: 600px) {
+  .question-text {
+    font-size: 18px;
+  }
+
+  .zone-top, .zone-bottom {
+    height: 60px;
+  }
+
+  .btn-answer {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 768px) {
+  .question-text {
+    font-size: 32px;
+  }
+
+  .zone-left, .zone-right {
+    width: 250px;
+    height: 80px;
+  }
+}

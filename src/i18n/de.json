@@ -1,0 +1,19 @@
+{
+  "app": {
+    "title": "Quiz Spass",
+    "start": "Starten",
+    "players": "Anzahl der Spieler",
+    "playerName": "Spieler {{n}}",
+    "playerPlaceholder": "Name eingeben",
+    "question": "{{current}} / {{total}}",
+    "score": "Punkte",
+    "winner": "{{name}} gewinnt!",
+    "winners": "Unentschieden!",
+    "playAgain": "Nochmal spielen",
+    "correct": "Richtig!",
+    "wrong": "Falsch!",
+    "timeUp": "Zeit ist um!",
+    "selectLanguage": "Sprache",
+    "finalScore": "{{score}} Pkt"
+  }
+}

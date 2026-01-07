@@ -1,0 +1,29 @@
+{
+  "name": "plandroid",
+  "version": "1.0.0",
+  "description": "Multiplayer trivia game - Reference app for packaging HTML/JS to Android",
+  "main": "src/index.html",
+  "scripts": {
+    "serve": "npx serve src -p 8000",
+    "sync": "npx cap sync",
+    "build:debug": "cd android && ./gradlew assembleDebug",
+    "build:release": "cd android && ./gradlew bundleRelease"
+  },
+  "keywords": [
+    "trivia",
+    "game",
+    "android",
+    "capacitor",
+    "pwa"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@capacitor/android": "^5.0.0",
+    "@capacitor/core": "^5.0.0"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^5.0.0",
+    "serve": "^14.0.0"
+  }
+}

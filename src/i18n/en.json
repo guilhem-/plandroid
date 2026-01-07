@@ -1,0 +1,19 @@
+{
+  "app": {
+    "title": "Fun Trivia",
+    "start": "Start Game",
+    "players": "Number of Players",
+    "playerName": "Player {{n}}",
+    "playerPlaceholder": "Enter name",
+    "question": "{{current}} / {{total}}",
+    "score": "Score",
+    "winner": "{{name}} wins!",
+    "winners": "It's a tie!",
+    "playAgain": "Play Again",
+    "correct": "Correct!",
+    "wrong": "Wrong!",
+    "timeUp": "Time's up!",
+    "selectLanguage": "Language",
+    "finalScore": "{{score}} pts"
+  }
+}

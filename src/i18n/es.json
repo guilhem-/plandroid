@@ -1,0 +1,19 @@
+{
+  "app": {
+    "title": "Trivia Divertida",
+    "start": "Empezar",
+    "players": "Numero de jugadores",
+    "playerName": "Jugador {{n}}",
+    "playerPlaceholder": "Ingresa nombre",
+    "question": "{{current}} / {{total}}",
+    "score": "Puntos",
+    "winner": "{{name}} gana!",
+    "winners": "Empate!",
+    "playAgain": "Jugar de nuevo",
+    "correct": "Correcto!",
+    "wrong": "Incorrecto!",
+    "timeUp": "Tiempo!",
+    "selectLanguage": "Idioma",
+    "finalScore": "{{score}} pts"
+  }
+}

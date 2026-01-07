@@ -1,0 +1,19 @@
+{
+  "app": {
+    "title": "Quiz Fun",
+    "start": "Commencer",
+    "players": "Nombre de joueurs",
+    "playerName": "Joueur {{n}}",
+    "playerPlaceholder": "Entrez le nom",
+    "question": "{{current}} / {{total}}",
+    "score": "Score",
+    "winner": "{{name}} gagne!",
+    "winners": "Egalite!",
+    "playAgain": "Rejouer",
+    "correct": "Correct!",
+    "wrong": "Faux!",
+    "timeUp": "Temps ecoule!",
+    "selectLanguage": "Langue",
+    "finalScore": "{{score}} pts"
+  }
+}
