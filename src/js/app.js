@@ -21,10 +21,7 @@ const App = (() => {
     questionText: document.getElementById('question-text'),
     winnerText: document.getElementById('winner-text'),
     finalScores: document.getElementById('final-scores'),
-    btnPlayAgain: document.getElementById('btn-play-again'),
-    soundCorrect: document.getElementById('sound-correct'),
-    soundWrong: document.getElementById('sound-wrong'),
-    soundVictory: document.getElementById('sound-victory')
+    btnPlayAgain: document.getElementById('btn-play-again')
   };
 
   let playerCount = 2;
@@ -223,14 +220,10 @@ const App = (() => {
   };
 
   /**
-   * Play a sound effect
+   * Play a sound effect using Web Audio API synthesis
    */
   const playSound = (name) => {
-    const sound = elements[`sound${name.charAt(0).toUpperCase() + name.slice(1)}`];
-    if (sound) {
-      sound.currentTime = 0;
-      sound.play().catch(() => {}); // Ignore autoplay errors
-    }
+    Sounds.play(name);
   };
 
   /**

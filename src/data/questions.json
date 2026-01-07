@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "totalQuestions": 20,
+  "totalQuestions": 100,
   "categories": ["science", "history", "geography", "entertainment", "sports", "nature"],
   "questions": [
     {
@@ -24,10 +24,10 @@
       "id": 2,
       "category": "science",
       "question": {
-        "en": "What gas do plants breathe?",
-        "fr": "Quel gaz respirent les plantes?",
-        "es": "Que gas respiran las plantas?",
-        "de": "Welches Gas atmen Pflanzen?"
+        "en": "What gas do plants absorb?",
+        "fr": "Quel gaz absorbent les plantes?",
+        "es": "Que gas absorben las plantas?",
+        "de": "Welches Gas nehmen Pflanzen auf?"
       },
       "answers": {
         "en": ["CO2", "Oxygen", "Nitrogen", "Helium"],
@@ -39,176 +39,6 @@
     },
     {
       "id": 3,
-      "category": "geography",
-      "question": {
-        "en": "What is the capital of France?",
-        "fr": "Quelle est la capitale de la France?",
-        "es": "Cual es la capital de Francia?",
-        "de": "Was ist die Hauptstadt Frankreichs?"
-      },
-      "answers": {
-        "en": ["Paris", "London", "Berlin", "Madrid"],
-        "fr": ["Paris", "Londres", "Berlin", "Madrid"],
-        "es": ["Paris", "Londres", "Berlin", "Madrid"],
-        "de": ["Paris", "London", "Berlin", "Madrid"]
-      },
-      "correct": 0
-    },
-    {
-      "id": 4,
-      "category": "geography",
-      "question": {
-        "en": "Which ocean is the largest?",
-        "fr": "Quel ocean est le plus grand?",
-        "es": "Cual es el oceano mas grande?",
-        "de": "Welcher Ozean ist der groesste?"
-      },
-      "answers": {
-        "en": ["Pacific", "Atlantic", "Indian", "Arctic"],
-        "fr": ["Pacifique", "Atlantique", "Indien", "Arctique"],
-        "es": ["Pacifico", "Atlantico", "Indico", "Artico"],
-        "de": ["Pazifik", "Atlantik", "Indisch", "Arktis"]
-      },
-      "correct": 0
-    },
-    {
-      "id": 5,
-      "category": "history",
-      "question": {
-        "en": "In what year did WW2 end?",
-        "fr": "En quelle annee la WW2 a fini?",
-        "es": "En que ano termino la WW2?",
-        "de": "In welchem Jahr endete WW2?"
-      },
-      "answers": {
-        "en": ["1945", "1944", "1946", "1943"],
-        "fr": ["1945", "1944", "1946", "1943"],
-        "es": ["1945", "1944", "1946", "1943"],
-        "de": ["1945", "1944", "1946", "1943"]
-      },
-      "correct": 0
-    },
-    {
-      "id": 6,
-      "category": "history",
-      "question": {
-        "en": "Who painted the Mona Lisa?",
-        "fr": "Qui a peint la Joconde?",
-        "es": "Quien pinto la Mona Lisa?",
-        "de": "Wer malte die Mona Lisa?"
-      },
-      "answers": {
-        "en": ["Da Vinci", "Picasso", "Van Gogh", "Monet"],
-        "fr": ["De Vinci", "Picasso", "Van Gogh", "Monet"],
-        "es": ["Da Vinci", "Picasso", "Van Gogh", "Monet"],
-        "de": ["Da Vinci", "Picasso", "Van Gogh", "Monet"]
-      },
-      "correct": 0
-    },
-    {
-      "id": 7,
-      "category": "entertainment",
-      "question": {
-        "en": "What is Batman's real name?",
-        "fr": "Quel est le vrai nom de Batman?",
-        "es": "Cual es el nombre real de Batman?",
-        "de": "Wie heisst Batman wirklich?"
-      },
-      "answers": {
-        "en": ["Bruce Wayne", "Clark Kent", "Peter Parker", "Tony Stark"],
-        "fr": ["Bruce Wayne", "Clark Kent", "Peter Parker", "Tony Stark"],
-        "es": ["Bruce Wayne", "Clark Kent", "Peter Parker", "Tony Stark"],
-        "de": ["Bruce Wayne", "Clark Kent", "Peter Parker", "Tony Stark"]
-      },
-      "correct": 0
-    },
-    {
-      "id": 8,
-      "category": "entertainment",
-      "question": {
-        "en": "Which band sang 'Bohemian Rhapsody'?",
-        "fr": "Quel groupe a chante 'Bohemian Rhapsody'?",
-        "es": "Que banda canto 'Bohemian Rhapsody'?",
-        "de": "Welche Band sang 'Bohemian Rhapsody'?"
-      },
-      "answers": {
-        "en": ["Queen", "Beatles", "ABBA", "Pink Floyd"],
-        "fr": ["Queen", "Beatles", "ABBA", "Pink Floyd"],
-        "es": ["Queen", "Beatles", "ABBA", "Pink Floyd"],
-        "de": ["Queen", "Beatles", "ABBA", "Pink Floyd"]
-      },
-      "correct": 0
-    },
-    {
-      "id": 9,
-      "category": "sports",
-      "question": {
-        "en": "How many players on a soccer team?",
-        "fr": "Combien de joueurs dans une equipe de foot?",
-        "es": "Cuantos jugadores en un equipo de futbol?",
-        "de": "Wie viele Spieler in einem Fussballteam?"
-      },
-      "answers": {
-        "en": ["11", "10", "12", "9"],
-        "fr": ["11", "10", "12", "9"],
-        "es": ["11", "10", "12", "9"],
-        "de": ["11", "10", "12", "9"]
-      },
-      "correct": 0
-    },
-    {
-      "id": 10,
-      "category": "sports",
-      "question": {
-        "en": "What sport uses a shuttlecock?",
-        "fr": "Quel sport utilise un volant?",
-        "es": "Que deporte usa un volante?",
-        "de": "Welcher Sport nutzt einen Federball?"
-      },
-      "answers": {
-        "en": ["Badminton", "Tennis", "Squash", "Ping Pong"],
-        "fr": ["Badminton", "Tennis", "Squash", "Ping Pong"],
-        "es": ["Badminton", "Tenis", "Squash", "Ping Pong"],
-        "de": ["Badminton", "Tennis", "Squash", "Ping Pong"]
-      },
-      "correct": 0
-    },
-    {
-      "id": 11,
-      "category": "nature",
-      "question": {
-        "en": "What is the largest animal on Earth?",
-        "fr": "Quel est le plus grand animal sur Terre?",
-        "es": "Cual es el animal mas grande?",
-        "de": "Was ist das groesste Tier der Erde?"
-      },
-      "answers": {
-        "en": ["Blue Whale", "Elephant", "Giraffe", "Shark"],
-        "fr": ["Baleine bleue", "Elephant", "Girafe", "Requin"],
-        "es": ["Ballena azul", "Elefante", "Jirafa", "Tiburon"],
-        "de": ["Blauwal", "Elefant", "Giraffe", "Hai"]
-      },
-      "correct": 0
-    },
-    {
-      "id": 12,
-      "category": "nature",
-      "question": {
-        "en": "How many legs does a spider have?",
-        "fr": "Combien de pattes a une araignee?",
-        "es": "Cuantas patas tiene una arana?",
-        "de": "Wie viele Beine hat eine Spinne?"
-      },
-      "answers": {
-        "en": ["8", "6", "10", "4"],
-        "fr": ["8", "6", "10", "4"],
-        "es": ["8", "6", "10", "4"],
-        "de": ["8", "6", "10", "4"]
-      },
-      "correct": 0
-    },
-    {
-      "id": 13,
       "category": "science",
       "question": {
         "en": "What is H2O?",
@@ -225,7 +55,279 @@
       "correct": 0
     },
     {
+      "id": 4,
+      "category": "science",
+      "question": {
+        "en": "How many planets in our solar system?",
+        "fr": "Combien de planetes dans notre systeme?",
+        "es": "Cuantos planetas en nuestro sistema?",
+        "de": "Wie viele Planeten im Sonnensystem?"
+      },
+      "answers": {
+        "en": ["8", "9", "7", "10"],
+        "fr": ["8", "9", "7", "10"],
+        "es": ["8", "9", "7", "10"],
+        "de": ["8", "9", "7", "10"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 5,
+      "category": "science",
+      "question": {
+        "en": "What is the chemical symbol for gold?",
+        "fr": "Quel est le symbole de l'or?",
+        "es": "Cual es el simbolo del oro?",
+        "de": "Was ist das Symbol fuer Gold?"
+      },
+      "answers": {
+        "en": ["Au", "Ag", "Fe", "Cu"],
+        "fr": ["Au", "Ag", "Fe", "Cu"],
+        "es": ["Au", "Ag", "Fe", "Cu"],
+        "de": ["Au", "Ag", "Fe", "Cu"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 6,
+      "category": "science",
+      "question": {
+        "en": "What is the speed of light?",
+        "fr": "Quelle est la vitesse de la lumiere?",
+        "es": "Cual es la velocidad de la luz?",
+        "de": "Wie schnell ist das Licht?"
+      },
+      "answers": {
+        "en": ["300000 km/s", "150000 km/s", "500000 km/s", "100000 km/s"],
+        "fr": ["300000 km/s", "150000 km/s", "500000 km/s", "100000 km/s"],
+        "es": ["300000 km/s", "150000 km/s", "500000 km/s", "100000 km/s"],
+        "de": ["300000 km/s", "150000 km/s", "500000 km/s", "100000 km/s"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 7,
+      "category": "science",
+      "question": {
+        "en": "What is the hardest natural substance?",
+        "fr": "Quelle est la substance la plus dure?",
+        "es": "Cual es la sustancia mas dura?",
+        "de": "Was ist die haerteste Substanz?"
+      },
+      "answers": {
+        "en": ["Diamond", "Iron", "Gold", "Titanium"],
+        "fr": ["Diamant", "Fer", "Or", "Titane"],
+        "es": ["Diamante", "Hierro", "Oro", "Titanio"],
+        "de": ["Diamant", "Eisen", "Gold", "Titan"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 8,
+      "category": "science",
+      "question": {
+        "en": "How many bones in the human body?",
+        "fr": "Combien d'os dans le corps humain?",
+        "es": "Cuantos huesos tiene el cuerpo?",
+        "de": "Wie viele Knochen hat der Mensch?"
+      },
+      "answers": {
+        "en": ["206", "205", "208", "210"],
+        "fr": ["206", "205", "208", "210"],
+        "es": ["206", "205", "208", "210"],
+        "de": ["206", "205", "208", "210"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 9,
+      "category": "science",
+      "question": {
+        "en": "What planet has the most moons?",
+        "fr": "Quelle planete a le plus de lunes?",
+        "es": "Que planeta tiene mas lunas?",
+        "de": "Welcher Planet hat die meisten Monde?"
+      },
+      "answers": {
+        "en": ["Saturn", "Jupiter", "Uranus", "Neptune"],
+        "fr": ["Saturne", "Jupiter", "Uranus", "Neptune"],
+        "es": ["Saturno", "Jupiter", "Urano", "Neptuno"],
+        "de": ["Saturn", "Jupiter", "Uranus", "Neptun"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 10,
+      "category": "science",
+      "question": {
+        "en": "What is the largest organ in the body?",
+        "fr": "Quel est le plus grand organe?",
+        "es": "Cual es el organo mas grande?",
+        "de": "Was ist das groesste Organ?"
+      },
+      "answers": {
+        "en": ["Skin", "Liver", "Heart", "Brain"],
+        "fr": ["Peau", "Foie", "Coeur", "Cerveau"],
+        "es": ["Piel", "Higado", "Corazon", "Cerebro"],
+        "de": ["Haut", "Leber", "Herz", "Gehirn"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 11,
+      "category": "science",
+      "question": {
+        "en": "What gas makes up most of Earth's air?",
+        "fr": "Quel gaz compose l'air terrestre?",
+        "es": "Que gas compone el aire?",
+        "de": "Welches Gas ist in der Luft?"
+      },
+      "answers": {
+        "en": ["Nitrogen", "Oxygen", "CO2", "Helium"],
+        "fr": ["Azote", "Oxygene", "CO2", "Helium"],
+        "es": ["Nitrogeno", "Oxigeno", "CO2", "Helio"],
+        "de": ["Stickstoff", "Sauerstoff", "CO2", "Helium"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 12,
+      "category": "science",
+      "question": {
+        "en": "What is the center of an atom called?",
+        "fr": "Comment s'appelle le centre d'un atome?",
+        "es": "Como se llama el centro del atomo?",
+        "de": "Wie heisst das Zentrum eines Atoms?"
+      },
+      "answers": {
+        "en": ["Nucleus", "Electron", "Proton", "Neutron"],
+        "fr": ["Noyau", "Electron", "Proton", "Neutron"],
+        "es": ["Nucleo", "Electron", "Proton", "Neutron"],
+        "de": ["Kern", "Elektron", "Proton", "Neutron"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 13,
+      "category": "science",
+      "question": {
+        "en": "What is the boiling point of water?",
+        "fr": "Quel est le point d'ebullition de l'eau?",
+        "es": "Cual es el punto de ebullicion?",
+        "de": "Bei wie viel Grad kocht Wasser?"
+      },
+      "answers": {
+        "en": ["100C", "90C", "110C", "80C"],
+        "fr": ["100C", "90C", "110C", "80C"],
+        "es": ["100C", "90C", "110C", "80C"],
+        "de": ["100C", "90C", "110C", "80C"]
+      },
+      "correct": 0
+    },
+    {
       "id": 14,
+      "category": "science",
+      "question": {
+        "en": "What force keeps us on Earth?",
+        "fr": "Quelle force nous garde sur Terre?",
+        "es": "Que fuerza nos mantiene en la Tierra?",
+        "de": "Welche Kraft haelt uns auf der Erde?"
+      },
+      "answers": {
+        "en": ["Gravity", "Magnetism", "Friction", "Pressure"],
+        "fr": ["Gravite", "Magnetisme", "Friction", "Pression"],
+        "es": ["Gravedad", "Magnetismo", "Friccion", "Presion"],
+        "de": ["Gravitation", "Magnetismus", "Reibung", "Druck"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 15,
+      "category": "science",
+      "question": {
+        "en": "What is the closest star to Earth?",
+        "fr": "Quelle est l'etoile la plus proche?",
+        "es": "Cual es la estrella mas cercana?",
+        "de": "Welcher Stern ist am naechsten?"
+      },
+      "answers": {
+        "en": ["Sun", "Proxima", "Sirius", "Vega"],
+        "fr": ["Soleil", "Proxima", "Sirius", "Vega"],
+        "es": ["Sol", "Proxima", "Sirio", "Vega"],
+        "de": ["Sonne", "Proxima", "Sirius", "Wega"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 16,
+      "category": "science",
+      "question": {
+        "en": "What vitamin comes from sunlight?",
+        "fr": "Quelle vitamine vient du soleil?",
+        "es": "Que vitamina viene del sol?",
+        "de": "Welches Vitamin kommt von der Sonne?"
+      },
+      "answers": {
+        "en": ["Vitamin D", "Vitamin C", "Vitamin A", "Vitamin B"],
+        "fr": ["Vitamine D", "Vitamine C", "Vitamine A", "Vitamine B"],
+        "es": ["Vitamina D", "Vitamina C", "Vitamina A", "Vitamina B"],
+        "de": ["Vitamin D", "Vitamin C", "Vitamin A", "Vitamin B"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 17,
+      "category": "science",
+      "question": {
+        "en": "What is frozen water called?",
+        "fr": "Comment appelle-t-on l'eau gelee?",
+        "es": "Como se llama el agua congelada?",
+        "de": "Wie nennt man gefrorenes Wasser?"
+      },
+      "answers": {
+        "en": ["Ice", "Steam", "Vapor", "Frost"],
+        "fr": ["Glace", "Vapeur", "Buee", "Givre"],
+        "es": ["Hielo", "Vapor", "Niebla", "Escarcha"],
+        "de": ["Eis", "Dampf", "Nebel", "Frost"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 18,
+      "category": "geography",
+      "question": {
+        "en": "What is the capital of France?",
+        "fr": "Quelle est la capitale de la France?",
+        "es": "Cual es la capital de Francia?",
+        "de": "Was ist die Hauptstadt Frankreichs?"
+      },
+      "answers": {
+        "en": ["Paris", "London", "Berlin", "Madrid"],
+        "fr": ["Paris", "Londres", "Berlin", "Madrid"],
+        "es": ["Paris", "Londres", "Berlin", "Madrid"],
+        "de": ["Paris", "London", "Berlin", "Madrid"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 19,
+      "category": "geography",
+      "question": {
+        "en": "Which ocean is the largest?",
+        "fr": "Quel ocean est le plus grand?",
+        "es": "Cual es el oceano mas grande?",
+        "de": "Welcher Ozean ist der groesste?"
+      },
+      "answers": {
+        "en": ["Pacific", "Atlantic", "Indian", "Arctic"],
+        "fr": ["Pacifique", "Atlantique", "Indien", "Arctique"],
+        "es": ["Pacifico", "Atlantico", "Indico", "Artico"],
+        "de": ["Pazifik", "Atlantik", "Indisch", "Arktis"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 20,
       "category": "geography",
       "question": {
         "en": "What is the longest river?",
@@ -242,24 +344,262 @@
       "correct": 0
     },
     {
-      "id": 15,
-      "category": "entertainment",
+      "id": 21,
+      "category": "geography",
       "question": {
-        "en": "What color is Shrek?",
-        "fr": "De quelle couleur est Shrek?",
-        "es": "De que color es Shrek?",
-        "de": "Welche Farbe hat Shrek?"
+        "en": "What is the largest continent?",
+        "fr": "Quel est le plus grand continent?",
+        "es": "Cual es el continente mas grande?",
+        "de": "Was ist der groesste Kontinent?"
       },
       "answers": {
-        "en": ["Green", "Blue", "Red", "Yellow"],
-        "fr": ["Vert", "Bleu", "Rouge", "Jaune"],
-        "es": ["Verde", "Azul", "Rojo", "Amarillo"],
-        "de": ["Gruen", "Blau", "Rot", "Gelb"]
+        "en": ["Asia", "Africa", "Europe", "America"],
+        "fr": ["Asie", "Afrique", "Europe", "Amerique"],
+        "es": ["Asia", "Africa", "Europa", "America"],
+        "de": ["Asien", "Afrika", "Europa", "Amerika"]
       },
       "correct": 0
     },
     {
-      "id": 16,
+      "id": 22,
+      "category": "geography",
+      "question": {
+        "en": "What is the capital of Japan?",
+        "fr": "Quelle est la capitale du Japon?",
+        "es": "Cual es la capital de Japon?",
+        "de": "Was ist die Hauptstadt Japans?"
+      },
+      "answers": {
+        "en": ["Tokyo", "Osaka", "Kyoto", "Nagoya"],
+        "fr": ["Tokyo", "Osaka", "Kyoto", "Nagoya"],
+        "es": ["Tokio", "Osaka", "Kioto", "Nagoya"],
+        "de": ["Tokio", "Osaka", "Kyoto", "Nagoya"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 23,
+      "category": "geography",
+      "question": {
+        "en": "Which country has the most people?",
+        "fr": "Quel pays a le plus d'habitants?",
+        "es": "Que pais tiene mas habitantes?",
+        "de": "Welches Land hat die meisten Menschen?"
+      },
+      "answers": {
+        "en": ["India", "China", "USA", "Brazil"],
+        "fr": ["Inde", "Chine", "USA", "Bresil"],
+        "es": ["India", "China", "EEUU", "Brasil"],
+        "de": ["Indien", "China", "USA", "Brasilien"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 24,
+      "category": "geography",
+      "question": {
+        "en": "What is the highest mountain?",
+        "fr": "Quelle est la plus haute montagne?",
+        "es": "Cual es la montana mas alta?",
+        "de": "Was ist der hoechste Berg?"
+      },
+      "answers": {
+        "en": ["Everest", "K2", "Kilimanjaro", "Mont Blanc"],
+        "fr": ["Everest", "K2", "Kilimanjaro", "Mont Blanc"],
+        "es": ["Everest", "K2", "Kilimanjaro", "Mont Blanc"],
+        "de": ["Everest", "K2", "Kilimandscharo", "Mont Blanc"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 25,
+      "category": "geography",
+      "question": {
+        "en": "What is the capital of Italy?",
+        "fr": "Quelle est la capitale de l'Italie?",
+        "es": "Cual es la capital de Italia?",
+        "de": "Was ist die Hauptstadt Italiens?"
+      },
+      "answers": {
+        "en": ["Rome", "Milan", "Venice", "Naples"],
+        "fr": ["Rome", "Milan", "Venise", "Naples"],
+        "es": ["Roma", "Milan", "Venecia", "Napoles"],
+        "de": ["Rom", "Mailand", "Venedig", "Neapel"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 26,
+      "category": "geography",
+      "question": {
+        "en": "Which desert is the largest?",
+        "fr": "Quel desert est le plus grand?",
+        "es": "Cual es el desierto mas grande?",
+        "de": "Welche Wueste ist die groesste?"
+      },
+      "answers": {
+        "en": ["Sahara", "Gobi", "Kalahari", "Mojave"],
+        "fr": ["Sahara", "Gobi", "Kalahari", "Mojave"],
+        "es": ["Sahara", "Gobi", "Kalahari", "Mojave"],
+        "de": ["Sahara", "Gobi", "Kalahari", "Mojave"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 27,
+      "category": "geography",
+      "question": {
+        "en": "What is the capital of Australia?",
+        "fr": "Quelle est la capitale de l'Australie?",
+        "es": "Cual es la capital de Australia?",
+        "de": "Was ist die Hauptstadt Australiens?"
+      },
+      "answers": {
+        "en": ["Canberra", "Sydney", "Melbourne", "Brisbane"],
+        "fr": ["Canberra", "Sydney", "Melbourne", "Brisbane"],
+        "es": ["Canberra", "Sidney", "Melbourne", "Brisbane"],
+        "de": ["Canberra", "Sydney", "Melbourne", "Brisbane"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 28,
+      "category": "geography",
+      "question": {
+        "en": "What is the smallest country?",
+        "fr": "Quel est le plus petit pays?",
+        "es": "Cual es el pais mas pequeno?",
+        "de": "Was ist das kleinste Land?"
+      },
+      "answers": {
+        "en": ["Vatican", "Monaco", "Malta", "Andorra"],
+        "fr": ["Vatican", "Monaco", "Malte", "Andorre"],
+        "es": ["Vaticano", "Monaco", "Malta", "Andorra"],
+        "de": ["Vatikan", "Monaco", "Malta", "Andorra"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 29,
+      "category": "geography",
+      "question": {
+        "en": "What is the capital of Brazil?",
+        "fr": "Quelle est la capitale du Bresil?",
+        "es": "Cual es la capital de Brasil?",
+        "de": "Was ist die Hauptstadt Brasiliens?"
+      },
+      "answers": {
+        "en": ["Brasilia", "Rio", "Sao Paulo", "Salvador"],
+        "fr": ["Brasilia", "Rio", "Sao Paulo", "Salvador"],
+        "es": ["Brasilia", "Rio", "Sao Paulo", "Salvador"],
+        "de": ["Brasilia", "Rio", "Sao Paulo", "Salvador"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 30,
+      "category": "geography",
+      "question": {
+        "en": "Which country is shaped like a boot?",
+        "fr": "Quel pays a la forme d'une botte?",
+        "es": "Que pais tiene forma de bota?",
+        "de": "Welches Land hat die Form eines Stiefels?"
+      },
+      "answers": {
+        "en": ["Italy", "Spain", "Greece", "Portugal"],
+        "fr": ["Italie", "Espagne", "Grece", "Portugal"],
+        "es": ["Italia", "Espana", "Grecia", "Portugal"],
+        "de": ["Italien", "Spanien", "Griechenland", "Portugal"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 31,
+      "category": "geography",
+      "question": {
+        "en": "What is the capital of Germany?",
+        "fr": "Quelle est la capitale de l'Allemagne?",
+        "es": "Cual es la capital de Alemania?",
+        "de": "Was ist die Hauptstadt Deutschlands?"
+      },
+      "answers": {
+        "en": ["Berlin", "Munich", "Hamburg", "Frankfurt"],
+        "fr": ["Berlin", "Munich", "Hambourg", "Francfort"],
+        "es": ["Berlin", "Munich", "Hamburgo", "Frankfurt"],
+        "de": ["Berlin", "Muenchen", "Hamburg", "Frankfurt"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 32,
+      "category": "geography",
+      "question": {
+        "en": "What is the largest island?",
+        "fr": "Quelle est la plus grande ile?",
+        "es": "Cual es la isla mas grande?",
+        "de": "Was ist die groesste Insel?"
+      },
+      "answers": {
+        "en": ["Greenland", "Australia", "Borneo", "Madagascar"],
+        "fr": ["Groenland", "Australie", "Borneo", "Madagascar"],
+        "es": ["Groenlandia", "Australia", "Borneo", "Madagascar"],
+        "de": ["Groenland", "Australien", "Borneo", "Madagaskar"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 33,
+      "category": "geography",
+      "question": {
+        "en": "What is the capital of Spain?",
+        "fr": "Quelle est la capitale de l'Espagne?",
+        "es": "Cual es la capital de Espana?",
+        "de": "Was ist die Hauptstadt Spaniens?"
+      },
+      "answers": {
+        "en": ["Madrid", "Barcelona", "Seville", "Valencia"],
+        "fr": ["Madrid", "Barcelone", "Seville", "Valence"],
+        "es": ["Madrid", "Barcelona", "Sevilla", "Valencia"],
+        "de": ["Madrid", "Barcelona", "Sevilla", "Valencia"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 34,
+      "category": "history",
+      "question": {
+        "en": "In what year did WW2 end?",
+        "fr": "En quelle annee la WW2 a fini?",
+        "es": "En que ano termino la WW2?",
+        "de": "In welchem Jahr endete der WW2?"
+      },
+      "answers": {
+        "en": ["1945", "1944", "1946", "1943"],
+        "fr": ["1945", "1944", "1946", "1943"],
+        "es": ["1945", "1944", "1946", "1943"],
+        "de": ["1945", "1944", "1946", "1943"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 35,
+      "category": "history",
+      "question": {
+        "en": "Who painted the Mona Lisa?",
+        "fr": "Qui a peint la Joconde?",
+        "es": "Quien pinto la Mona Lisa?",
+        "de": "Wer malte die Mona Lisa?"
+      },
+      "answers": {
+        "en": ["Da Vinci", "Picasso", "Van Gogh", "Monet"],
+        "fr": ["De Vinci", "Picasso", "Van Gogh", "Monet"],
+        "es": ["Da Vinci", "Picasso", "Van Gogh", "Monet"],
+        "de": ["Da Vinci", "Picasso", "Van Gogh", "Monet"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 36,
       "category": "history",
       "question": {
         "en": "Who discovered America?",
@@ -276,24 +616,551 @@
       "correct": 0
     },
     {
-      "id": 17,
-      "category": "science",
+      "id": 37,
+      "category": "history",
       "question": {
-        "en": "How many bones in the human body?",
-        "fr": "Combien d'os dans le corps humain?",
-        "es": "Cuantos huesos tiene el cuerpo humano?",
-        "de": "Wie viele Knochen hat der Mensch?"
+        "en": "Who was the first man on the moon?",
+        "fr": "Qui fut le premier homme sur la lune?",
+        "es": "Quien fue el primer hombre en la luna?",
+        "de": "Wer war der erste Mann auf dem Mond?"
       },
       "answers": {
-        "en": ["206", "205", "208", "210"],
-        "fr": ["206", "205", "208", "210"],
-        "es": ["206", "205", "208", "210"],
-        "de": ["206", "205", "208", "210"]
+        "en": ["Armstrong", "Aldrin", "Glenn", "Gagarin"],
+        "fr": ["Armstrong", "Aldrin", "Glenn", "Gagarine"],
+        "es": ["Armstrong", "Aldrin", "Glenn", "Gagarin"],
+        "de": ["Armstrong", "Aldrin", "Glenn", "Gagarin"]
       },
       "correct": 0
     },
     {
-      "id": 18,
+      "id": 38,
+      "category": "history",
+      "question": {
+        "en": "When was the French Revolution?",
+        "fr": "Quand fut la Revolution francaise?",
+        "es": "Cuando fue la Revolucion Francesa?",
+        "de": "Wann war die Franzoesische Revolution?"
+      },
+      "answers": {
+        "en": ["1789", "1776", "1799", "1812"],
+        "fr": ["1789", "1776", "1799", "1812"],
+        "es": ["1789", "1776", "1799", "1812"],
+        "de": ["1789", "1776", "1799", "1812"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 39,
+      "category": "history",
+      "question": {
+        "en": "Who wrote Romeo and Juliet?",
+        "fr": "Qui a ecrit Romeo et Juliette?",
+        "es": "Quien escribio Romeo y Julieta?",
+        "de": "Wer schrieb Romeo und Julia?"
+      },
+      "answers": {
+        "en": ["Shakespeare", "Dickens", "Twain", "Hemingway"],
+        "fr": ["Shakespeare", "Dickens", "Twain", "Hemingway"],
+        "es": ["Shakespeare", "Dickens", "Twain", "Hemingway"],
+        "de": ["Shakespeare", "Dickens", "Twain", "Hemingway"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 40,
+      "category": "history",
+      "question": {
+        "en": "Who invented the telephone?",
+        "fr": "Qui a invente le telephone?",
+        "es": "Quien invento el telefono?",
+        "de": "Wer erfand das Telefon?"
+      },
+      "answers": {
+        "en": ["Bell", "Edison", "Tesla", "Morse"],
+        "fr": ["Bell", "Edison", "Tesla", "Morse"],
+        "es": ["Bell", "Edison", "Tesla", "Morse"],
+        "de": ["Bell", "Edison", "Tesla", "Morse"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 41,
+      "category": "history",
+      "question": {
+        "en": "Who was the first US president?",
+        "fr": "Qui fut le premier president US?",
+        "es": "Quien fue el primer presidente de EEUU?",
+        "de": "Wer war der erste US-Praesident?"
+      },
+      "answers": {
+        "en": ["Washington", "Lincoln", "Jefferson", "Adams"],
+        "fr": ["Washington", "Lincoln", "Jefferson", "Adams"],
+        "es": ["Washington", "Lincoln", "Jefferson", "Adams"],
+        "de": ["Washington", "Lincoln", "Jefferson", "Adams"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 42,
+      "category": "history",
+      "question": {
+        "en": "When did the Titanic sink?",
+        "fr": "Quand le Titanic a-t-il coule?",
+        "es": "Cuando se hundio el Titanic?",
+        "de": "Wann sank die Titanic?"
+      },
+      "answers": {
+        "en": ["1912", "1905", "1920", "1898"],
+        "fr": ["1912", "1905", "1920", "1898"],
+        "es": ["1912", "1905", "1920", "1898"],
+        "de": ["1912", "1905", "1920", "1898"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 43,
+      "category": "history",
+      "question": {
+        "en": "Who built the pyramids?",
+        "fr": "Qui a construit les pyramides?",
+        "es": "Quien construyo las piramides?",
+        "de": "Wer baute die Pyramiden?"
+      },
+      "answers": {
+        "en": ["Egyptians", "Romans", "Greeks", "Persians"],
+        "fr": ["Egyptiens", "Romains", "Grecs", "Perses"],
+        "es": ["Egipcios", "Romanos", "Griegos", "Persas"],
+        "de": ["Aegypter", "Roemer", "Griechen", "Perser"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 44,
+      "category": "history",
+      "question": {
+        "en": "When did WW1 start?",
+        "fr": "Quand a commence la WW1?",
+        "es": "Cuando empezo la WW1?",
+        "de": "Wann begann der WW1?"
+      },
+      "answers": {
+        "en": ["1914", "1912", "1916", "1918"],
+        "fr": ["1914", "1912", "1916", "1918"],
+        "es": ["1914", "1912", "1916", "1918"],
+        "de": ["1914", "1912", "1916", "1918"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 45,
+      "category": "history",
+      "question": {
+        "en": "Who invented the light bulb?",
+        "fr": "Qui a invente l'ampoule?",
+        "es": "Quien invento la bombilla?",
+        "de": "Wer erfand die Gluehbirne?"
+      },
+      "answers": {
+        "en": ["Edison", "Tesla", "Bell", "Watt"],
+        "fr": ["Edison", "Tesla", "Bell", "Watt"],
+        "es": ["Edison", "Tesla", "Bell", "Watt"],
+        "de": ["Edison", "Tesla", "Bell", "Watt"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 46,
+      "category": "history",
+      "question": {
+        "en": "When was the Berlin Wall destroyed?",
+        "fr": "Quand le mur de Berlin est tombe?",
+        "es": "Cuando cayo el Muro de Berlin?",
+        "de": "Wann fiel die Berliner Mauer?"
+      },
+      "answers": {
+        "en": ["1989", "1991", "1985", "1995"],
+        "fr": ["1989", "1991", "1985", "1995"],
+        "es": ["1989", "1991", "1985", "1995"],
+        "de": ["1989", "1991", "1985", "1995"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 47,
+      "category": "history",
+      "question": {
+        "en": "Who was Cleopatra?",
+        "fr": "Qui etait Cleopatre?",
+        "es": "Quien era Cleopatra?",
+        "de": "Wer war Kleopatra?"
+      },
+      "answers": {
+        "en": ["Queen", "Goddess", "Princess", "Warrior"],
+        "fr": ["Reine", "Deesse", "Princesse", "Guerriere"],
+        "es": ["Reina", "Diosa", "Princesa", "Guerrera"],
+        "de": ["Koenigin", "Goettin", "Prinzessin", "Kriegerin"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 48,
+      "category": "history",
+      "question": {
+        "en": "What empire built the Colosseum?",
+        "fr": "Quel empire a construit le Colisee?",
+        "es": "Que imperio construyo el Coliseo?",
+        "de": "Welches Reich baute das Kolosseum?"
+      },
+      "answers": {
+        "en": ["Roman", "Greek", "Egyptian", "Persian"],
+        "fr": ["Romain", "Grec", "Egyptien", "Perse"],
+        "es": ["Romano", "Griego", "Egipcio", "Persa"],
+        "de": ["Roemisch", "Griechisch", "Aegyptisch", "Persisch"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 49,
+      "category": "history",
+      "question": {
+        "en": "Who founded Apple Computer?",
+        "fr": "Qui a fonde Apple?",
+        "es": "Quien fundo Apple?",
+        "de": "Wer gruendete Apple?"
+      },
+      "answers": {
+        "en": ["Steve Jobs", "Bill Gates", "Elon Musk", "Jeff Bezos"],
+        "fr": ["Steve Jobs", "Bill Gates", "Elon Musk", "Jeff Bezos"],
+        "es": ["Steve Jobs", "Bill Gates", "Elon Musk", "Jeff Bezos"],
+        "de": ["Steve Jobs", "Bill Gates", "Elon Musk", "Jeff Bezos"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 50,
+      "category": "history",
+      "question": {
+        "en": "When was the internet invented?",
+        "fr": "Quand Internet a ete invente?",
+        "es": "Cuando se invento Internet?",
+        "de": "Wann wurde das Internet erfunden?"
+      },
+      "answers": {
+        "en": ["1960s", "1970s", "1980s", "1990s"],
+        "fr": ["1960s", "1970s", "1980s", "1990s"],
+        "es": ["1960s", "1970s", "1980s", "1990s"],
+        "de": ["1960er", "1970er", "1980er", "1990er"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 51,
+      "category": "entertainment",
+      "question": {
+        "en": "What is Batman's real name?",
+        "fr": "Quel est le vrai nom de Batman?",
+        "es": "Cual es el nombre real de Batman?",
+        "de": "Wie heisst Batman wirklich?"
+      },
+      "answers": {
+        "en": ["Bruce Wayne", "Clark Kent", "Peter Parker", "Tony Stark"],
+        "fr": ["Bruce Wayne", "Clark Kent", "Peter Parker", "Tony Stark"],
+        "es": ["Bruce Wayne", "Clark Kent", "Peter Parker", "Tony Stark"],
+        "de": ["Bruce Wayne", "Clark Kent", "Peter Parker", "Tony Stark"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 52,
+      "category": "entertainment",
+      "question": {
+        "en": "Which band sang 'Bohemian Rhapsody'?",
+        "fr": "Quel groupe a chante 'Bohemian Rhapsody'?",
+        "es": "Que banda canto 'Bohemian Rhapsody'?",
+        "de": "Welche Band sang 'Bohemian Rhapsody'?"
+      },
+      "answers": {
+        "en": ["Queen", "Beatles", "ABBA", "Pink Floyd"],
+        "fr": ["Queen", "Beatles", "ABBA", "Pink Floyd"],
+        "es": ["Queen", "Beatles", "ABBA", "Pink Floyd"],
+        "de": ["Queen", "Beatles", "ABBA", "Pink Floyd"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 53,
+      "category": "entertainment",
+      "question": {
+        "en": "What color is Shrek?",
+        "fr": "De quelle couleur est Shrek?",
+        "es": "De que color es Shrek?",
+        "de": "Welche Farbe hat Shrek?"
+      },
+      "answers": {
+        "en": ["Green", "Blue", "Red", "Yellow"],
+        "fr": ["Vert", "Bleu", "Rouge", "Jaune"],
+        "es": ["Verde", "Azul", "Rojo", "Amarillo"],
+        "de": ["Gruen", "Blau", "Rot", "Gelb"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 54,
+      "category": "entertainment",
+      "question": {
+        "en": "In which movie is 'Woody'?",
+        "fr": "Dans quel film est 'Woody'?",
+        "es": "En que pelicula esta 'Woody'?",
+        "de": "In welchem Film ist 'Woody'?"
+      },
+      "answers": {
+        "en": ["Toy Story", "Cars", "Shrek", "Frozen"],
+        "fr": ["Toy Story", "Cars", "Shrek", "Frozen"],
+        "es": ["Toy Story", "Cars", "Shrek", "Frozen"],
+        "de": ["Toy Story", "Cars", "Shrek", "Frozen"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 55,
+      "category": "entertainment",
+      "question": {
+        "en": "Who played Jack in Titanic?",
+        "fr": "Qui a joue Jack dans Titanic?",
+        "es": "Quien interpreto a Jack en Titanic?",
+        "de": "Wer spielte Jack in Titanic?"
+      },
+      "answers": {
+        "en": ["DiCaprio", "Pitt", "Depp", "Cruise"],
+        "fr": ["DiCaprio", "Pitt", "Depp", "Cruise"],
+        "es": ["DiCaprio", "Pitt", "Depp", "Cruise"],
+        "de": ["DiCaprio", "Pitt", "Depp", "Cruise"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 56,
+      "category": "entertainment",
+      "question": {
+        "en": "What is the name of Harry Potter's owl?",
+        "fr": "Comment s'appelle le hibou de Harry?",
+        "es": "Como se llama el buho de Harry?",
+        "de": "Wie heisst Harrys Eule?"
+      },
+      "answers": {
+        "en": ["Hedwig", "Errol", "Pigwidgeon", "Scabbers"],
+        "fr": ["Hedwige", "Errol", "Coq", "Croute"],
+        "es": ["Hedwig", "Errol", "Pig", "Scabbers"],
+        "de": ["Hedwig", "Errol", "Pigwidgeon", "Krätze"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 57,
+      "category": "entertainment",
+      "question": {
+        "en": "What planet is Superman from?",
+        "fr": "De quelle planete vient Superman?",
+        "es": "De que planeta es Superman?",
+        "de": "Von welchem Planeten kommt Superman?"
+      },
+      "answers": {
+        "en": ["Krypton", "Mars", "Venus", "Jupiter"],
+        "fr": ["Krypton", "Mars", "Venus", "Jupiter"],
+        "es": ["Kripton", "Marte", "Venus", "Jupiter"],
+        "de": ["Krypton", "Mars", "Venus", "Jupiter"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 58,
+      "category": "entertainment",
+      "question": {
+        "en": "Who sang 'Thriller'?",
+        "fr": "Qui a chante 'Thriller'?",
+        "es": "Quien canto 'Thriller'?",
+        "de": "Wer sang 'Thriller'?"
+      },
+      "answers": {
+        "en": ["M. Jackson", "Prince", "Madonna", "Elvis"],
+        "fr": ["M. Jackson", "Prince", "Madonna", "Elvis"],
+        "es": ["M. Jackson", "Prince", "Madonna", "Elvis"],
+        "de": ["M. Jackson", "Prince", "Madonna", "Elvis"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 59,
+      "category": "entertainment",
+      "question": {
+        "en": "What is the name of the Lion King?",
+        "fr": "Comment s'appelle le Roi Lion?",
+        "es": "Como se llama el Rey Leon?",
+        "de": "Wie heisst der Koenig der Loewen?"
+      },
+      "answers": {
+        "en": ["Simba", "Mufasa", "Scar", "Timon"],
+        "fr": ["Simba", "Mufasa", "Scar", "Timon"],
+        "es": ["Simba", "Mufasa", "Scar", "Timon"],
+        "de": ["Simba", "Mufasa", "Scar", "Timon"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 60,
+      "category": "entertainment",
+      "question": {
+        "en": "What game has Mario and Luigi?",
+        "fr": "Quel jeu a Mario et Luigi?",
+        "es": "Que juego tiene Mario y Luigi?",
+        "de": "In welchem Spiel sind Mario und Luigi?"
+      },
+      "answers": {
+        "en": ["Nintendo", "Sega", "Xbox", "PlayStation"],
+        "fr": ["Nintendo", "Sega", "Xbox", "PlayStation"],
+        "es": ["Nintendo", "Sega", "Xbox", "PlayStation"],
+        "de": ["Nintendo", "Sega", "Xbox", "PlayStation"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 61,
+      "category": "entertainment",
+      "question": {
+        "en": "What is Elsa's power in Frozen?",
+        "fr": "Quel est le pouvoir d'Elsa?",
+        "es": "Cual es el poder de Elsa?",
+        "de": "Was ist Elsas Kraft in Frozen?"
+      },
+      "answers": {
+        "en": ["Ice", "Fire", "Wind", "Water"],
+        "fr": ["Glace", "Feu", "Vent", "Eau"],
+        "es": ["Hielo", "Fuego", "Viento", "Agua"],
+        "de": ["Eis", "Feuer", "Wind", "Wasser"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 62,
+      "category": "entertainment",
+      "question": {
+        "en": "Who created Mickey Mouse?",
+        "fr": "Qui a cree Mickey Mouse?",
+        "es": "Quien creo Mickey Mouse?",
+        "de": "Wer erfand Mickey Mouse?"
+      },
+      "answers": {
+        "en": ["Walt Disney", "Pixar", "DreamWorks", "Warner Bros"],
+        "fr": ["Walt Disney", "Pixar", "DreamWorks", "Warner Bros"],
+        "es": ["Walt Disney", "Pixar", "DreamWorks", "Warner Bros"],
+        "de": ["Walt Disney", "Pixar", "DreamWorks", "Warner Bros"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 63,
+      "category": "entertainment",
+      "question": {
+        "en": "What color is SpongeBob?",
+        "fr": "De quelle couleur est Bob l'eponge?",
+        "es": "De que color es Bob Esponja?",
+        "de": "Welche Farbe hat SpongeBob?"
+      },
+      "answers": {
+        "en": ["Yellow", "Blue", "Green", "Pink"],
+        "fr": ["Jaune", "Bleu", "Vert", "Rose"],
+        "es": ["Amarillo", "Azul", "Verde", "Rosa"],
+        "de": ["Gelb", "Blau", "Gruen", "Rosa"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 64,
+      "category": "entertainment",
+      "question": {
+        "en": "What is Pikachu?",
+        "fr": "Qu'est-ce que Pikachu?",
+        "es": "Que es Pikachu?",
+        "de": "Was ist Pikachu?"
+      },
+      "answers": {
+        "en": ["Pokemon", "Digimon", "Yu-Gi-Oh", "Bakugan"],
+        "fr": ["Pokemon", "Digimon", "Yu-Gi-Oh", "Bakugan"],
+        "es": ["Pokemon", "Digimon", "Yu-Gi-Oh", "Bakugan"],
+        "de": ["Pokemon", "Digimon", "Yu-Gi-Oh", "Bakugan"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 65,
+      "category": "entertainment",
+      "question": {
+        "en": "Who directed Jurassic Park?",
+        "fr": "Qui a realise Jurassic Park?",
+        "es": "Quien dirigio Jurassic Park?",
+        "de": "Wer fuehrte Regie bei Jurassic Park?"
+      },
+      "answers": {
+        "en": ["Spielberg", "Lucas", "Cameron", "Nolan"],
+        "fr": ["Spielberg", "Lucas", "Cameron", "Nolan"],
+        "es": ["Spielberg", "Lucas", "Cameron", "Nolan"],
+        "de": ["Spielberg", "Lucas", "Cameron", "Nolan"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 66,
+      "category": "entertainment",
+      "question": {
+        "en": "What house is Harry Potter in?",
+        "fr": "Dans quelle maison est Harry Potter?",
+        "es": "En que casa esta Harry Potter?",
+        "de": "In welchem Haus ist Harry Potter?"
+      },
+      "answers": {
+        "en": ["Gryffindor", "Slytherin", "Ravenclaw", "Hufflepuff"],
+        "fr": ["Gryffondor", "Serpentard", "Serdaigle", "Poufsouffle"],
+        "es": ["Gryffindor", "Slytherin", "Ravenclaw", "Hufflepuff"],
+        "de": ["Gryffindor", "Slytherin", "Ravenclaw", "Hufflepuff"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 67,
+      "category": "sports",
+      "question": {
+        "en": "How many players in a soccer team?",
+        "fr": "Combien de joueurs dans une equipe de foot?",
+        "es": "Cuantos jugadores en un equipo de futbol?",
+        "de": "Wie viele Spieler in einem Fussballteam?"
+      },
+      "answers": {
+        "en": ["11", "10", "12", "9"],
+        "fr": ["11", "10", "12", "9"],
+        "es": ["11", "10", "12", "9"],
+        "de": ["11", "10", "12", "9"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 68,
+      "category": "sports",
+      "question": {
+        "en": "What sport uses a shuttlecock?",
+        "fr": "Quel sport utilise un volant?",
+        "es": "Que deporte usa un volante?",
+        "de": "Welcher Sport nutzt einen Federball?"
+      },
+      "answers": {
+        "en": ["Badminton", "Tennis", "Squash", "Ping Pong"],
+        "fr": ["Badminton", "Tennis", "Squash", "Ping Pong"],
+        "es": ["Badminton", "Tenis", "Squash", "Ping Pong"],
+        "de": ["Badminton", "Tennis", "Squash", "Tischtennis"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 69,
       "category": "sports",
       "question": {
         "en": "Which country invented basketball?",
@@ -310,10 +1177,265 @@
       "correct": 0
     },
     {
-      "id": 19,
+      "id": 70,
+      "category": "sports",
+      "question": {
+        "en": "What sport is Wimbledon famous for?",
+        "fr": "Pour quel sport Wimbledon est celebre?",
+        "es": "Por que deporte es famoso Wimbledon?",
+        "de": "Fuer welchen Sport ist Wimbledon bekannt?"
+      },
+      "answers": {
+        "en": ["Tennis", "Golf", "Cricket", "Rugby"],
+        "fr": ["Tennis", "Golf", "Cricket", "Rugby"],
+        "es": ["Tenis", "Golf", "Cricket", "Rugby"],
+        "de": ["Tennis", "Golf", "Cricket", "Rugby"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 71,
+      "category": "sports",
+      "question": {
+        "en": "How many holes in a golf course?",
+        "fr": "Combien de trous sur un golf?",
+        "es": "Cuantos hoyos en un campo de golf?",
+        "de": "Wie viele Loecher auf einem Golfplatz?"
+      },
+      "answers": {
+        "en": ["18", "9", "12", "15"],
+        "fr": ["18", "9", "12", "15"],
+        "es": ["18", "9", "12", "15"],
+        "de": ["18", "9", "12", "15"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 72,
+      "category": "sports",
+      "question": {
+        "en": "What is the fastest sport on ice?",
+        "fr": "Quel est le sport le plus rapide sur glace?",
+        "es": "Cual es el deporte mas rapido sobre hielo?",
+        "de": "Was ist der schnellste Sport auf Eis?"
+      },
+      "answers": {
+        "en": ["Ice Hockey", "Skating", "Curling", "Bobsled"],
+        "fr": ["Hockey", "Patinage", "Curling", "Bobsleigh"],
+        "es": ["Hockey", "Patinaje", "Curling", "Bobsled"],
+        "de": ["Eishockey", "Eislaufen", "Curling", "Bob"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 73,
+      "category": "sports",
+      "question": {
+        "en": "Which country hosts the Tour de France?",
+        "fr": "Quel pays accueille le Tour de France?",
+        "es": "Que pais acoge el Tour de Francia?",
+        "de": "Welches Land veranstaltet die Tour de France?"
+      },
+      "answers": {
+        "en": ["France", "Spain", "Italy", "Belgium"],
+        "fr": ["France", "Espagne", "Italie", "Belgique"],
+        "es": ["Francia", "Espana", "Italia", "Belgica"],
+        "de": ["Frankreich", "Spanien", "Italien", "Belgien"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 74,
+      "category": "sports",
+      "question": {
+        "en": "What sport does Usain Bolt do?",
+        "fr": "Quel sport fait Usain Bolt?",
+        "es": "Que deporte hace Usain Bolt?",
+        "de": "Welchen Sport macht Usain Bolt?"
+      },
+      "answers": {
+        "en": ["Running", "Swimming", "Cycling", "Jumping"],
+        "fr": ["Course", "Natation", "Cyclisme", "Saut"],
+        "es": ["Carrera", "Natacion", "Ciclismo", "Salto"],
+        "de": ["Laufen", "Schwimmen", "Radfahren", "Springen"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 75,
+      "category": "sports",
+      "question": {
+        "en": "Which country won the 2022 World Cup?",
+        "fr": "Quel pays a gagne la Coupe 2022?",
+        "es": "Que pais gano el Mundial 2022?",
+        "de": "Welches Land gewann die WM 2022?"
+      },
+      "answers": {
+        "en": ["Argentina", "France", "Brazil", "Germany"],
+        "fr": ["Argentine", "France", "Bresil", "Allemagne"],
+        "es": ["Argentina", "Francia", "Brasil", "Alemania"],
+        "de": ["Argentinien", "Frankreich", "Brasilien", "Deutschland"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 76,
+      "category": "sports",
+      "question": {
+        "en": "How many rings in the Olympic logo?",
+        "fr": "Combien d'anneaux olympiques?",
+        "es": "Cuantos anillos olimpicos hay?",
+        "de": "Wie viele olympische Ringe gibt es?"
+      },
+      "answers": {
+        "en": ["5", "4", "6", "3"],
+        "fr": ["5", "4", "6", "3"],
+        "es": ["5", "4", "6", "3"],
+        "de": ["5", "4", "6", "3"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 77,
+      "category": "sports",
+      "question": {
+        "en": "What sport uses a puck?",
+        "fr": "Quel sport utilise un palet?",
+        "es": "Que deporte usa un disco?",
+        "de": "Welcher Sport verwendet einen Puck?"
+      },
+      "answers": {
+        "en": ["Hockey", "Football", "Baseball", "Basketball"],
+        "fr": ["Hockey", "Football", "Baseball", "Basketball"],
+        "es": ["Hockey", "Futbol", "Beisbol", "Baloncesto"],
+        "de": ["Hockey", "Fussball", "Baseball", "Basketball"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 78,
+      "category": "sports",
+      "question": {
+        "en": "Which country hosts Sumo wrestling?",
+        "fr": "Quel pays accueille le Sumo?",
+        "es": "Que pais tiene lucha Sumo?",
+        "de": "Welches Land hat Sumo-Ringen?"
+      },
+      "answers": {
+        "en": ["Japan", "China", "Korea", "Thailand"],
+        "fr": ["Japon", "Chine", "Coree", "Thailande"],
+        "es": ["Japon", "China", "Corea", "Tailandia"],
+        "de": ["Japan", "China", "Korea", "Thailand"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 79,
+      "category": "sports",
+      "question": {
+        "en": "How long is a marathon?",
+        "fr": "Quelle est la distance d'un marathon?",
+        "es": "Cuanto mide un maraton?",
+        "de": "Wie lang ist ein Marathon?"
+      },
+      "answers": {
+        "en": ["42 km", "40 km", "45 km", "50 km"],
+        "fr": ["42 km", "40 km", "45 km", "50 km"],
+        "es": ["42 km", "40 km", "45 km", "50 km"],
+        "de": ["42 km", "40 km", "45 km", "50 km"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 80,
+      "category": "sports",
+      "question": {
+        "en": "What sport does Michael Jordan play?",
+        "fr": "Quel sport fait Michael Jordan?",
+        "es": "Que deporte juega Michael Jordan?",
+        "de": "Welchen Sport spielt Michael Jordan?"
+      },
+      "answers": {
+        "en": ["Basketball", "Baseball", "Football", "Golf"],
+        "fr": ["Basketball", "Baseball", "Football", "Golf"],
+        "es": ["Baloncesto", "Beisbol", "Futbol", "Golf"],
+        "de": ["Basketball", "Baseball", "Fussball", "Golf"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 81,
+      "category": "sports",
+      "question": {
+        "en": "What is the national sport of Canada?",
+        "fr": "Quel est le sport national du Canada?",
+        "es": "Cual es el deporte nacional de Canada?",
+        "de": "Was ist der Nationalsport Kanadas?"
+      },
+      "answers": {
+        "en": ["Hockey", "Baseball", "Basketball", "Football"],
+        "fr": ["Hockey", "Baseball", "Basketball", "Football"],
+        "es": ["Hockey", "Beisbol", "Baloncesto", "Futbol"],
+        "de": ["Hockey", "Baseball", "Basketball", "Fussball"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 82,
+      "category": "sports",
+      "question": {
+        "en": "How many sets to win in tennis?",
+        "fr": "Combien de sets pour gagner au tennis?",
+        "es": "Cuantos sets para ganar en tenis?",
+        "de": "Wie viele Saetze zum Sieg im Tennis?"
+      },
+      "answers": {
+        "en": ["3", "2", "4", "5"],
+        "fr": ["3", "2", "4", "5"],
+        "es": ["3", "2", "4", "5"],
+        "de": ["3", "2", "4", "5"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 83,
       "category": "nature",
       "question": {
-        "en": "What animal is known as man's best friend?",
+        "en": "What is the largest animal on Earth?",
+        "fr": "Quel est le plus grand animal?",
+        "es": "Cual es el animal mas grande?",
+        "de": "Was ist das groesste Tier der Erde?"
+      },
+      "answers": {
+        "en": ["Blue Whale", "Elephant", "Giraffe", "Shark"],
+        "fr": ["Baleine bleue", "Elephant", "Girafe", "Requin"],
+        "es": ["Ballena azul", "Elefante", "Jirafa", "Tiburon"],
+        "de": ["Blauwal", "Elefant", "Giraffe", "Hai"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 84,
+      "category": "nature",
+      "question": {
+        "en": "How many legs does a spider have?",
+        "fr": "Combien de pattes a une araignee?",
+        "es": "Cuantas patas tiene una arana?",
+        "de": "Wie viele Beine hat eine Spinne?"
+      },
+      "answers": {
+        "en": ["8", "6", "10", "4"],
+        "fr": ["8", "6", "10", "4"],
+        "es": ["8", "6", "10", "4"],
+        "de": ["8", "6", "10", "4"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 85,
+      "category": "nature",
+      "question": {
+        "en": "What animal is man's best friend?",
         "fr": "Quel animal est le meilleur ami de l'homme?",
         "es": "Que animal es el mejor amigo del hombre?",
         "de": "Welches Tier ist des Menschen bester Freund?"
@@ -327,19 +1449,257 @@
       "correct": 0
     },
     {
-      "id": 20,
-      "category": "entertainment",
+      "id": 86,
+      "category": "nature",
       "question": {
-        "en": "In which movie is the character 'Woody'?",
-        "fr": "Dans quel film est le personnage 'Woody'?",
-        "es": "En que pelicula esta el personaje 'Woody'?",
-        "de": "In welchem Film ist die Figur 'Woody'?"
+        "en": "What is the fastest land animal?",
+        "fr": "Quel est l'animal terrestre le plus rapide?",
+        "es": "Cual es el animal terrestre mas rapido?",
+        "de": "Was ist das schnellste Landtier?"
       },
       "answers": {
-        "en": ["Toy Story", "Cars", "Shrek", "Frozen"],
-        "fr": ["Toy Story", "Cars", "Shrek", "La Reine des Neiges"],
-        "es": ["Toy Story", "Cars", "Shrek", "Frozen"],
-        "de": ["Toy Story", "Cars", "Shrek", "Frozen"]
+        "en": ["Cheetah", "Lion", "Horse", "Gazelle"],
+        "fr": ["Guepard", "Lion", "Cheval", "Gazelle"],
+        "es": ["Guepardo", "Leon", "Caballo", "Gacela"],
+        "de": ["Gepard", "Loewe", "Pferd", "Gazelle"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 87,
+      "category": "nature",
+      "question": {
+        "en": "What do bees make?",
+        "fr": "Que font les abeilles?",
+        "es": "Que hacen las abejas?",
+        "de": "Was machen Bienen?"
+      },
+      "answers": {
+        "en": ["Honey", "Milk", "Silk", "Wax"],
+        "fr": ["Miel", "Lait", "Soie", "Cire"],
+        "es": ["Miel", "Leche", "Seda", "Cera"],
+        "de": ["Honig", "Milch", "Seide", "Wachs"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 88,
+      "category": "nature",
+      "question": {
+        "en": "What is a baby frog called?",
+        "fr": "Comment appelle-t-on un bebe grenouille?",
+        "es": "Como se llama una rana bebe?",
+        "de": "Wie nennt man einen Baby-Frosch?"
+      },
+      "answers": {
+        "en": ["Tadpole", "Calf", "Pup", "Kit"],
+        "fr": ["Tetard", "Veau", "Chiot", "Chaton"],
+        "es": ["Renacuajo", "Ternero", "Cachorro", "Cria"],
+        "de": ["Kaulquappe", "Kalb", "Welpe", "Kaetzchen"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 89,
+      "category": "nature",
+      "question": {
+        "en": "What animal has black and white stripes?",
+        "fr": "Quel animal a des rayures noires et blanches?",
+        "es": "Que animal tiene rayas blancas y negras?",
+        "de": "Welches Tier hat schwarzweisse Streifen?"
+      },
+      "answers": {
+        "en": ["Zebra", "Tiger", "Panda", "Skunk"],
+        "fr": ["Zebre", "Tigre", "Panda", "Moufette"],
+        "es": ["Cebra", "Tigre", "Panda", "Zorrillo"],
+        "de": ["Zebra", "Tiger", "Panda", "Stinktier"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 90,
+      "category": "nature",
+      "question": {
+        "en": "What is the tallest animal?",
+        "fr": "Quel est l'animal le plus grand?",
+        "es": "Cual es el animal mas alto?",
+        "de": "Was ist das groesste Tier?"
+      },
+      "answers": {
+        "en": ["Giraffe", "Elephant", "Camel", "Horse"],
+        "fr": ["Girafe", "Elephant", "Chameau", "Cheval"],
+        "es": ["Jirafa", "Elefante", "Camello", "Caballo"],
+        "de": ["Giraffe", "Elefant", "Kamel", "Pferd"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 91,
+      "category": "nature",
+      "question": {
+        "en": "What do caterpillars become?",
+        "fr": "Que deviennent les chenilles?",
+        "es": "En que se convierten las orugas?",
+        "de": "Was werden Raupen?"
+      },
+      "answers": {
+        "en": ["Butterfly", "Bee", "Beetle", "Moth"],
+        "fr": ["Papillon", "Abeille", "Scarabee", "Papillon de nuit"],
+        "es": ["Mariposa", "Abeja", "Escarabajo", "Polilla"],
+        "de": ["Schmetterling", "Biene", "Kaefer", "Motte"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 92,
+      "category": "nature",
+      "question": {
+        "en": "What animal sleeps upside down?",
+        "fr": "Quel animal dort la tete en bas?",
+        "es": "Que animal duerme boca abajo?",
+        "de": "Welches Tier schlaeft kopfueber?"
+      },
+      "answers": {
+        "en": ["Bat", "Sloth", "Koala", "Monkey"],
+        "fr": ["Chauve-souris", "Paresseux", "Koala", "Singe"],
+        "es": ["Murcielago", "Perezoso", "Koala", "Mono"],
+        "de": ["Fledermaus", "Faultier", "Koala", "Affe"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 93,
+      "category": "nature",
+      "question": {
+        "en": "What is the largest bird?",
+        "fr": "Quel est le plus grand oiseau?",
+        "es": "Cual es el ave mas grande?",
+        "de": "Was ist der groesste Vogel?"
+      },
+      "answers": {
+        "en": ["Ostrich", "Eagle", "Penguin", "Albatross"],
+        "fr": ["Autruche", "Aigle", "Pingouin", "Albatros"],
+        "es": ["Avestruz", "Aguila", "Pinguino", "Albatros"],
+        "de": ["Strauss", "Adler", "Pinguin", "Albatros"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 94,
+      "category": "nature",
+      "question": {
+        "en": "How many hearts does an octopus have?",
+        "fr": "Combien de coeurs a une pieuvre?",
+        "es": "Cuantos corazones tiene un pulpo?",
+        "de": "Wie viele Herzen hat ein Oktopus?"
+      },
+      "answers": {
+        "en": ["3", "1", "2", "4"],
+        "fr": ["3", "1", "2", "4"],
+        "es": ["3", "1", "2", "4"],
+        "de": ["3", "1", "2", "4"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 95,
+      "category": "nature",
+      "question": {
+        "en": "What animal produces pearls?",
+        "fr": "Quel animal produit des perles?",
+        "es": "Que animal produce perlas?",
+        "de": "Welches Tier produziert Perlen?"
+      },
+      "answers": {
+        "en": ["Oyster", "Clam", "Snail", "Crab"],
+        "fr": ["Huitre", "Palourde", "Escargot", "Crabe"],
+        "es": ["Ostra", "Almeja", "Caracol", "Cangrejo"],
+        "de": ["Auster", "Muschel", "Schnecke", "Krabbe"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 96,
+      "category": "nature",
+      "question": {
+        "en": "What is a group of lions called?",
+        "fr": "Comment appelle-t-on un groupe de lions?",
+        "es": "Como se llama un grupo de leones?",
+        "de": "Wie nennt man eine Gruppe Loewen?"
+      },
+      "answers": {
+        "en": ["Pride", "Pack", "Herd", "Flock"],
+        "fr": ["Troupe", "Meute", "Troupeau", "Volee"],
+        "es": ["Manada", "Jauría", "Rebano", "Bandada"],
+        "de": ["Rudel", "Meute", "Herde", "Schwarm"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 97,
+      "category": "nature",
+      "question": {
+        "en": "What animal never sleeps?",
+        "fr": "Quel animal ne dort jamais?",
+        "es": "Que animal nunca duerme?",
+        "de": "Welches Tier schlaeft nie?"
+      },
+      "answers": {
+        "en": ["Bullfrog", "Sloth", "Cat", "Bear"],
+        "fr": ["Ouaouaron", "Paresseux", "Chat", "Ours"],
+        "es": ["Rana toro", "Perezoso", "Gato", "Oso"],
+        "de": ["Ochsenfrosch", "Faultier", "Katze", "Baer"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 98,
+      "category": "nature",
+      "question": {
+        "en": "What is the only mammal that can fly?",
+        "fr": "Quel est le seul mammifere qui vole?",
+        "es": "Cual es el unico mamifero que vuela?",
+        "de": "Was ist das einzige fliegende Saeugetier?"
+      },
+      "answers": {
+        "en": ["Bat", "Squirrel", "Lemur", "Possum"],
+        "fr": ["Chauve-souris", "Ecureuil", "Lemurien", "Opossum"],
+        "es": ["Murcielago", "Ardilla", "Lemur", "Zarigueya"],
+        "de": ["Fledermaus", "Eichhoernchen", "Lemur", "Opossum"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 99,
+      "category": "nature",
+      "question": {
+        "en": "What color are flamingos at birth?",
+        "fr": "De quelle couleur naissent les flamants?",
+        "es": "De que color nacen los flamencos?",
+        "de": "Welche Farbe haben Flamingos bei der Geburt?"
+      },
+      "answers": {
+        "en": ["Gray/White", "Pink", "Red", "Orange"],
+        "fr": ["Gris/Blanc", "Rose", "Rouge", "Orange"],
+        "es": ["Gris/Blanco", "Rosa", "Rojo", "Naranja"],
+        "de": ["Grau/Weiss", "Rosa", "Rot", "Orange"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 100,
+      "category": "nature",
+      "question": {
+        "en": "What is a baby kangaroo called?",
+        "fr": "Comment s'appelle un bebe kangourou?",
+        "es": "Como se llama un canguro bebe?",
+        "de": "Wie nennt man ein Baby-Kaenguru?"
+      },
+      "answers": {
+        "en": ["Joey", "Cub", "Pup", "Kit"],
+        "fr": ["Joey", "Petit", "Chiot", "Chaton"],
+        "es": ["Joey", "Cria", "Cachorro", "Cria"],
+        "de": ["Joey", "Junges", "Welpe", "Kaetzchen"]
       },
       "correct": 0
     }
