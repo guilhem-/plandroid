@@ -231,6 +231,11 @@ const Game = (() => {
   const isComplete = () => state.gameComplete;
 
   /**
+   * Check if current question has been answered
+   */
+  const isQuestionAnswered = () => state.questionAnswered;
+
+  /**
    * Get the winner(s)
    */
   const getWinner = () => state.winner;
@@ -255,6 +260,7 @@ const Game = (() => {
     getPlayer,
     getScoreboard,
     isComplete,
+    isQuestionAnswered,
     getWinner,
     getProgress,
     QUESTIONS_PER_GAME

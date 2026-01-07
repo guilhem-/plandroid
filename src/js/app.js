@@ -18,7 +18,6 @@ const App = (() => {
     btnStart: document.getElementById('btn-start'),
     questionCounter: document.getElementById('question-counter'),
     scores: document.getElementById('scores'),
-    questionText: document.getElementById('question-text'),
     winnerText: document.getElementById('winner-text'),
     finalScores: document.getElementById('final-scores'),
     btnPlayAgain: document.getElementById('btn-play-again')
@@ -115,22 +114,33 @@ const App = (() => {
     const progress = Game.getProgress();
     elements.questionCounter.textContent = `${progress.current}/${progress.total}`;
 
-    // Set question text and fit it
-    elements.questionText.textContent = q.question;
-    Typography.fitQuestion(elements.questionText);
+    // Update each player zone with question and all 4 answers
+    for (let p = 0; p < 4; p++) {
+      const zone = document.getElementById(`zone-${p}`);
+      if (!zone) continue;
 
-    // Assign answers to player zones
-    const answerButtons = document.querySelectorAll('.btn-answer');
-    answerButtons.forEach((btn, i) => {
-      if (i < playerCount) {
-        btn.textContent = q.answers[i] || '';
-        btn.dataset.answer = i.toString();
-        btn.disabled = false;
-        btn.parentElement.classList.remove('hidden', 'locked');
+      if (p < playerCount) {
+        zone.classList.remove('hidden');
+        zone.classList.remove('locked');
+
+        // Set question text in this zone
+        const questionEl = zone.querySelector('.zone-question');
+        if (questionEl) {
+          questionEl.textContent = q.question;
+        }
+
+        // Set all 4 answers in this zone
+        const buttons = zone.querySelectorAll('.btn-answer');
+        buttons.forEach((btn, i) => {
+          btn.textContent = q.answers[i] || '';
+          btn.dataset.answer = i.toString();
+          btn.disabled = false;
+          btn.classList.remove('correct', 'wrong');
+        });
       } else {
-        btn.parentElement.classList.add('hidden');
+        zone.classList.add('hidden');
       }
-    });
+    }
 
     Typography.fitAllAnswers();
     Game.startQuestionTimer();
@@ -142,7 +152,8 @@ const App = (() => {
    */
   const handleAnswer = (playerId, answerIndex) => {
     const result = Game.recordAnswer(playerId, answerIndex);
-    const button = document.querySelector(`[data-player="${playerId}"]`);
+    const zone = document.getElementById(`zone-${playerId}`);
+    const button = zone?.querySelector(`[data-answer="${answerIndex}"]`);
 
     if (result.isLocked) {
       return; // Player is still locked out
@@ -153,9 +164,19 @@ const App = (() => {
     }
 
     if (result.isCorrect) {
-      // Correct answer
+      // Correct answer - highlight correct button in all zones
       playSound('correct');
-      Animations.flashCorrect(button);
+
+      // Show correct answer in all zones
+      for (let p = 0; p < playerCount; p++) {
+        const z = document.getElementById(`zone-${p}`);
+        const correctBtn = z?.querySelector(`[data-answer="${answerIndex}"]`);
+        if (correctBtn) {
+          Animations.flashCorrect(correctBtn);
+        }
+        // Disable all buttons in all zones
+        z?.querySelectorAll('.btn-answer').forEach(b => b.disabled = true);
+      }
 
       // Brief delay then next question
       setTimeout(() => {
@@ -166,16 +187,18 @@ const App = (() => {
         }
       }, 800);
     } else {
-      // Wrong answer - apply penalty
+      // Wrong answer - apply penalty to this player only
       playSound('wrong');
       Animations.flashWrong(button);
       Animations.showLockout(playerId);
-      button.disabled = true;
+
+      // Disable all buttons in this player's zone during lockout
+      zone?.querySelectorAll('.btn-answer').forEach(b => b.disabled = true);
 
       // Re-enable after lockout
       setTimeout(() => {
-        if (!Game.isComplete()) {
-          button.disabled = false;
+        if (!Game.isComplete() && !Game.isQuestionAnswered()) {
+          zone?.querySelectorAll('.btn-answer').forEach(b => b.disabled = false);
         }
       }, result.lockoutDuration);
     }

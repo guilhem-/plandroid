@@ -224,25 +224,7 @@ button:active {
   font-size: 14px;
 }
 
-.question-area {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 60%;
-  max-width: 400px;
-  text-align: center;
-  z-index: 5;
-}
-
-.question-text {
-  font-size: 24px;
-  font-weight: 600;
-  line-height: 1.4;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-}
-
-/* Answer Zones - 4 corners */
+/* Answer Zones - 4 player positions */
 .answers-area {
   position: fixed;
   inset: 0;
@@ -255,54 +237,98 @@ button:active {
   align-items: center;
   justify-content: center;
   pointer-events: auto;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: var(--border-radius);
+  padding: 8px;
 }
 
+.zone-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  height: 100%;
+}
+
+.zone-question {
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.2;
+  color: var(--color-text);
+  flex-shrink: 0;
+  max-height: 36px;
+  overflow: hidden;
+}
+
+.zone-answers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  flex: 1;
+  width: 100%;
+}
+
+/* Zone positions with rotation for each player */
 .zone-top {
-  top: 60px;
+  top: 50px;
   left: 50%;
-  transform: translateX(-50%);
-  width: 80%;
-  height: 80px;
+  transform: translateX(-50%) rotate(180deg);
+  width: calc(100% - 16px);
+  max-width: 400px;
+  height: 120px;
 }
 
 .zone-bottom {
-  bottom: 20px;
+  bottom: 8px;
   left: 50%;
   transform: translateX(-50%);
-  width: 80%;
-  height: 80px;
+  width: calc(100% - 16px);
+  max-width: 400px;
+  height: 120px;
 }
 
 .zone-left {
   left: 8px;
   top: 50%;
-  transform: translateY(-50%) rotate(-90deg);
-  width: 200px;
-  height: 60px;
+  transform: translateY(-50%) rotate(90deg);
+  width: 280px;
+  height: 120px;
 }
 
 .zone-right {
   right: 8px;
   top: 50%;
-  transform: translateY(-50%) rotate(90deg);
-  width: 200px;
-  height: 60px;
+  transform: translateY(-50%) rotate(-90deg);
+  width: 280px;
+  height: 120px;
 }
 
 .btn-answer {
-  width: 100%;
-  height: 100%;
-  border-radius: var(--border-radius);
-  font-size: 18px;
+  border-radius: 8px;
+  font-size: 11px;
   font-weight: 600;
-  padding: 12px;
+  padding: 6px 4px;
   transition: all var(--transition-fast);
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.1;
 }
 
-.zone-top .btn-answer { background: var(--player-color-0); }
-.zone-right .btn-answer { background: var(--player-color-1); }
-.zone-bottom .btn-answer { background: var(--player-color-2); }
-.zone-left .btn-answer { background: var(--player-color-3); }
+/* Player colors for zones */
+.zone-top { border: 3px solid var(--player-color-0); }
+.zone-right { border: 3px solid var(--player-color-1); }
+.zone-bottom { border: 3px solid var(--player-color-2); }
+.zone-left { border: 3px solid var(--player-color-3); }
+
+.zone-top .btn-answer { background: var(--player-color-0); color: #000; }
+.zone-right .btn-answer { background: var(--player-color-1); color: #000; }
+.zone-bottom .btn-answer { background: var(--player-color-2); color: #000; }
+.zone-left .btn-answer { background: var(--player-color-3); color: #000; }
 
 .btn-answer:disabled {
   opacity: 0.5;
@@ -434,26 +460,56 @@ button:active {
 
 /* Responsive adjustments */
 @media (max-height: 600px) {
-  .question-text {
-    font-size: 18px;
+  .zone-question {
+    font-size: 10px;
+    max-height: 24px;
   }
 
   .zone-top, .zone-bottom {
-    height: 60px;
+    height: 100px;
+  }
+
+  .zone-left, .zone-right {
+    width: 220px;
+    height: 100px;
   }
 
   .btn-answer {
-    font-size: 14px;
+    font-size: 10px;
+    min-height: 28px;
   }
 }
 
 @media (min-width: 768px) {
-  .question-text {
-    font-size: 32px;
+  .zone-question {
+    font-size: 14px;
+  }
+
+  .zone-top, .zone-bottom {
+    height: 140px;
+    max-width: 500px;
   }
 
   .zone-left, .zone-right {
-    width: 250px;
-    height: 80px;
+    width: 320px;
+    height: 140px;
   }
+
+  .btn-answer {
+    font-size: 13px;
+  }
+}
+
+/* Game header positioning */
+.game-header {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  flex-direction: column;
+  gap: 8px;
+  background: var(--color-surface);
+  padding: 12px;
+  border-radius: var(--border-radius);
+  z-index: 10;
 }

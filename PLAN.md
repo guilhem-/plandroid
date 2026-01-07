@@ -99,20 +99,38 @@ Tiebreak:  Fastest total response time wins
 
 ### UI Layout for Multiplayer
 
-For 4 players around a phone, answers should be positioned at 4 corners/edges:
+Each player has their **own zone** with the question text and all 4 answer buttons. Players sit around the phone, each facing their own zone (rotated for readability):
+
 ```
-        ┌─────────────────────┐
-        │    Player 1 (Top)   │
-        │      [Answer]       │
-        ├─────────────────────┤
-Player 4│                     │Player 2
-[Answer]│     QUESTION        │[Answer]
-        │                     │
-        ├─────────────────────┤
-        │   Player 3 (Bottom) │
-        │      [Answer]       │
-        └─────────────────────┘
+┌───────────────────────────────────────────────────────┐
+│                  PLAYER 1 ZONE (Top)                  │
+│  ┌─────────────────────────────────────────────────┐  │
+│  │ Question: What is the capital of France?        │  │
+│  │ [Paris] [London] [Berlin] [Madrid]              │  │
+│  └─────────────────────────────────────────────────┘  │
+│                    (rotated 180°)                     │
+├───────────────────────────────────────────────────────┤
+│ P4 ZONE │                             │ P2 ZONE      │
+│ (Left)  │       CENTER AREA           │ (Right)      │
+│ rotated │    (Question counter,       │ rotated      │
+│  90°    │     current scores)         │  -90°        │
+│ Q + 4   │                             │ Q + 4        │
+│ answers │                             │ answers      │
+├───────────────────────────────────────────────────────┤
+│                  PLAYER 3 ZONE (Bottom)               │
+│  ┌─────────────────────────────────────────────────┐  │
+│  │ Question: What is the capital of France?        │  │
+│  │ [Paris] [London] [Berlin] [Madrid]              │  │
+│  └─────────────────────────────────────────────────┘  │
+│                    (normal orientation)               │
+└───────────────────────────────────────────────────────┘
 ```
+
+**Key Design Principles:**
+- Each player sees the SAME question with ALL 4 answer buttons
+- Zones are rotated so each player can read from their sitting position
+- First correct answer from ANY player wins the point
+- Wrong answer locks only THAT player's zone for 1 second
 
 ### Responsive Typography
 
