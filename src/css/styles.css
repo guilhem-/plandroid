@@ -32,6 +32,7 @@
 
 html, body {
   height: 100%;
+  height: 100dvh; /* Dynamic viewport height for mobile browsers */
   overflow: hidden;
 }
 
@@ -41,6 +42,12 @@ body {
   color: var(--color-text);
   -webkit-tap-highlight-color: transparent;
   user-select: none;
+  /* Safe area support for notched devices */
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+  /* Prevent pull-to-refresh */
+  overscroll-behavior: none;
+  /* Prevent text selection on touch */
+  -webkit-touch-callout: none;
 }
 
 /* Screen Management */
@@ -64,10 +71,20 @@ button {
   border: none;
   cursor: pointer;
   transition: transform var(--transition-fast), background var(--transition-fast);
+  /* Minimum touch target size for accessibility */
+  min-height: 44px;
+  min-width: 44px;
+  /* Improve touch response */
+  touch-action: manipulation;
 }
 
 button:active {
   transform: scale(0.95);
+}
+
+/* Prevent double-tap zoom on buttons */
+button, input, select {
+  touch-action: manipulation;
 }
 
 .btn-primary {
@@ -535,7 +552,9 @@ button:active {
   display: none !important;
 }
 
-/* Responsive adjustments */
+/* ========== RESPONSIVE DESIGN ========== */
+
+/* Very small phones (SE, mini) in landscape or portrait */
 @media (max-height: 500px) {
   .zone-question {
     font-size: 11px;
@@ -553,6 +572,7 @@ button:active {
   .btn-answer {
     font-size: 11px;
     padding: 4px;
+    min-height: 36px;
   }
 
   .zone-content {
@@ -562,9 +582,53 @@ button:active {
   .zone-answers {
     gap: 4px;
   }
+
+  .waiting-icon {
+    font-size: 32px;
+    margin-top: 8px;
+  }
 }
 
-@media (min-width: 768px) {
+/* Small phones (320-374px width) */
+@media (max-width: 374px) {
+  .start-header h1 {
+    font-size: 24px;
+  }
+
+  .btn-count {
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
+  }
+
+  .player-setup {
+    gap: 16px;
+  }
+
+  .btn-primary {
+    font-size: 18px;
+    padding: 14px 24px;
+  }
+}
+
+/* Standard phones (375-767px width) */
+@media (min-width: 375px) and (max-width: 767px) {
+  .zone-question {
+    font-size: 13px;
+  }
+
+  .zone-player-name {
+    font-size: 13px;
+  }
+
+  .btn-answer {
+    font-size: 13px;
+    padding: 6px;
+  }
+}
+
+/* Tablets portrait (768-1023px width) */
+@media (min-width: 768px) and (max-width: 1023px) {
   .zone-question {
     font-size: 18px;
   }
@@ -580,6 +644,7 @@ button:active {
   .btn-answer {
     font-size: 18px;
     padding: 12px;
+    min-height: 56px;
   }
 
   .zone-content {
@@ -590,5 +655,209 @@ button:active {
   .zone-answers {
     gap: 12px;
     max-height: 300px;
+  }
+
+  .start-header h1 {
+    font-size: 42px;
+  }
+
+  .player-setup {
+    max-width: 500px;
+  }
+
+  .btn-primary {
+    font-size: 24px;
+    min-height: 64px;
+  }
+
+  .winner-text {
+    font-size: 48px;
+  }
+
+  .final-scores {
+    max-width: 400px;
+  }
+
+  .waiting-icon {
+    font-size: 64px;
+  }
+}
+
+/* Tablets landscape and desktops (1024px+) */
+@media (min-width: 1024px) {
+  .zone-question {
+    font-size: 22px;
+  }
+
+  .zone-player-name {
+    font-size: 20px;
+  }
+
+  .zone-score {
+    font-size: 28px;
+    padding: 6px 16px;
+  }
+
+  .btn-answer {
+    font-size: 20px;
+    padding: 16px;
+    min-height: 64px;
+    border-radius: 14px;
+  }
+
+  .zone-content {
+    max-width: 700px;
+    max-height: 600px;
+    gap: 12px;
+  }
+
+  .zone-answers {
+    gap: 16px;
+    max-height: 400px;
+  }
+
+  .start-header h1 {
+    font-size: 48px;
+  }
+
+  .player-setup {
+    max-width: 550px;
+    gap: 32px;
+  }
+
+  .btn-count {
+    width: 64px;
+    height: 64px;
+    font-size: 28px;
+  }
+
+  .player-name-input input {
+    padding: 16px 20px;
+    font-size: 18px;
+  }
+
+  .btn-primary {
+    font-size: 26px;
+    min-height: 72px;
+    max-width: 350px;
+  }
+
+  .winner-text {
+    font-size: 56px;
+  }
+
+  .final-scores {
+    max-width: 450px;
+  }
+
+  .final-score-row {
+    padding: 20px;
+  }
+
+  .final-score-value {
+    font-size: 28px;
+  }
+
+  .waiting-icon {
+    font-size: 72px;
+  }
+}
+
+/* Landscape orientation adjustments */
+@media (orientation: landscape) and (max-height: 500px) {
+  #screen-start {
+    padding: 12px 24px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .start-header {
+    width: 100%;
+  }
+
+  .start-header h1 {
+    font-size: 24px;
+  }
+
+  .player-setup {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    flex: 1;
+  }
+
+  .player-setup label {
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+  }
+
+  .player-count-selector {
+    gap: 8px;
+  }
+
+  .btn-count {
+    width: 44px;
+    height: 44px;
+    font-size: 18px;
+  }
+
+  .player-names {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .player-name-input {
+    flex: 1 1 45%;
+    min-width: 140px;
+  }
+
+  .btn-primary {
+    padding: 12px 24px;
+    font-size: 16px;
+    min-height: 44px;
+  }
+
+  .zone-content {
+    max-height: none;
+    padding: 4px;
+  }
+
+  .zone-header {
+    padding: 2px 4px;
+  }
+
+  .zone-answers {
+    max-height: none;
+  }
+}
+
+/* High DPI / Retina display adjustments */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .btn-answer {
+    border-width: 0.5px;
+  }
+}
+
+/* Prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .waiting-icon {
+    animation: none;
+    opacity: 1;
+  }
+
+  .winner-text {
+    animation: none;
   }
 }

@@ -325,6 +325,26 @@ function fitTextToContainer(element, container) {
 | Player names | 12px | 18px | Truncate with ellipsis if needed |
 | Score display | 16px | 24px | Fixed per breakpoint |
 
+### Mobile & Tablet Compatibility
+
+The application is optimized for various device sizes:
+
+| Device Category | Width | Height | Optimizations |
+|-----------------|-------|--------|---------------|
+| Small phones (SE) | 320-374px | any | Compact UI, smaller fonts |
+| Standard phones | 375-767px | any | Balanced layout |
+| Tablets portrait | 768-1023px | any | Larger touch targets, bigger fonts |
+| Tablets landscape | 1024px+ | any | Desktop-like experience |
+
+**Key Mobile Features:**
+- **Touch targets**: Minimum 44px height for all interactive elements
+- **Safe areas**: Support for notched devices (iPhone X+) via `env(safe-area-inset-*)`
+- **Dynamic viewport**: Uses `100dvh` for proper mobile browser height
+- **Orientation support**: Landscape mode has adapted layout for start screen
+- **Reduced motion**: Respects `prefers-reduced-motion` accessibility setting
+- **No zoom**: Disabled pinch-to-zoom for game interface stability
+- **Touch optimization**: `touch-action: manipulation` prevents double-tap zoom
+
 ### Answer Format Guidelines
 
 Answers must be **SHORT** for readability around the phone:
