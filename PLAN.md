@@ -857,6 +857,35 @@ function calculateWeight(lastAsked, now) {
 
 ---
 
+### Player Name Persistence
+
+Player names are **stored in localStorage** and persist across sessions:
+
+```javascript
+// localStorage key for player names
+const PLAYER_NAMES_KEY = 'plandroid_player_names';
+
+// Storage format: array of 4 names (max players)
+["Alice", "Bob", "Charlie", "Diana"]
+```
+
+**Behavior**:
+- Names are loaded when the app starts
+- Names are saved whenever a player edits their name input
+- Names persist across app restarts and browser sessions
+- **Language changes do NOT reset names** - names are user data, not localized
+- Default names use localized placeholders only if no saved name exists
+
+| Action | Result |
+|--------|--------|
+| First launch | Show localized "Player 1", "Player 2", etc. placeholders |
+| User types name | Save immediately to localStorage |
+| App restart | Load saved names from localStorage |
+| Language change | Keep current names (no reset) |
+| Clear browser data | Reset to localized placeholders |
+
+---
+
 ## Sound & Animation Specifications
 
 ### Sound Effects

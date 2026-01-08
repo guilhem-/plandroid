@@ -4,6 +4,8 @@
  */
 
 const App = (() => {
+  const PLAYER_NAMES_KEY = 'plandroid_player_names';
+
   // DOM Elements
   const screens = {
     start: document.getElementById('screen-start'),
@@ -24,6 +26,46 @@ const App = (() => {
   };
 
   let playerCount = 2;
+
+  /**
+   * Load saved player names from localStorage
+   * @returns {string[]} Array of saved names (may contain empty strings)
+   */
+  const loadPlayerNames = () => {
+    try {
+      const data = localStorage.getItem(PLAYER_NAMES_KEY);
+      return data ? JSON.parse(data) : ['', '', '', ''];
+    } catch (e) {
+      console.warn('Failed to load player names:', e);
+      return ['', '', '', ''];
+    }
+  };
+
+  /**
+   * Save player names to localStorage
+   * @param {string[]} names - Array of player names
+   */
+  const savePlayerNames = (names) => {
+    try {
+      localStorage.setItem(PLAYER_NAMES_KEY, JSON.stringify(names));
+    } catch (e) {
+      console.warn('Failed to save player names:', e);
+    }
+  };
+
+  /**
+   * Get current names from all input fields and save to localStorage
+   */
+  const saveCurrentNames = () => {
+    const savedNames = loadPlayerNames();
+    for (let i = 0; i < 4; i++) {
+      const input = document.getElementById(`player-name-${i}`);
+      if (input) {
+        savedNames[i] = input.value;
+      }
+    }
+    savePlayerNames(savedNames);
+  };
 
   /**
    * Show a specific screen
@@ -50,12 +92,15 @@ const App = (() => {
 
   /**
    * Render player name input fields
+   * Loads saved names from localStorage and adds listeners to save on change
    */
   const renderPlayerNameInputs = () => {
     const colors = ['#f472b6', '#60a5fa', '#34d399', '#fbbf24'];
+    const savedNames = loadPlayerNames();
     let html = '';
 
     for (let i = 0; i < playerCount; i++) {
+      const savedName = savedNames[i] || '';
       html += `
         <div class="player-name-input">
           <div class="player-badge" style="background: ${colors[i]}">${i + 1}</div>
@@ -64,12 +109,21 @@ const App = (() => {
             id="player-name-${i}"
             placeholder="${I18n.t('app.playerPlaceholder')}"
             maxlength="12"
+            value="${savedName.replace(/"/g, '&quot;')}"
           >
         </div>
       `;
     }
 
     elements.playerNames.innerHTML = html;
+
+    // Add input listeners to save names when they change
+    for (let i = 0; i < playerCount; i++) {
+      const input = document.getElementById(`player-name-${i}`);
+      if (input) {
+        input.addEventListener('input', saveCurrentNames);
+      }
+    }
   };
 
   /**
@@ -353,12 +407,20 @@ const App = (() => {
 
   /**
    * Cycle through languages
+   * Updates UI text without resetting player names
    */
   const cycleLanguage = async () => {
     const nextLang = I18n.getNextLanguage();
     await I18n.setLanguage(nextLang);
     elements.currentLang.textContent = nextLang.toUpperCase();
-    renderPlayerNameInputs();
+
+    // Only update placeholders, not values (preserve user-entered names)
+    for (let i = 0; i < 4; i++) {
+      const input = document.getElementById(`player-name-${i}`);
+      if (input) {
+        input.placeholder = I18n.t('app.playerPlaceholder');
+      }
+    }
   };
 
   /**
