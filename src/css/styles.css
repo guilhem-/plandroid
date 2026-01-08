@@ -304,6 +304,7 @@ button, input, select {
   justify-content: center;
   text-align: center;
   line-height: 1.2;
+  touch-action: manipulation;
 }
 
 /* Player colors for zones - based on data-player attribute */

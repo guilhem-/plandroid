@@ -361,6 +361,36 @@ The application is optimized for various device sizes:
 - **Reduced motion**: Respects `prefers-reduced-motion` accessibility setting
 - **No zoom**: Disabled pinch-to-zoom for game interface stability
 - **Touch optimization**: `touch-action: manipulation` prevents double-tap zoom
+- **Multi-touch support**: Multiple players can touch simultaneously without blocking each other
+
+### Multi-Touch Support
+
+Multiple players can interact with their zones simultaneously:
+
+```javascript
+// Each answer button uses touchstart for immediate response
+button.addEventListener('touchstart', (e) => {
+  e.preventDefault();  // Prevent mouse event emulation
+  handleAnswer(playerId, answerIndex);
+}, { passive: false });
+
+// Click events for mouse/stylus fallback
+button.addEventListener('click', handleAnswer);
+```
+
+**Key Implementation Details:**
+- Use `touchstart` instead of `click` for instant response (no 300ms delay)
+- Call `e.preventDefault()` to prevent duplicate mouse events
+- Each touch is handled independently (no global touch state)
+- Buttons handle their own touch events (no event delegation blocking)
+- CSS `touch-action: manipulation` on buttons prevents zoom interference
+
+| Scenario | Behavior |
+|----------|----------|
+| Player A holds finger on screen | Other players can still tap normally |
+| Players A and B tap simultaneously | Both taps register independently |
+| Player taps and holds | Only first tap registers (no repeat) |
+| Player drags finger off button | No action (touchstart already fired) |
 
 ### Answer Format Guidelines
 

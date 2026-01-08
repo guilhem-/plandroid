@@ -443,8 +443,18 @@ const App = (() => {
     // Play again
     elements.btnPlayAgain.addEventListener('click', resetGame);
 
-    // Answer buttons
+    // Answer buttons - use touchstart for multi-touch support
     document.querySelectorAll('.btn-answer').forEach(btn => {
+      // Touch handler for immediate multi-touch response
+      btn.addEventListener('touchstart', (e) => {
+        e.preventDefault(); // Prevent mouse event emulation
+        if (btn.disabled) return;
+        const playerId = parseInt(btn.dataset.player);
+        const answerIndex = parseInt(btn.dataset.answer);
+        handleAnswer(playerId, answerIndex);
+      }, { passive: false });
+
+      // Click handler as fallback for mouse/stylus
       btn.addEventListener('click', () => {
         const playerId = parseInt(btn.dataset.player);
         const answerIndex = parseInt(btn.dataset.answer);
