@@ -362,38 +362,54 @@ const App = (() => {
   };
 
   /**
+   * Helper to add touch-friendly event listener
+   */
+  const addTouchHandler = (element, handler) => {
+    let touchHandled = false;
+
+    element.addEventListener('touchstart', (e) => {
+      e.preventDefault();
+      touchHandled = true;
+      handler(e);
+    }, { passive: false });
+
+    element.addEventListener('click', (e) => {
+      if (touchHandled) {
+        touchHandled = false;
+        return;
+      }
+      handler(e);
+    });
+  };
+
+  /**
    * Set up event listeners
    */
   const setupEventListeners = () => {
     // Player count selection
     document.querySelectorAll('.btn-count').forEach(btn => {
-      btn.addEventListener('click', () => {
+      addTouchHandler(btn, () => {
         updatePlayerCount(parseInt(btn.dataset.count));
       });
     });
 
     // Language toggle
-    elements.btnLanguage.addEventListener('click', cycleLanguage);
+    addTouchHandler(elements.btnLanguage, cycleLanguage);
 
     // Start game
-    elements.btnStart.addEventListener('click', startGame);
+    addTouchHandler(elements.btnStart, startGame);
 
     // Play again
-    elements.btnPlayAgain.addEventListener('click', resetGame);
+    addTouchHandler(elements.btnPlayAgain, resetGame);
 
     // Answer buttons
     document.querySelectorAll('.btn-answer').forEach(btn => {
-      btn.addEventListener('click', () => {
+      addTouchHandler(btn, () => {
         const playerId = parseInt(btn.dataset.player);
         const answerIndex = parseInt(btn.dataset.answer);
         handleAnswer(playerId, answerIndex);
       });
     });
-
-    // Prevent zoom on double-tap
-    document.addEventListener('touchend', (e) => {
-      e.preventDefault();
-    }, { passive: false });
   };
 
   /**
