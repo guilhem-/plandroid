@@ -389,6 +389,17 @@ const App = (() => {
         handleAnswer(playerId, answerIndex);
       });
     });
+
+    // Re-fit typography on resize
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        if (screens.game.classList.contains('active')) {
+          Typography.fitAllAnswers();
+        }
+      }, 100);
+    });
   };
 
   /**

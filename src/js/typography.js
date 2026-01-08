@@ -5,6 +5,75 @@
 
 const Typography = (() => {
   /**
+   * Fit text inside a button by adjusting font size
+   * @param {HTMLElement} button - The button element
+   * @param {object} options - Configuration options
+   */
+  const fitButtonText = (button, options = {}) => {
+    const {
+      minSize = 10,
+      maxSize = 32,
+      padding = 8
+    } = options;
+
+    if (!button || !button.textContent.trim()) return;
+
+    const text = button.textContent.trim();
+
+    // Get button dimensions (accounting for padding)
+    const style = getComputedStyle(button);
+    const paddingLeft = parseFloat(style.paddingLeft) || padding;
+    const paddingRight = parseFloat(style.paddingRight) || padding;
+    const paddingTop = parseFloat(style.paddingTop) || padding;
+    const paddingBottom = parseFloat(style.paddingBottom) || padding;
+
+    const maxWidth = button.clientWidth - paddingLeft - paddingRight;
+    const maxHeight = button.clientHeight - paddingTop - paddingBottom;
+
+    if (maxWidth <= 0 || maxHeight <= 0) return;
+
+    // Create a temporary span to measure text
+    const measureSpan = document.createElement('span');
+    measureSpan.style.cssText = `
+      position: absolute;
+      visibility: hidden;
+      white-space: nowrap;
+      font-family: ${style.fontFamily};
+      font-weight: ${style.fontWeight};
+    `;
+    measureSpan.textContent = text;
+    document.body.appendChild(measureSpan);
+
+    // Binary search for optimal font size
+    let low = minSize;
+    let high = maxSize;
+    let optimalSize = minSize;
+
+    while (low <= high) {
+      const mid = Math.floor((low + high) / 2);
+      measureSpan.style.fontSize = `${mid}px`;
+
+      const textWidth = measureSpan.offsetWidth;
+      const textHeight = measureSpan.offsetHeight;
+
+      if (textWidth <= maxWidth && textHeight <= maxHeight) {
+        optimalSize = mid;
+        low = mid + 1;
+      } else {
+        high = mid - 1;
+      }
+    }
+
+    // Clean up
+    document.body.removeChild(measureSpan);
+
+    // Apply the optimal font size
+    button.style.fontSize = `${optimalSize}px`;
+
+    return optimalSize;
+  };
+
+  /**
    * Fit text within a container by adjusting font size
    * @param {HTMLElement} element - The text element to resize
    * @param {object} options - Configuration options
@@ -45,8 +114,8 @@ const Typography = (() => {
    */
   const fitQuestion = (element) => {
     return fitText(element, {
-      minSize: 16,
-      maxSize: 32,
+      minSize: 14,
+      maxSize: 28,
       widthRatio: 0.95,
       heightRatio: 0.9
     });
@@ -55,12 +124,11 @@ const Typography = (() => {
   /**
    * Fit text for answer buttons
    */
-  const fitAnswer = (element) => {
-    return fitText(element, {
-      minSize: 14,
-      maxSize: 24,
-      widthRatio: 0.9,
-      heightRatio: 0.7
+  const fitAnswer = (button) => {
+    return fitButtonText(button, {
+      minSize: 10,
+      maxSize: 28,
+      padding: 8
     });
   };
 
@@ -68,10 +136,20 @@ const Typography = (() => {
    * Fit all answer buttons on screen
    */
   const fitAllAnswers = () => {
-    document.querySelectorAll('.btn-answer').forEach(btn => {
-      if (btn.textContent.trim()) {
-        fitAnswer(btn);
-      }
+    // Use requestAnimationFrame to ensure DOM is ready
+    requestAnimationFrame(() => {
+      document.querySelectorAll('.btn-answer').forEach(btn => {
+        if (btn.textContent.trim() && !btn.closest('.hidden')) {
+          fitAnswer(btn);
+        }
+      });
+
+      // Also fit questions
+      document.querySelectorAll('.zone-question').forEach(q => {
+        if (q.textContent.trim() && !q.closest('.hidden')) {
+          fitQuestion(q);
+        }
+      });
     });
   };
 
@@ -88,6 +166,7 @@ const Typography = (() => {
     fitQuestion,
     fitAnswer,
     fitAllAnswers,
+    fitButtonText,
     truncate
   };
 })();
