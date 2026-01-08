@@ -296,34 +296,51 @@ Player 3: [Madrid] [Berlin] [London] [Paris]  // Paris is at index 3
 
 This means watching another player's screen gives no advantage.
 
-### Responsive Typography
+### Dynamic Typography
 
-Text size is **computed dynamically** to fit available space:
+Text size is **computed dynamically** using binary search to find the **largest font that fits**:
 
 ```javascript
-// Font scaling algorithm
-function fitTextToContainer(element, container) {
-  const maxWidth = container.clientWidth * 0.9;  // 90% of container
-  const maxHeight = container.clientHeight * 0.8; // 80% of container
+// Binary search for optimal font size
+function fitElementText(element, options) {
+  const { minSize, maxSize, allowWrap } = options;
 
-  let fontSize = 48; // Start large
-  element.style.fontSize = fontSize + 'px';
+  // Create temporary element to measure text
+  const measureEl = document.createElement('span');
+  measureEl.textContent = element.textContent;
+  measureEl.style.width = allowWrap ? maxWidth + 'px' : 'auto';
 
-  while ((element.scrollWidth > maxWidth ||
-          element.scrollHeight > maxHeight) &&
-          fontSize > 12) {
-    fontSize -= 2;
-    element.style.fontSize = fontSize + 'px';
+  // Binary search: find largest size that fits
+  let low = minSize, high = maxSize, optimal = minSize;
+  while (low <= high) {
+    const mid = Math.floor((low + high) / 2);
+    measureEl.style.fontSize = mid + 'px';
+
+    if (measureEl.offsetWidth <= maxWidth &&
+        measureEl.offsetHeight <= maxHeight) {
+      optimal = mid;
+      low = mid + 1;  // Try larger
+    } else {
+      high = mid - 1; // Try smaller
+    }
   }
+  element.style.fontSize = optimal + 'px';
 }
 ```
 
-| Element | Min Size | Max Size | Behavior |
-|---------|----------|----------|----------|
-| Question text | 16px | 32px | Shrink to fit center area |
-| Answer buttons | 14px | 24px | Shrink to fit button bounds |
-| Player names | 12px | 18px | Truncate with ellipsis if needed |
-| Score display | 16px | 24px | Fixed per breakpoint |
+| Element | Min Size | Max Size | Wrapping | Behavior |
+|---------|----------|----------|----------|----------|
+| Question text | 12px | 36px | Yes | Multi-line, largest fit |
+| Answer buttons | 10px | 28px | No | Single line, largest fit |
+| Player names | 12px | 18px | No | Truncate with ellipsis |
+| Score display | 14px | 28px | No | Fixed per breakpoint |
+
+**Key Features:**
+- **Binary search** for efficient O(log n) font size calculation
+- **Accurate measurement** using temporary DOM elements
+- **Questions allow wrapping** for longer text
+- **Buttons stay single-line** for quick readability
+- **Re-fits on resize** with debounced handler
 
 ### Mobile & Tablet Compatibility
 
