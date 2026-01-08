@@ -362,49 +362,28 @@ const App = (() => {
   };
 
   /**
-   * Helper to add touch-friendly event listener
-   */
-  const addTouchHandler = (element, handler) => {
-    let touchHandled = false;
-
-    element.addEventListener('touchstart', (e) => {
-      e.preventDefault();
-      touchHandled = true;
-      handler(e);
-    }, { passive: false });
-
-    element.addEventListener('click', (e) => {
-      if (touchHandled) {
-        touchHandled = false;
-        return;
-      }
-      handler(e);
-    });
-  };
-
-  /**
    * Set up event listeners
    */
   const setupEventListeners = () => {
     // Player count selection
     document.querySelectorAll('.btn-count').forEach(btn => {
-      addTouchHandler(btn, () => {
+      btn.addEventListener('click', () => {
         updatePlayerCount(parseInt(btn.dataset.count));
       });
     });
 
     // Language toggle
-    addTouchHandler(elements.btnLanguage, cycleLanguage);
+    elements.btnLanguage.addEventListener('click', cycleLanguage);
 
     // Start game
-    addTouchHandler(elements.btnStart, startGame);
+    elements.btnStart.addEventListener('click', startGame);
 
     // Play again
-    addTouchHandler(elements.btnPlayAgain, resetGame);
+    elements.btnPlayAgain.addEventListener('click', resetGame);
 
     // Answer buttons
     document.querySelectorAll('.btn-answer').forEach(btn => {
-      addTouchHandler(btn, () => {
+      btn.addEventListener('click', () => {
         const playerId = parseInt(btn.dataset.player);
         const answerIndex = parseInt(btn.dataset.answer);
         handleAnswer(playerId, answerIndex);
