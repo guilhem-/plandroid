@@ -5,7 +5,6 @@
 
 const Game = (() => {
   const QUESTIONS_PER_GAME = 10;
-  const LOCKOUT_DURATION = 1000; // 1 second penalty
 
   let allQuestions = [];
 
@@ -14,9 +13,6 @@ const Game = (() => {
     language: 'en',
     playerCount: 2,
     players: [],
-    currentQuestion: 0,
-    questionStartTime: null,
-    questionAnswered: false,
     questions: [],
     // Per-player randomization
     playerQuestionOrder: [],   // Each player's question order
@@ -63,9 +59,6 @@ const Game = (() => {
       language,
       playerCount,
       players: [],
-      currentQuestion: 0,
-      questionStartTime: null,
-      questionAnswered: false,
       questions: [],
       playerQuestionOrder: [],
       playerAnswerMappings: [],
@@ -73,16 +66,16 @@ const Game = (() => {
       gameComplete: false
     };
 
-    // Initialize players
+    // Initialize players with per-player tracking
     for (let i = 0; i < playerCount; i++) {
       state.players.push({
         id: i,
         name: playerNames[i] || `Player ${i + 1}`,
         score: 0,
         totalResponseTime: 0,
-        isLocked: false,
-        lockoutEndTime: null,
-        currentQuestionIndex: 0  // Track each player's progress
+        currentQuestionIndex: 0,  // Track each player's progress
+        questionStartTime: null,  // Per-player timing
+        isFinished: false         // Has completed all questions
       });
     }
 
@@ -117,18 +110,24 @@ const Game = (() => {
   };
 
   /**
-   * Get the actual question index for a player at the current round
+   * Get the actual question index for a player at their current round
    */
   const getPlayerQuestionIndex = (playerId) => {
+    const player = state.players[playerId];
+    if (!player) return 0;
     const order = state.playerQuestionOrder[playerId];
-    if (!order) return state.currentQuestion;
-    return order[state.currentQuestion];
+    if (!order) return player.currentQuestionIndex;
+    return order[player.currentQuestionIndex];
   };
 
   /**
    * Get current question data for a specific player (with their randomization)
+   * Returns null if player has finished all questions
    */
   const getQuestionForPlayer = (playerId) => {
+    const player = state.players[playerId];
+    if (!player || player.isFinished) return null;
+
     const qIndex = getPlayerQuestionIndex(playerId);
     const q = state.questions[qIndex];
     if (!q) return null;
@@ -163,53 +162,47 @@ const Game = (() => {
   };
 
   /**
-   * Start timing for current question
+   * Start timing for a specific player's current question
+   */
+  const startPlayerQuestionTimer = (playerId) => {
+    const player = state.players[playerId];
+    if (player && !player.isFinished) {
+      player.questionStartTime = Date.now();
+    }
+  };
+
+  /**
+   * Start timing for all players (called at game start)
    */
   const startQuestionTimer = () => {
-    state.questionStartTime = Date.now();
-    state.questionAnswered = false;
-
-    // Clear any existing lockouts
     state.players.forEach(p => {
-      p.isLocked = false;
-      p.lockoutEndTime = null;
+      if (!p.isFinished) {
+        p.questionStartTime = Date.now();
+      }
     });
   };
 
   /**
-   * Check if a player is currently locked out
+   * Check if a player has finished all questions
    */
-  const isPlayerLocked = (playerId) => {
+  const isPlayerFinished = (playerId) => {
     const player = state.players[playerId];
-    if (!player || !player.isLocked) return false;
-
-    if (Date.now() >= player.lockoutEndTime) {
-      player.isLocked = false;
-      player.lockoutEndTime = null;
-      return false;
-    }
-
-    return true;
+    return player?.isFinished || false;
   };
 
   /**
    * Record a player's answer
    * @param {number} playerId - The player ID
    * @param {number} answerIndex - The shuffled answer index the player clicked
-   * @returns {object} Result with isCorrect, alreadyAnswered, isLocked
+   * @returns {object} Result with isCorrect, isFinished, isPerfectScore, gameEnded
    */
   const recordAnswer = (playerId, answerIndex) => {
     const player = state.players[playerId];
     if (!player) return { error: 'Invalid player' };
 
-    // Check if player is locked out
-    if (isPlayerLocked(playerId)) {
-      return { isLocked: true };
-    }
-
-    // Check if question already answered
-    if (state.questionAnswered) {
-      return { alreadyAnswered: true };
+    // Check if player already finished
+    if (player.isFinished) {
+      return { alreadyFinished: true };
     }
 
     // Get this player's question (with their shuffled answers)
@@ -218,34 +211,56 @@ const Game = (() => {
 
     // Check if the shuffled answer index matches the shuffled correct position
     const isCorrect = answerIndex === question.correct;
-    const responseTime = Date.now() - state.questionStartTime;
+    const responseTime = Date.now() - player.questionStartTime;
 
     if (isCorrect) {
       player.score++;
       player.totalResponseTime += responseTime;
-      state.questionAnswered = true;
-      return { isCorrect: true, responseTime, correctIndex: answerIndex };
-    } else {
-      // Apply lockout penalty
-      player.isLocked = true;
-      player.lockoutEndTime = Date.now() + LOCKOUT_DURATION;
-      return { isCorrect: false, lockoutDuration: LOCKOUT_DURATION };
     }
+
+    // Advance to next question regardless of correct/wrong
+    player.currentQuestionIndex++;
+
+    // Check if player finished all questions
+    if (player.currentQuestionIndex >= QUESTIONS_PER_GAME) {
+      player.isFinished = true;
+    }
+
+    // Check for perfect score (instant game end)
+    const isPerfectScore = player.score === QUESTIONS_PER_GAME;
+    if (isPerfectScore) {
+      state.gameComplete = true;
+      determineWinner();
+    }
+
+    // Check if all players finished
+    const allFinished = state.players.every(p => p.isFinished);
+    if (allFinished && !state.gameComplete) {
+      state.gameComplete = true;
+      determineWinner();
+    }
+
+    return {
+      isCorrect,
+      correctIndex: question.correct,
+      responseTime,
+      playerFinished: player.isFinished,
+      isPerfectScore,
+      gameEnded: state.gameComplete
+    };
   };
 
   /**
-   * Move to next question
-   * @returns {boolean} True if there are more questions, false if game is complete
+   * Advance a specific player to their next question
+   * @param {number} playerId - The player ID
+   * @returns {boolean} True if player has more questions, false if finished
    */
-  const nextQuestion = () => {
-    state.currentQuestion++;
+  const nextPlayerQuestion = (playerId) => {
+    const player = state.players[playerId];
+    if (!player || player.isFinished) return false;
 
-    if (state.currentQuestion >= state.questions.length) {
-      state.gameComplete = true;
-      determineWinner();
-      return false;
-    }
-
+    // Start timer for new question
+    player.questionStartTime = Date.now();
     return true;
   };
 
@@ -298,9 +313,9 @@ const Game = (() => {
   const isComplete = () => state.gameComplete;
 
   /**
-   * Check if current question has been answered
+   * Check if all players have finished
    */
-  const isQuestionAnswered = () => state.questionAnswered;
+  const allPlayersFinished = () => state.players.every(p => p.isFinished);
 
   /**
    * Get the winner(s)
@@ -308,12 +323,28 @@ const Game = (() => {
   const getWinner = () => state.winner;
 
   /**
-   * Get progress info
+   * Get progress info for a specific player
    */
-  const getProgress = () => ({
-    current: state.currentQuestion + 1,
-    total: state.questions.length
-  });
+  const getPlayerProgress = (playerId) => {
+    const player = state.players[playerId];
+    if (!player) return { current: 0, total: QUESTIONS_PER_GAME };
+    return {
+      current: Math.min(player.currentQuestionIndex + 1, QUESTIONS_PER_GAME),
+      total: QUESTIONS_PER_GAME
+    };
+  };
+
+  /**
+   * Get global progress (for display)
+   */
+  const getProgress = () => {
+    // Show the furthest player's progress
+    const maxProgress = Math.max(...state.players.map(p => p.currentQuestionIndex));
+    return {
+      current: Math.min(maxProgress + 1, QUESTIONS_PER_GAME),
+      total: QUESTIONS_PER_GAME
+    };
+  };
 
   return {
     loadQuestions,
@@ -321,16 +352,18 @@ const Game = (() => {
     getCurrentQuestion,
     getQuestionForPlayer,
     startQuestionTimer,
-    isPlayerLocked,
+    startPlayerQuestionTimer,
+    isPlayerFinished,
     recordAnswer,
-    nextQuestion,
+    nextPlayerQuestion,
     getState,
     getPlayer,
     getScoreboard,
     isComplete,
-    isQuestionAnswered,
+    allPlayersFinished,
     getWinner,
     getProgress,
+    getPlayerProgress,
     QUESTIONS_PER_GAME
   };
 })();

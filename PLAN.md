@@ -27,10 +27,11 @@ A simple multiplayer trivia game with the following features:
 ### Gameplay Mechanics
 
 #### Answering System
-- Each question displays simultaneously to all players
-- First player to tap correct answer scores the point
-- **Wrong answer penalty**: 1-second lockout with red fade overlay
-- Players can answer as soon as lockout expires
+- **Independent Progression**: Each player progresses through questions at their own pace
+- **Correct answer**: Player scores a point and advances to next question
+- **Wrong answer**: No point, player advances to next question (no lockout)
+- **Effects are isolated**: Correct/wrong visual feedback only appears in the answering player's zone
+- Each player sees their 10 questions in a randomized order (anti-cheating)
 
 #### Scoring & Winner Determination
 ```
@@ -44,25 +45,52 @@ Tiebreak:  Fastest total response time wins
 | Both: 6 correct, A: 15s total, B: 18s total | Player A (faster) |
 | Both: 6 correct, same time | Both declared winners |
 
-#### Wrong Answer Penalty Animation
+#### Game End Conditions
+1. **All players finish**: When every player has answered all 10 questions
+2. **Perfect score**: If any player answers all 10 correctly, game ends immediately
+
+#### Player Zone States
+
+**Active State** (answering questions):
 ```
-┌─────────────────────┐
-│  Player Zone        │    Normal state
-│  [Answer Button]    │
-└─────────────────────┘
-         │
-         ▼ (wrong answer)
-┌─────────────────────┐
-│ ██████████████████ │    Red overlay (opacity: 0.7)
-│ ██ LOCKED 1s ████ │    Fades out over 1 second
-│ ██████████████████ │    Button disabled
-└─────────────────────┘
-         │
-         ▼ (after 1s)
-┌─────────────────────┐
-│  Player Zone        │    Back to normal
-│  [Answer Button]    │    Can answer again
-└─────────────────────┘
+┌─────────────────────────────────┐
+│  [Player Name]        [Score]   │
+│  Question: What is 2+2?         │
+│  [4] [3] [5] [6]               │
+└─────────────────────────────────┘
+```
+
+**Correct Answer Feedback** (brief flash, only in THIS zone):
+```
+┌─────────────────────────────────┐
+│  [Player Name]        [Score]   │
+│  Question: What is 2+2?         │
+│  [✓4] [3] [5] [6]  ← green     │
+└─────────────────────────────────┘
+         ↓ (after 0.5s)
+    Next question appears
+```
+
+**Wrong Answer Feedback** (brief flash, only in THIS zone):
+```
+┌─────────────────────────────────┐
+│  [Player Name]        [Score]   │
+│  Question: What is 2+2?         │
+│  [4] [✗3] [5] [6]  ← red       │
+└─────────────────────────────────┘
+         ↓ (after 0.5s)
+    Next question appears
+```
+
+**Waiting State** (player finished all questions):
+```
+┌─────────────────────────────────┐
+│  [Player Name]        [Score]   │
+│                                 │
+│           ⏱️ (clock icon)       │
+│       Waiting for others...     │
+│                                 │
+└─────────────────────────────────┘
 ```
 
 ### Game Flow
@@ -368,36 +396,57 @@ const gameState = {
       id: 0,
       name: 'Player 1',
       score: 0,
-      totalResponseTime: 0,    // Milliseconds (for tiebreaker)
-      isLocked: false,         // Penalty lockout active
-      lockoutEndTime: null     // When lockout expires
+      totalResponseTime: 0,       // Milliseconds (for tiebreaker)
+      currentQuestionIndex: 0,    // This player's progress (0-9)
+      isFinished: false,          // Has answered all 10 questions
+      questionStartTime: null     // When current question was shown
     }
     // ... up to 4 players
   ],
 
-  // Current question state
-  currentQuestion: 0,         // 0-9 (10 questions)
-  questionStartTime: null,    // Timestamp when question displayed
-  questionAnswered: false,    // Has anyone answered correctly?
-  questions: [],              // 10 randomly selected questions
+  // Questions pool
+  questions: [],                  // 10 randomly selected questions
+  playerQuestionOrder: [],        // Per-player randomized order
+  playerAnswerMappings: [],       // Per-player answer shuffling
 
   // Final results
-  winner: null,               // Player ID or array if tie
+  winner: null,                   // Player ID or array if tie
   gameComplete: false
 };
 
-// Response time tracking
+// Per-player question tracking
 function recordAnswer(playerId, isCorrect) {
-  const responseTime = Date.now() - gameState.questionStartTime;
+  const player = gameState.players[playerId];
+  const responseTime = Date.now() - player.questionStartTime;
 
-  if (isCorrect && !gameState.questionAnswered) {
-    gameState.players[playerId].score++;
-    gameState.players[playerId].totalResponseTime += responseTime;
-    gameState.questionAnswered = true;
-  } else if (!isCorrect) {
-    // Apply 1-second penalty lockout
-    gameState.players[playerId].isLocked = true;
-    gameState.players[playerId].lockoutEndTime = Date.now() + 1000;
+  if (isCorrect) {
+    player.score++;
+    player.totalResponseTime += responseTime;
+  }
+  // Wrong or correct: advance to next question
+  player.currentQuestionIndex++;
+
+  // Check if player finished
+  if (player.currentQuestionIndex >= 10) {
+    player.isFinished = true;
+  }
+
+  // Check for game end conditions
+  checkGameEnd();
+}
+
+function checkGameEnd() {
+  // Perfect score: instant win
+  const perfectPlayer = gameState.players.find(p => p.score === 10);
+  if (perfectPlayer) {
+    endGame();
+    return;
+  }
+
+  // All players finished
+  const allFinished = gameState.players.every(p => p.isFinished);
+  if (allFinished) {
+    endGame();
   }
 }
 ```

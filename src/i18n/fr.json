@@ -14,6 +14,7 @@
     "wrong": "Faux!",
     "timeUp": "Temps ecoule!",
     "selectLanguage": "Langue",
-    "finalScore": "{{score}} pts"
+    "finalScore": "{{score}} pts",
+    "waiting": "En attente..."
   }
 }

@@ -132,46 +132,100 @@ const App = (() => {
   };
 
   /**
+   * Display current question for a specific player
+   */
+  const displayPlayerQuestion = (playerId) => {
+    const zone = document.getElementById(`zone-${playerId}`);
+    if (!zone) return;
+
+    // Check if player has finished
+    if (Game.isPlayerFinished(playerId)) {
+      showPlayerWaiting(playerId);
+      return;
+    }
+
+    zone.classList.remove('hidden', 'locked', 'waiting');
+
+    // Get this player's question (with their randomized answers)
+    const q = Game.getQuestionForPlayer(playerId);
+    if (!q) return;
+
+    // Set question text in this zone
+    const questionEl = zone.querySelector('.zone-question');
+    if (questionEl) {
+      questionEl.textContent = q.question;
+    }
+
+    // Hide waiting icon if visible
+    const waitingIcon = zone.querySelector('.waiting-icon');
+    if (waitingIcon) {
+      waitingIcon.remove();
+    }
+
+    // Set all 4 shuffled answers in this zone
+    const buttons = zone.querySelectorAll('.btn-answer');
+    const answersContainer = zone.querySelector('.zone-answers');
+    if (answersContainer) {
+      answersContainer.style.display = 'grid';
+    }
+
+    buttons.forEach((btn, i) => {
+      btn.textContent = q.answers[i] || '';
+      btn.dataset.answer = i.toString();
+      btn.disabled = false;
+      btn.classList.remove('correct', 'wrong');
+    });
+
+    // Start timer for this player
+    Game.startPlayerQuestionTimer(playerId);
+  };
+
+  /**
+   * Show waiting state for a player who finished all questions
+   */
+  const showPlayerWaiting = (playerId) => {
+    const zone = document.getElementById(`zone-${playerId}`);
+    if (!zone) return;
+
+    zone.classList.add('waiting');
+
+    // Hide question and answers
+    const questionEl = zone.querySelector('.zone-question');
+    if (questionEl) {
+      questionEl.textContent = I18n.t('app.waiting') || 'Waiting...';
+    }
+
+    // Hide answer buttons and show clock icon
+    const answersContainer = zone.querySelector('.zone-answers');
+    if (answersContainer) {
+      answersContainer.style.display = 'none';
+    }
+
+    // Add waiting clock icon if not present
+    if (!zone.querySelector('.waiting-icon')) {
+      const icon = document.createElement('div');
+      icon.className = 'waiting-icon';
+      icon.innerHTML = '⏱️';
+      zone.querySelector('.zone-content')?.appendChild(icon);
+    }
+  };
+
+  /**
    * Display current question - each player sees their own randomized version
    */
   const displayQuestion = () => {
-    const progress = Game.getProgress();
-    elements.questionCounter.textContent = `${progress.current}/${progress.total}`;
-
     // Update each player zone with THEIR question and THEIR shuffled answers
-    for (let p = 0; p < 4; p++) {
+    for (let p = 0; p < playerCount; p++) {
+      displayPlayerQuestion(p);
+    }
+
+    // Hide unused zones
+    for (let p = playerCount; p < 4; p++) {
       const zone = document.getElementById(`zone-${p}`);
-      if (!zone) continue;
-
-      if (p < playerCount) {
-        zone.classList.remove('hidden');
-        zone.classList.remove('locked');
-
-        // Get this player's question (with their randomized answers)
-        const q = Game.getQuestionForPlayer(p);
-        if (!q) continue;
-
-        // Set question text in this zone
-        const questionEl = zone.querySelector('.zone-question');
-        if (questionEl) {
-          questionEl.textContent = q.question;
-        }
-
-        // Set all 4 shuffled answers in this zone
-        const buttons = zone.querySelectorAll('.btn-answer');
-        buttons.forEach((btn, i) => {
-          btn.textContent = q.answers[i] || '';
-          btn.dataset.answer = i.toString();
-          btn.disabled = false;
-          btn.classList.remove('correct', 'wrong');
-        });
-      } else {
-        zone.classList.add('hidden');
-      }
+      if (zone) zone.classList.add('hidden');
     }
 
     Typography.fitAllAnswers();
-    Game.startQuestionTimer();
     updateScores();
   };
 
@@ -183,58 +237,51 @@ const App = (() => {
     const zone = document.getElementById(`zone-${playerId}`);
     const button = zone?.querySelector(`[data-answer="${answerIndex}"]`);
 
-    if (result.isLocked) {
-      return; // Player is still locked out
+    if (result.alreadyFinished) {
+      return; // Player already finished
     }
 
-    if (result.alreadyAnswered) {
-      return; // Someone else already got it
+    if (result.error) {
+      return;
     }
+
+    // Disable all buttons in THIS player's zone immediately
+    zone?.querySelectorAll('.btn-answer').forEach(b => b.disabled = true);
 
     if (result.isCorrect) {
-      // Correct answer - highlight correct button in each zone
-      // Each zone has different answer positions, so find correct for each
+      // Correct answer - only highlight in THIS player's zone
       playSound('correct');
-
-      for (let p = 0; p < playerCount; p++) {
-        const z = document.getElementById(`zone-${p}`);
-        // Get this player's question to find THEIR correct answer position
-        const pQuestion = Game.getQuestionForPlayer(p);
-        const correctBtn = z?.querySelector(`[data-answer="${pQuestion.correct}"]`);
-        if (correctBtn) {
-          Animations.flashCorrect(correctBtn);
-        }
-        // Disable all buttons in all zones
-        z?.querySelectorAll('.btn-answer').forEach(b => b.disabled = true);
+      if (button) {
+        Animations.flashCorrect(button);
       }
-
-      // Update scores immediately
-      updateScores();
-
-      // Brief delay then next question
-      setTimeout(() => {
-        if (Game.nextQuestion()) {
-          displayQuestion();
-        } else {
-          showResults();
-        }
-      }, 800);
     } else {
-      // Wrong answer - apply penalty to this player only
+      // Wrong answer - only show in THIS player's zone
       playSound('wrong');
-      Animations.flashWrong(button);
-      Animations.showLockout(playerId);
-
-      // Disable all buttons in this player's zone during lockout
-      zone?.querySelectorAll('.btn-answer').forEach(b => b.disabled = true);
-
-      // Re-enable after lockout
-      setTimeout(() => {
-        if (!Game.isComplete() && !Game.isQuestionAnswered()) {
-          zone?.querySelectorAll('.btn-answer').forEach(b => b.disabled = false);
-        }
-      }, result.lockoutDuration);
+      if (button) {
+        Animations.flashWrong(button);
+      }
     }
+
+    // Update score immediately
+    updateScores();
+
+    // Check if game ended (perfect score or all finished)
+    if (result.gameEnded) {
+      setTimeout(() => {
+        showResults();
+      }, 800);
+      return;
+    }
+
+    // Brief delay then show next question for THIS player only
+    setTimeout(() => {
+      if (result.playerFinished) {
+        showPlayerWaiting(playerId);
+      } else {
+        displayPlayerQuestion(playerId);
+        Typography.fitAllAnswers();
+      }
+    }, 500);
   };
 
   /**

@@ -508,6 +508,28 @@ button:active {
   }
 }
 
+/* Waiting state for finished players */
+.player-zone.waiting .zone-answers {
+  display: none !important;
+}
+
+.waiting-icon {
+  font-size: 48px;
+  animation: pulse-waiting 1.5s ease-in-out infinite;
+  text-align: center;
+  margin-top: 16px;
+}
+
+@keyframes pulse-waiting {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+.player-zone.waiting .zone-question {
+  font-size: 16px;
+  color: var(--color-text-muted);
+}
+
 /* Utility - Hide elements based on player count */
 .hidden {
   display: none !important;
