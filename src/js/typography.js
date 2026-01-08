@@ -81,8 +81,8 @@ const Typography = (() => {
   const fitQuestion = (element) => {
     return fitElementText(element, {
       minSize: 12,
-      maxSize: 36,
-      padding: 8,
+      maxSize: 48,
+      padding: 4,
       allowWrap: true
     });
   };
