@@ -99,46 +99,146 @@ Tiebreak:  Fastest total response time wins
 
 ### UI Layout for Multiplayer
 
-Each player has their **own zone** that should be **AS LARGE AS POSSIBLE** to maximize readability. Each zone contains:
+Each player has their **own zone** that **COVERS THE WHOLE SCREEN** divided equally. Each zone contains:
 - Player name and current score
 - Question text
 - All 4 answer buttons in a 2x2 grid
 
-Players sit around the phone, each facing their own zone (rotated for readability):
-
-```
-┌───────────────────────────────────────────────────────┐
-│                  PLAYER 1 ZONE (Top)                  │
-│  ┌─────────────────────────────────────────────────┐  │
-│  │ [Name: Alice]                        [Score: 3] │  │
-│  │ Question: What is the capital of France?        │  │
-│  │ [Berlin] [Paris] [Madrid] [London]              │  │
-│  └─────────────────────────────────────────────────┘  │
-│                    (rotated 180°)                     │
-├───────────────────────────────────────────────────────┤
-│ P4 ZONE │                             │ P2 ZONE      │
-│ (Left)  │       CENTER AREA           │ (Right)      │
-│ rotated │    (Question counter)       │ rotated      │
-│  90°    │                             │  -90°        │
-├───────────────────────────────────────────────────────┤
-│                  PLAYER 3 ZONE (Bottom)               │
-│  ┌─────────────────────────────────────────────────┐  │
-│  │ [Name: Bob]                          [Score: 2] │  │
-│  │ Question: What is the capital of France?        │  │
-│  │ [Madrid] [London] [Paris] [Berlin]              │  │
-│  └─────────────────────────────────────────────────┘  │
-│                    (normal orientation)               │
-└───────────────────────────────────────────────────────┘
-```
-
 **Key Design Principles:**
-- **Maximize zone size**: Zones should fill available screen space
+- **Full screen coverage**: Zones fill 100% of screen, no gaps
+- **Equal surface area**: All players get same-sized zones
 - **Player score in zone**: Each zone shows the player's name and current score
 - **Randomized questions**: Each player sees questions in a DIFFERENT random order
 - **Randomized answers**: Answer button positions are shuffled DIFFERENTLY for each player
 - Zones are rotated so each player can read from their sitting position
 - First correct answer from ANY player wins the point
 - Wrong answer locks only THAT player's zone for 1 second
+
+---
+
+#### Layout: 1 Player (Full Screen)
+
+Single player uses the entire screen, no rotation needed.
+
+```
+┌─────────────────────────────────────────────────────────┐
+│                                                         │
+│                    PLAYER 1 ZONE                        │
+│                    (100% screen)                        │
+│                                                         │
+│  ┌───────────────────────────────────────────────────┐  │
+│  │ [Name: Player 1]                      [Score: 5]  │  │
+│  │                                                   │  │
+│  │ Question: What is the capital of France?          │  │
+│  │                                                   │  │
+│  │ ┌─────────────┐  ┌─────────────┐                  │  │
+│  │ │   Paris     │  │   London    │                  │  │
+│  │ └─────────────┘  └─────────────┘                  │  │
+│  │ ┌─────────────┐  ┌─────────────┐                  │  │
+│  │ │   Berlin    │  │   Madrid    │                  │  │
+│  │ └─────────────┘  └─────────────┘                  │  │
+│  └───────────────────────────────────────────────────┘  │
+│                                                         │
+│                  (normal orientation)                   │
+└─────────────────────────────────────────────────────────┘
+```
+
+---
+
+#### Layout: 2 Players (Top/Bottom Split)
+
+Screen split horizontally. P1 at bottom (normal), P2 at top (rotated 180°).
+
+```
+┌─────────────────────────────────────────────────────────┐
+│                                                         │
+│                    PLAYER 2 ZONE                        │
+│                    (top 50%)                            │
+│                                                         │
+│  ┌───────────────────────────────────────────────────┐  │
+│  │ [Name: Player 2]                      [Score: 3]  │  │
+│  │ Question: What is the capital of France?          │  │
+│  │ [Berlin] [Paris] [Madrid] [London]                │  │
+│  └───────────────────────────────────────────────────┘  │
+│                    (rotated 180°)                       │
+│                                                         │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│                    PLAYER 1 ZONE                        │
+│                    (bottom 50%)                         │
+│                                                         │
+│  ┌───────────────────────────────────────────────────┐  │
+│  │ [Name: Player 1]                      [Score: 4]  │  │
+│  │ Question: What is the capital of France?          │  │
+│  │ [Paris] [London] [Berlin] [Madrid]                │  │
+│  └───────────────────────────────────────────────────┘  │
+│                  (normal orientation)                   │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+```
+
+---
+
+#### Layout: 3 Players (Triangle)
+
+P1 at bottom (50% width), P2 and P3 share top half.
+
+```
+┌─────────────────────────────────────────────────────────┐
+│           PLAYER 3 ZONE    │    PLAYER 2 ZONE          │
+│           (top-left 25%)   │    (top-right 25%)        │
+│  ┌──────────────────────┐  │  ┌──────────────────────┐ │
+│  │ [P3]        [Score]  │  │  │ [P2]        [Score]  │ │
+│  │ Question...          │  │  │ Question...          │ │
+│  │ [A] [B] [C] [D]      │  │  │ [A] [B] [C] [D]      │ │
+│  └──────────────────────┘  │  └──────────────────────┘ │
+│       (rotated 180°)       │       (rotated 180°)      │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│                    PLAYER 1 ZONE                        │
+│                    (bottom 50%)                         │
+│                                                         │
+│  ┌───────────────────────────────────────────────────┐  │
+│  │ [Name: Player 1]                      [Score: 4]  │  │
+│  │ Question: What is the capital of France?          │  │
+│  │ [Paris] [London] [Berlin] [Madrid]                │  │
+│  └───────────────────────────────────────────────────┘  │
+│                  (normal orientation)                   │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+```
+
+---
+
+#### Layout: 4 Players (Quadrants)
+
+Screen split into 4 equal quadrants. Each player gets 25% of screen.
+
+```
+┌─────────────────────────────────────────────────────────┐
+│           PLAYER 4 ZONE    │    PLAYER 3 ZONE          │
+│         (top-left 25%)     │   (top-right 25%)         │
+│  ┌──────────────────────┐  │  ┌──────────────────────┐ │
+│  │ [P4]        [Score]  │  │  │ [P3]        [Score]  │ │
+│  │ Question...          │  │  │ Question...          │ │
+│  │ [A] [B]              │  │  │ [A] [B]              │ │
+│  │ [C] [D]              │  │  │ [C] [D]              │ │
+│  └──────────────────────┘  │  └──────────────────────┘ │
+│       (rotated 180°)       │       (rotated 180°)      │
+├────────────────────────────┼────────────────────────────┤
+│           PLAYER 1 ZONE    │    PLAYER 2 ZONE          │
+│       (bottom-left 25%)    │  (bottom-right 25%)       │
+│  ┌──────────────────────┐  │  ┌──────────────────────┐ │
+│  │ [P1]        [Score]  │  │  │ [P2]        [Score]  │ │
+│  │ Question...          │  │  │ Question...          │ │
+│  │ [A] [B]              │  │  │ [A] [B]              │ │
+│  │ [C] [D]              │  │  │ [C] [D]              │ │
+│  └──────────────────────┘  │  └──────────────────────┘ │
+│    (normal orientation)    │    (normal orientation)   │
+└─────────────────────────────────────────────────────────┘
+```
+
+---
 
 ### Anti-Cheating: Randomization Strategy
 

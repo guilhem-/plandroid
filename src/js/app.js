@@ -86,21 +86,11 @@ const App = (() => {
   };
 
   /**
-   * Update scores display in center and in each zone
+   * Update scores display in each zone
    */
   const updateScores = () => {
-    const colors = ['#f472b6', '#60a5fa', '#34d399', '#fbbf24'];
-    let html = '';
-
     for (let i = 0; i < playerCount; i++) {
       const player = Game.getPlayer(i);
-      html += `
-        <div class="score-badge" style="background: ${colors[i]}">
-          ${player.score}
-        </div>
-      `;
-
-      // Also update score in each zone
       const zone = document.getElementById(`zone-${i}`);
       if (zone) {
         const scoreEl = zone.querySelector('.zone-score');
@@ -109,8 +99,20 @@ const App = (() => {
         }
       }
     }
+  };
 
-    elements.scores.innerHTML = html;
+  /**
+   * Set the layout class based on player count
+   */
+  const setLayout = () => {
+    const answersArea = document.getElementById('answers-area');
+    if (!answersArea) return;
+
+    // Remove all layout classes
+    answersArea.classList.remove('layout-1', 'layout-2', 'layout-3', 'layout-4');
+
+    // Add the appropriate layout class
+    answersArea.classList.add(`layout-${playerCount}`);
   };
 
   /**
@@ -288,6 +290,7 @@ const App = (() => {
     const lang = I18n.getCurrentLanguage();
 
     Game.init(playerCount, names, lang);
+    setLayout();
     showScreen('game');
     updateZonePlayerNames();
     displayQuestion();
