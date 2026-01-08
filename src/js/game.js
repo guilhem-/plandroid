@@ -5,6 +5,7 @@
 
 const Game = (() => {
   const QUESTIONS_PER_GAME = 10;
+  const STORAGE_KEY = 'plandroid_question_history';
 
   let allQuestions = [];
 
@@ -102,11 +103,98 @@ const Game = (() => {
   };
 
   /**
-   * Select random questions from the pool
+   * Load question history from localStorage
+   * @returns {Object} Map of questionId -> lastAskedTimestamp
+   */
+  const loadQuestionHistory = () => {
+    try {
+      const data = localStorage.getItem(STORAGE_KEY);
+      return data ? JSON.parse(data) : {};
+    } catch (e) {
+      console.warn('Failed to load question history:', e);
+      return {};
+    }
+  };
+
+  /**
+   * Save question history to localStorage
+   * @param {Object} history - Map of questionId -> lastAskedTimestamp
+   */
+  const saveQuestionHistory = (history) => {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(history));
+    } catch (e) {
+      console.warn('Failed to save question history:', e);
+    }
+  };
+
+  /**
+   * Calculate selection weight for a question based on time since last asked
+   * Higher weight = more likely to be selected
+   * @param {number} lastAsked - Timestamp when question was last asked (0 if never)
+   * @param {number} now - Current timestamp
+   * @returns {number} Selection weight
+   */
+  const calculateWeight = (lastAsked, now) => {
+    if (!lastAsked) {
+      // Never asked - highest priority
+      return 1000;
+    }
+    // Weight increases with time elapsed (in hours)
+    const hoursElapsed = (now - lastAsked) / (1000 * 60 * 60);
+    // Minimum weight of 1, grows with time
+    return Math.max(1, Math.floor(hoursElapsed) + 1);
+  };
+
+  /**
+   * Select questions using weighted random selection
+   * Prioritizes questions that haven't been asked recently
+   * @param {number} count - Number of questions to select
+   * @returns {Array} Selected questions
    */
   const selectRandomQuestions = (count) => {
-    const shuffled = [...allQuestions].sort(() => Math.random() - 0.5);
-    return shuffled.slice(0, Math.min(count, shuffled.length));
+    const history = loadQuestionHistory();
+    const now = Date.now();
+
+    // Calculate weights for all questions
+    const weighted = allQuestions.map(q => ({
+      question: q,
+      weight: calculateWeight(history[q.id], now)
+    }));
+
+    // Select questions using weighted random sampling (without replacement)
+    const selected = [];
+    const available = [...weighted];
+
+    for (let i = 0; i < Math.min(count, available.length); i++) {
+      // Calculate total weight of remaining questions
+      const totalWeight = available.reduce((sum, item) => sum + item.weight, 0);
+
+      // Pick a random point in the weight distribution
+      let random = Math.random() * totalWeight;
+
+      // Find the question at that point
+      let selectedIndex = 0;
+      for (let j = 0; j < available.length; j++) {
+        random -= available[j].weight;
+        if (random <= 0) {
+          selectedIndex = j;
+          break;
+        }
+      }
+
+      // Add selected question and remove from available pool
+      selected.push(available[selectedIndex].question);
+      available.splice(selectedIndex, 1);
+    }
+
+    // Update history with selected questions
+    selected.forEach(q => {
+      history[q.id] = now;
+    });
+    saveQuestionHistory(history);
+
+    return selected;
   };
 
   /**

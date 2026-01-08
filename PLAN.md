@@ -18,7 +18,7 @@ A simple multiplayer trivia game with the following features:
 - **Gameplay**: 10 random questions about fun topics
 - **Format**: Multiple choice (4 answers, 1 correct)
 - **Technology**: Pure HTML/CSS/JavaScript (no framework)
-- **Questions**: 1000 questions in JSON format, multi-language
+- **Questions**: 200 questions in JSON format, multi-language
 - **Offline**: Fully functional without internet
 - **i18n**: French, English, Spanish, German (auto-detect from device)
 - **Theme**: Fun, colorful single theme
@@ -639,7 +639,7 @@ export PATH=$PATH:$ANDROID_HOME/build-tools/33.0.0
 │   │   ├── typography.js      # Dynamic text fitting
 │   │   └── animations.js      # Confetti & penalty effects
 │   ├── data/
-│   │   └── questions.json     # 1000 questions (4 languages)
+│   │   └── questions.json     # 200 questions (4 languages)
 │   ├── i18n/
 │   │   ├── en.json            # English UI
 │   │   ├── fr.json            # French UI
@@ -713,7 +713,7 @@ cd android
 
 | Decision | Choice |
 |----------|--------|
-| Question Source | JSON file with 1000 questions |
+| Question Source | JSON file with 200 questions |
 | Offline Support | Yes - fully offline capable |
 | Sound Effects | Yes - correct/wrong/victory sounds |
 | Animations | Yes - winner confetti + wrong answer red fade |
@@ -797,12 +797,63 @@ const lang = supportedLanguages.includes(userLang) ? userLang : 'en';
 
 | Category | Count | Examples |
 |----------|-------|----------|
-| Science | ~170 | Space, physics, biology |
-| History | ~170 | World events, famous people |
-| Geography | ~170 | Countries, capitals, landmarks |
-| Entertainment | ~170 | Movies, music, TV |
-| Sports | ~160 | Olympics, football, records |
-| Nature | ~160 | Animals, plants, weather |
+| Science | ~35 | Space, physics, biology |
+| History | ~35 | World events, famous people |
+| Geography | ~35 | Countries, capitals, landmarks |
+| Entertainment | ~35 | Movies, music, TV |
+| Sports | ~30 | Olympics, football, records |
+| Nature | ~30 | Animals, plants, weather |
+
+**Total Questions**: 200 questions across all categories
+
+---
+
+### Smart Question Selection
+
+Questions are selected using a **weighted random algorithm** that maximizes variety and minimizes repetition:
+
+```javascript
+// localStorage key for tracking
+const STORAGE_KEY = 'plandroid_question_history';
+
+// Storage format: { questionId: lastAskedTimestamp }
+{
+  "1": 1704672000000,   // Asked 2 hours ago
+  "15": 1704585600000,  // Asked 26 hours ago
+  "42": null            // Never asked
+}
+```
+
+**Weight Calculation**:
+```javascript
+function calculateWeight(lastAsked, now) {
+  if (!lastAsked) {
+    return 1000;  // Never asked = highest priority
+  }
+  // Weight grows with hours elapsed
+  const hoursElapsed = (now - lastAsked) / (1000 * 60 * 60);
+  return Math.max(1, Math.floor(hoursElapsed) + 1);
+}
+```
+
+| Last Asked | Weight | Selection Priority |
+|------------|--------|-------------------|
+| Never | 1000 | Highest |
+| 24+ hours ago | 25+ | High |
+| 1-24 hours ago | 2-24 | Medium |
+| < 1 hour ago | 1 | Lowest |
+
+**Selection Algorithm**:
+1. Load question history from localStorage
+2. Calculate weights for all 200 questions
+3. Use weighted random sampling (without replacement) to select 10 questions
+4. Save selected question timestamps to localStorage
+
+**Benefits**:
+- Players encounter new questions first
+- Familiar questions gradually return after time passes
+- Randomness is preserved while avoiding immediate repeats
+- Works offline (localStorage persists)
 
 ---
 
