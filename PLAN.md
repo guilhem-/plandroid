@@ -208,40 +208,33 @@ Each player gets exactly 50% of the screen.
 
 ---
 
-#### Layout: 3 Players (Horizontal Strips)
+#### Layout: 3 Players (Triangle - Cross Pattern)
 
-Screen split into 3 equal horizontal strips. Each player gets ~33% of screen.
-**No 90° rotations** - only 0° and 180° to prevent overflow issues.
+P1 at bottom (full width), P2 top-right (90° CW), P3 top-left (90° CCW).
+Uses 90° rotations so players can sit on different edges of the device.
+
+**Space allocation:**
+- P1: 100% width × 50% height = 50% of screen
+- P2: 50% width × 50% height = 25% of screen
+- P3: 50% width × 50% height = 25% of screen
 
 ```
-┌─────────────────────────────────────────────────────────┐
-│                                                         │
-│                    PLAYER 3 ZONE                        │
-│                    (top 33%)                            │
-│                                                         │
-│  ┌───────────────────────────────────────────────────┐  │
-│  │ [Name: Player 3]                      [Score: 2]  │  │
-│  │ Question: What is the largest ocean?              │  │
-│  │ [Pacific] [Atlantic] [Indian] [Arctic]            │  │
-│  └───────────────────────────────────────────────────┘  │
-│                    (rotated 180°)                       │
-│                                                         │
-├─────────────────────────────────────────────────────────┤
-│                                                         │
-│                    PLAYER 2 ZONE                        │
-│                    (middle 33%)                         │
-│                                                         │
-│  ┌───────────────────────────────────────────────────┐  │
-│  │ [Name: Player 2]                      [Score: 5]  │  │
-│  │ Question: What color is the sun?                  │  │
-│  │ [Yellow] [White] [Orange] [Red]                   │  │
-│  └───────────────────────────────────────────────────┘  │
-│                    (rotated 180°)                       │
-│                                                         │
-├─────────────────────────────────────────────────────────┤
+┌────────────────────────────┬────────────────────────────┐
+│                            │                            │
+│       PLAYER 3 ZONE        │       PLAYER 2 ZONE        │
+│       (top-left 25%)       │       (top-right 25%)      │
+│                            │                            │
+│  ┌──────────────────────┐  │  ┌──────────────────────┐  │
+│  │ [P3]        [Score]  │  │  │ [P2]        [Score]  │  │
+│  │ Question...          │  │  │ Question...          │  │
+│  │ [A] [B] [C] [D]      │  │  │ [A] [B] [C] [D]      │  │
+│  └──────────────────────┘  │  └──────────────────────┘  │
+│      (rotated 90° CCW)     │      (rotated 90° CW)      │
+│                            │                            │
+├────────────────────────────┴────────────────────────────┤
 │                                                         │
 │                    PLAYER 1 ZONE                        │
-│                    (bottom 33%)                         │
+│                    (bottom 50%)                         │
 │                                                         │
 │  ┌───────────────────────────────────────────────────┐  │
 │  │ [Name: Player 1]                      [Score: 4]  │  │
@@ -255,45 +248,48 @@ Screen split into 3 equal horizontal strips. Each player gets ~33% of screen.
 
 ---
 
-#### Layout: 4 Players (2x2 Quadrants)
+#### Layout: 4 Players (Cross Pattern)
 
-Screen split into 4 equal quadrants. Each player gets exactly 25% of screen.
-**No 90° rotations** - only 0° and 180° to prevent overflow issues.
-Two players on bottom side (normal), two on top side (180°).
+Each player sits on a different edge of the device. Equal 25% space each.
+Uses grid with 1:2:1 row ratio (25%, 50%, 25%).
+
+**Space allocation:**
+- P1 (bottom): 100% width × 25% height = 25%
+- P2 (right):  50% width × 50% height = 25% (rotated 90° CW)
+- P3 (top):    100% width × 25% height = 25% (rotated 180°)
+- P4 (left):   50% width × 50% height = 25% (rotated 90° CCW)
 
 ```
-┌────────────────────────────┬────────────────────────────┐
+┌─────────────────────────────────────────────────────────┐
+│                    PLAYER 3 ZONE                        │
+│                    (top 25%)                            │
+│  [P3] [Score] Question... [A][B][C][D]                  │
+│                    (rotated 180°)                       │
+├────────────────────────────┬────────────────────────────┤
 │                            │                            │
-│       PLAYER 4 ZONE        │       PLAYER 3 ZONE        │
-│       (top-left 25%)       │       (top-right 25%)      │
+│       PLAYER 4 ZONE        │       PLAYER 2 ZONE        │
+│       (left 25%)           │       (right 25%)          │
 │                            │                            │
 │  ┌──────────────────────┐  │  ┌──────────────────────┐  │
-│  │ [P4]        [Score]  │  │  │ [P3]        [Score]  │  │
+│  │ [P4]        [Score]  │  │  │ [P2]        [Score]  │  │
 │  │ Question...          │  │  │ Question...          │  │
 │  │ [A] [B] [C] [D]      │  │  │ [A] [B] [C] [D]      │  │
 │  └──────────────────────┘  │  └──────────────────────┘  │
-│       (rotated 180°)       │       (rotated 180°)       │
+│      (rotated 90° CCW)     │      (rotated 90° CW)      │
 │                            │                            │
-├────────────────────────────┼────────────────────────────┤
-│                            │                            │
-│       PLAYER 1 ZONE        │       PLAYER 2 ZONE        │
-│       (bottom-left 25%)    │       (bottom-right 25%)   │
-│                            │                            │
-│  ┌──────────────────────┐  │  ┌──────────────────────┐  │
-│  │ [P1]        [Score]  │  │  │ [P2]        [Score]  │  │
-│  │ Question...          │  │  │ Question...          │  │
-│  │ [A] [B] [C] [D]      │  │  │ [A] [B] [C] [D]      │  │
-│  └──────────────────────┘  │  └──────────────────────┘  │
-│     (normal orientation)   │     (normal orientation)   │
-│                            │                            │
-└────────────────────────────┴────────────────────────────┘
+├────────────────────────────┴────────────────────────────┤
+│                    PLAYER 1 ZONE                        │
+│                    (bottom 25%)                         │
+│  [P1] [Score] Question... [A][B][C][D]                  │
+│                  (normal orientation)                   │
+└─────────────────────────────────────────────────────────┘
 ```
 
-**Layout Design Principles:**
-- **Static grid**: CSS grid with fixed percentages, no dynamic sizing
-- **No 90° rotations**: Only 0° and 180° rotations to prevent overflow
-- **Equal areas**: All players get the same screen percentage
-- **Clear boundaries**: Visible borders between zones
+**Layout Implementation Notes:**
+- Grid: `grid-template-rows: 1fr 2fr 1fr` creates 25%/50%/25% split
+- 90° rotated zones: Content sized to fit within cell after rotation
+- `overflow: hidden` on all zones prevents any visual overflow
+- Content uses viewport-aware sizing for rotated cells
 
 ---
 
