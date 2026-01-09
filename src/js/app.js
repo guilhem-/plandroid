@@ -156,6 +156,14 @@ const App = (() => {
   };
 
   /**
+   * Update question counter display
+   */
+  const updateQuestionCounter = () => {
+    const progress = Game.getProgress();
+    elements.questionCounter.textContent = `${progress.current}/${progress.total}`;
+  };
+
+  /**
    * Set the layout class based on player count
    */
   const setLayout = () => {
@@ -281,6 +289,7 @@ const App = (() => {
 
     Typography.fitAllAnswers();
     updateScores();
+    updateQuestionCounter();
   };
 
   /**
@@ -309,8 +318,9 @@ const App = (() => {
         Animations.flashCorrect(button);
       }
     } else {
-      // Wrong answer - only show in THIS player's zone
+      // Wrong answer - show lockout overlay and flash
       playSound('wrong');
+      Animations.showLockout(playerId);
       if (button) {
         Animations.flashWrong(button);
       }
@@ -327,7 +337,8 @@ const App = (() => {
       return;
     }
 
-    // Brief delay then show next question for THIS player only
+    // Delay before next question: 500ms for correct, 1000ms for wrong (lockout)
+    const delay = result.isCorrect ? 500 : 1000;
     setTimeout(() => {
       if (result.playerFinished) {
         showPlayerWaiting(playerId);
@@ -335,7 +346,8 @@ const App = (() => {
         displayPlayerQuestion(playerId);
         Typography.fitAllAnswers();
       }
-    }, 500);
+      updateQuestionCounter();
+    }, delay);
   };
 
   /**

@@ -29,7 +29,7 @@ A simple multiplayer trivia game with the following features:
 #### Answering System
 - **Independent Progression**: Each player progresses through questions at their own pace
 - **Correct answer**: Player scores a point and advances to next question
-- **Wrong answer**: No point, player advances to next question (no lockout)
+- **Wrong answer**: No point, 1-second lockout with red overlay, then advances to next question
 - **Effects are isolated**: Correct/wrong visual feedback only appears in the answering player's zone
 - Each player sees their 10 questions in a randomized order (anti-cheating)
 

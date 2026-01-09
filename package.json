@@ -4,7 +4,7 @@
   "description": "Multiplayer trivia game - Reference app for packaging HTML/JS to Android",
   "main": "src/index.html",
   "scripts": {
-    "serve": "npx serve src -p 8000",
+    "serve": "npx serve src -p 4444",
     "sync": "npx cap sync",
     "build:debug": "cd android && ./gradlew assembleDebug",
     "build:release": "cd android && ./gradlew bundleRelease"
@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "@capacitor/cli": "^5.0.0",
-    "serve": "^14.0.0"
+    "serve": "^14.0.0",
+    "typescript": "^5.9.3"
   }
 }
