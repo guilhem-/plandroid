@@ -298,24 +298,29 @@ This means watching another player's screen gives no advantage.
 
 ### Dynamic Typography
 
-Text size is **computed dynamically** using binary search to find the **largest font that fits**:
+Text size is **computed dynamically** using binary search to find the **largest font that fits both horizontally AND vertically**:
 
 ```javascript
 // Binary search for optimal font size
 function fitElementText(element, options) {
   const { minSize, maxSize, allowWrap } = options;
 
+  // Get container dimensions (both width AND height)
+  const maxWidth = element.clientWidth - padding;
+  const maxHeight = element.clientHeight - padding;
+
   // Create temporary element to measure text
   const measureEl = document.createElement('span');
   measureEl.textContent = element.textContent;
   measureEl.style.width = allowWrap ? maxWidth + 'px' : 'auto';
 
-  // Binary search: find largest size that fits
+  // Binary search: find largest size that fits BOTH dimensions
   let low = minSize, high = maxSize, optimal = minSize;
   while (low <= high) {
     const mid = Math.floor((low + high) / 2);
     measureEl.style.fontSize = mid + 'px';
 
+    // Check BOTH width AND height constraints
     if (measureEl.offsetWidth <= maxWidth &&
         measureEl.offsetHeight <= maxHeight) {
       optimal = mid;
@@ -330,15 +335,21 @@ function fitElementText(element, options) {
 
 | Element | Min Size | Max Size | Wrapping | Behavior |
 |---------|----------|----------|----------|----------|
-| Question text | 12px | 36px | Yes | Multi-line, largest fit |
+| Question text | 12px | 48px | Yes | Multi-line, largest fit |
 | Answer buttons | 10px | 28px | No | Single line, largest fit |
 | Player names | 12px | 18px | No | Truncate with ellipsis |
 | Score display | 14px | 28px | No | Fixed per breakpoint |
 
+**Dimension Constraints:**
+- **Horizontal**: Text width must not exceed container width (minus padding)
+- **Vertical**: Text height must not exceed container height (minus padding)
+- **Both checked**: Font size only accepted if it fits BOTH dimensions
+- **No overflow**: Prevents text from being clipped or causing scrollbars
+
 **Key Features:**
 - **Binary search** for efficient O(log n) font size calculation
 - **Accurate measurement** using temporary DOM elements
-- **Questions allow wrapping** for longer text
+- **Questions allow wrapping** for longer text (constrained by height)
 - **Buttons stay single-line** for quick readability
 - **Re-fits on resize** with debounced handler
 
