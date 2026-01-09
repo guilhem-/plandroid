@@ -176,6 +176,7 @@ Single player uses the entire screen, no rotation needed.
 #### Layout: 2 Players (Top/Bottom Split)
 
 Screen split horizontally. P1 at bottom (normal), P2 at top (rotated 180°).
+Each player gets exactly 50% of the screen.
 
 ```
 ┌─────────────────────────────────────────────────────────┐
@@ -207,24 +208,40 @@ Screen split horizontally. P1 at bottom (normal), P2 at top (rotated 180°).
 
 ---
 
-#### Layout: 3 Players (Triangle)
+#### Layout: 3 Players (Horizontal Strips)
 
-P1 at bottom (50% width), P2 and P3 share top half.
+Screen split into 3 equal horizontal strips. Each player gets ~33% of screen.
+**No 90° rotations** - only 0° and 180° to prevent overflow issues.
 
 ```
 ┌─────────────────────────────────────────────────────────┐
-│           PLAYER 3 ZONE    │    PLAYER 2 ZONE           │
-│           (top-left 25%)   │    (top-right 25%)         │
-│  ┌──────────────────────┐  │  ┌──────────────────────┐  │
-│  │ [P3]        [Score]  │  │  │ [P2]        [Score]  │  │
-│  │ Question...          │  │  │ Question...          │  │
-│  │ [A] [B] [C] [D]      │  │  │ [A] [B] [C] [D]      │  │
-│  └──────────────────────┘  │  └──────────────────────┘  │
-│       (rotated 270° CW)    │       (rotated 90° CW)     │
+│                                                         │
+│                    PLAYER 3 ZONE                        │
+│                    (top 33%)                            │
+│                                                         │
+│  ┌───────────────────────────────────────────────────┐  │
+│  │ [Name: Player 3]                      [Score: 2]  │  │
+│  │ Question: What is the largest ocean?              │  │
+│  │ [Pacific] [Atlantic] [Indian] [Arctic]            │  │
+│  └───────────────────────────────────────────────────┘  │
+│                    (rotated 180°)                       │
+│                                                         │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│                    PLAYER 2 ZONE                        │
+│                    (middle 33%)                         │
+│                                                         │
+│  ┌───────────────────────────────────────────────────┐  │
+│  │ [Name: Player 2]                      [Score: 5]  │  │
+│  │ Question: What color is the sun?                  │  │
+│  │ [Yellow] [White] [Orange] [Red]                   │  │
+│  └───────────────────────────────────────────────────┘  │
+│                    (rotated 180°)                       │
+│                                                         │
 ├─────────────────────────────────────────────────────────┤
 │                                                         │
 │                    PLAYER 1 ZONE                        │
-│                    (bottom 50%)                         │
+│                    (bottom 33%)                         │
 │                                                         │
 │  ┌───────────────────────────────────────────────────┐  │
 │  │ [Name: Player 1]                      [Score: 4]  │  │
@@ -238,45 +255,45 @@ P1 at bottom (50% width), P2 and P3 share top half.
 
 ---
 
-#### Layout: 4 Players (Quadrants)
+#### Layout: 4 Players (2x2 Quadrants)
 
-Screen split into 4 equal quadrants. Each player gets 25% of screen.
+Screen split into 4 equal quadrants. Each player gets exactly 25% of screen.
+**No 90° rotations** - only 0° and 180° to prevent overflow issues.
+Two players on bottom side (normal), two on top side (180°).
 
 ```
-┌─────────────────────────────────────────────────────────┐
-│                                                         │
-│                    PLAYER 3 ZONE                        │
-│                    (bottom 25%)                         │
-│                                                         │
-│  ┌───────────────────────────────────────────────────┐  │
-│  │ [Name: Player 1]                      [Score: 4]  │  │
-│  │ Question: What is the capital of France?          │  │
-│  │ [Paris] [London] [Berlin] [Madrid]                │  │
-│  └───────────────────────────────────────────────────┘  │
-│                     (rotated 180°)                      │
-├─────────────────────────────────────────────────────────┤
-│           PLAYER 4 ZONE    │    PLAYER 2 ZONE           │
-│           (left 25%)       │    (right 25%)             │
+┌────────────────────────────┬────────────────────────────┐
+│                            │                            │
+│       PLAYER 4 ZONE        │       PLAYER 3 ZONE        │
+│       (top-left 25%)       │       (top-right 25%)      │
+│                            │                            │
 │  ┌──────────────────────┐  │  ┌──────────────────────┐  │
-│  │ [P3]        [Score]  │  │  │ [P2]        [Score]  │  │
+│  │ [P4]        [Score]  │  │  │ [P3]        [Score]  │  │
 │  │ Question...          │  │  │ Question...          │  │
 │  │ [A] [B] [C] [D]      │  │  │ [A] [B] [C] [D]      │  │
 │  └──────────────────────┘  │  └──────────────────────┘  │
-│       (rotated 270° ACW)   │       (rotated 90° ACW)    │
-├─────────────────────────────────────────────────────────┤
-│                                                         │
-│                    PLAYER 1 ZONE                        │
-│                    (bottom 25%)                         │
-│                                                         │
-│  ┌───────────────────────────────────────────────────┐  │
-│  │ [Name: Player 1]                      [Score: 4]  │  │
-│  │ Question: What is the capital of France?          │  │
-│  │ [Paris] [London] [Berlin] [Madrid]                │  │
-│  └───────────────────────────────────────────────────┘  │
-│                  (normal orientation)                   │
-│                                                         │
-└─────────────────────────────────────────────────────────┘
+│       (rotated 180°)       │       (rotated 180°)       │
+│                            │                            │
+├────────────────────────────┼────────────────────────────┤
+│                            │                            │
+│       PLAYER 1 ZONE        │       PLAYER 2 ZONE        │
+│       (bottom-left 25%)    │       (bottom-right 25%)   │
+│                            │                            │
+│  ┌──────────────────────┐  │  ┌──────────────────────┐  │
+│  │ [P1]        [Score]  │  │  │ [P2]        [Score]  │  │
+│  │ Question...          │  │  │ Question...          │  │
+│  │ [A] [B] [C] [D]      │  │  │ [A] [B] [C] [D]      │  │
+│  └──────────────────────┘  │  └──────────────────────┘  │
+│     (normal orientation)   │     (normal orientation)   │
+│                            │                            │
+└────────────────────────────┴────────────────────────────┘
 ```
+
+**Layout Design Principles:**
+- **Static grid**: CSS grid with fixed percentages, no dynamic sizing
+- **No 90° rotations**: Only 0° and 180° rotations to prevent overflow
+- **Equal areas**: All players get the same screen percentage
+- **Clear boundaries**: Visible borders between zones
 
 ---
 
