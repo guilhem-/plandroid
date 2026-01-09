@@ -366,6 +366,13 @@ function fitElementText(element, options) {
 - **Buttons stay single-line** for quick readability
 - **Re-fits on resize** with debounced handler
 
+**Typography Isolation:**
+- Each player zone computes font sizes independently
+- Question text uses unique selector per zone (`#zone-0 .zone-question`, etc.)
+- Font size changes in one zone do NOT affect other zones
+- Each zone's container dimensions are measured separately
+- Prevents cross-zone style inheritance issues
+
 ### Mobile & Tablet Compatibility
 
 The application is optimized for various device sizes:
