@@ -310,9 +310,17 @@ function fitElementText(element, options) {
   const maxHeight = element.clientHeight - padding;
 
   // Create temporary element to measure text
+  // IMPORTANT: Use display:inline-block when wrapping to measure height correctly
   const measureEl = document.createElement('span');
   measureEl.textContent = element.textContent;
-  measureEl.style.width = allowWrap ? maxWidth + 'px' : 'auto';
+  if (allowWrap) {
+    measureEl.style.display = 'inline-block';  // Required for proper height measurement
+    measureEl.style.width = maxWidth + 'px';
+    measureEl.style.whiteSpace = 'normal';
+    measureEl.style.wordWrap = 'break-word';
+  } else {
+    measureEl.style.whiteSpace = 'nowrap';
+  }
 
   // Binary search: find largest size that fits BOTH dimensions
   let low = minSize, high = maxSize, optimal = minSize;
@@ -332,6 +340,11 @@ function fitElementText(element, options) {
   element.style.fontSize = optimal + 'px';
 }
 ```
+
+**Critical for Wrapped Text:**
+- `display: inline-block` is required for the measurement element when wrapping
+- Without it, `<span>` is inline and ignores width constraints
+- `word-wrap: break-word` ensures long words don't overflow
 
 | Element | Min Size | Max Size | Wrapping | Behavior |
 |---------|----------|----------|----------|----------|

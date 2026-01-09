@@ -41,7 +41,9 @@ const Typography = (() => {
       font-family: ${style.fontFamily};
       font-weight: ${style.fontWeight};
       line-height: ${style.lineHeight};
-      ${allowWrap ? `width: ${maxWidth}px; white-space: normal;` : 'white-space: nowrap;'}
+      ${allowWrap
+        ? `display: inline-block; width: ${maxWidth}px; white-space: normal; word-wrap: break-word;`
+        : 'white-space: nowrap;'}
     `;
     measureEl.textContent = text;
     document.body.appendChild(measureEl);
