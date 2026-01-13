@@ -26,3 +26,7 @@ npm-debug.log*
 
 # Capacitor
 android/app/src/main/assets/public/
+
+# Playwright
+playwright-report/
+test-results/
