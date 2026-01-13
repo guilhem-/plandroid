@@ -27,11 +27,10 @@ test.describe('Start Screen', () => {
   test('should change player count on button click', async ({ page }) => {
     await page.goto('/');
 
-    // Click 3 players button
-    await page.locator('.btn-count[data-count="3"]').click();
-
-    const activeCount = page.locator('.btn-count.active');
-    await expect(activeCount).toHaveText('3');
+    // Click 3 players button and wait for it to become active
+    const btn3 = page.locator('.btn-count[data-count="3"]');
+    await btn3.click();
+    await expect(btn3).toHaveClass(/active/);
   });
 
   test('should show correct number of name inputs', async ({ page }) => {
@@ -42,7 +41,9 @@ test.describe('Start Screen', () => {
     await expect(nameInputs).toHaveCount(2);
 
     // Switch to 4 players
-    await page.locator('.btn-count[data-count="4"]').click();
+    const btn4 = page.locator('.btn-count[data-count="4"]');
+    await btn4.click();
+    await expect(btn4).toHaveClass(/active/);
     nameInputs = page.locator('.player-name-input');
     await expect(nameInputs).toHaveCount(4);
   });
@@ -72,7 +73,9 @@ test.describe('Game Screen', () => {
     await page.goto('/');
 
     // Ensure 2 players selected (default)
-    await page.locator('.btn-count[data-count="2"]').click();
+    const btn2 = page.locator('.btn-count[data-count="2"]');
+    await btn2.click();
+    await expect(btn2).toHaveClass(/active/);
     await page.locator('#btn-start').click();
 
     const answersArea = page.locator('#answers-area');
@@ -82,7 +85,9 @@ test.describe('Game Screen', () => {
   test('should display correct layout for 3 players', async ({ page }) => {
     await page.goto('/');
 
-    await page.locator('.btn-count[data-count="3"]').click();
+    const btn3 = page.locator('.btn-count[data-count="3"]');
+    await btn3.click();
+    await expect(btn3).toHaveClass(/active/);
     await page.locator('#btn-start').click();
 
     const answersArea = page.locator('#answers-area');
@@ -92,7 +97,9 @@ test.describe('Game Screen', () => {
   test('should display correct layout for 4 players', async ({ page }) => {
     await page.goto('/');
 
-    await page.locator('.btn-count[data-count="4"]').click();
+    const btn4 = page.locator('.btn-count[data-count="4"]');
+    await btn4.click();
+    await expect(btn4).toHaveClass(/active/);
     await page.locator('#btn-start').click();
 
     const answersArea = page.locator('#answers-area');
