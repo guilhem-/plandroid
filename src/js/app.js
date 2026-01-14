@@ -344,7 +344,7 @@ const App = (() => {
         showPlayerWaiting(playerId);
       } else {
         displayPlayerQuestion(playerId);
-        Typography.fitAllAnswers();
+        Typography.fitPlayerZone(playerId);
       }
       updateQuestionCounter();
     }, delay);

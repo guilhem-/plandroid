@@ -2,126 +2,85 @@ import { test, expect } from '@playwright/test';
 
 // Visual tests that capture screenshots of each layout for manual review
 // Screenshots are saved to tests/screenshots/
+// Run with: npm test -- --project=chromium tests/visual.spec.ts
 
-test.describe('Visual Layout Tests', () => {
-  test.beforeEach(async ({ page }) => {
-    // Set a consistent viewport for screenshots
-    await page.setViewportSize({ width: 800, height: 600 });
-  });
+// Device viewport configurations to test
+const VIEWPORTS = {
+  'phone-portrait': { width: 375, height: 667 },      // iPhone SE
+  'phone-landscape': { width: 667, height: 375 },     // iPhone SE landscape
+  'phone-tall': { width: 390, height: 844 },          // iPhone 14
+  'tablet-portrait': { width: 768, height: 1024 },    // iPad
+  'tablet-landscape': { width: 1024, height: 768 },   // iPad landscape
+  'desktop': { width: 1280, height: 800 },            // Desktop
+};
 
-  test('capture start screen', async ({ page }) => {
+type ViewportName = keyof typeof VIEWPORTS;
+
+const PLAYER_COUNTS = [1, 2, 3, 4] as const;
+
+test.describe('Visual Layout Tests - All Configurations', () => {
+  // Generate tests for each player count and viewport combination
+  for (const playerCount of PLAYER_COUNTS) {
+    for (const [viewportName, viewport] of Object.entries(VIEWPORTS) as [ViewportName, { width: number; height: number }][]) {
+      test(`${playerCount}-player layout on ${viewportName}`, async ({ page }) => {
+        await page.setViewportSize(viewport);
+        await page.goto('/');
+        await page.waitForLoadState('networkidle');
+
+        // Select player count
+        await page.locator(`.btn-count[data-count="${playerCount}"]`).click();
+        await page.locator('#btn-start').click();
+
+        // Wait for game to load
+        await expect(page.locator('#screen-game')).toHaveClass(/active/);
+        await page.waitForTimeout(800); // Let typography settle
+
+        // Verify all zones are visible for this player count
+        for (let i = 0; i < playerCount; i++) {
+          const zone = page.locator(`#zone-${i}`);
+          await expect(zone).toBeVisible();
+
+          // Verify all 4 answer buttons exist in each zone
+          const answerButtons = zone.locator('.btn-answer');
+          await expect(answerButtons).toHaveCount(4);
+        }
+
+        // Save screenshot
+        const filename = `layout-${playerCount}p-${viewportName}.png`;
+        await page.screenshot({
+          path: `tests/screenshots/${filename}`,
+          fullPage: true
+        });
+      });
+    }
+  }
+});
+
+test.describe('Visual UI Elements', () => {
+  test('start screen - phone', async ({ page }) => {
+    await page.setViewportSize(VIEWPORTS['phone-portrait']);
     await page.goto('/');
     await page.waitForLoadState('networkidle');
 
     await page.screenshot({
-      path: 'tests/screenshots/01-start-screen.png',
+      path: 'tests/screenshots/ui-start-phone.png',
       fullPage: true
     });
   });
 
-  test('capture 1-player layout', async ({ page }) => {
+  test('start screen - tablet', async ({ page }) => {
+    await page.setViewportSize(VIEWPORTS['tablet-portrait']);
     await page.goto('/');
-    await page.locator('.btn-count[data-count="1"]').click();
-    await page.locator('#btn-start').click();
-
-    // Wait for game to load
-    await expect(page.locator('#screen-game')).toHaveClass(/active/);
-    await page.waitForTimeout(500); // Let typography settle
+    await page.waitForLoadState('networkidle');
 
     await page.screenshot({
-      path: 'tests/screenshots/02-layout-1-player.png',
+      path: 'tests/screenshots/ui-start-tablet.png',
       fullPage: true
     });
   });
 
-  test('capture 2-player layout', async ({ page }) => {
-    await page.goto('/');
-    await page.locator('.btn-count[data-count="2"]').click();
-    await page.locator('#btn-start').click();
-
-    await expect(page.locator('#screen-game')).toHaveClass(/active/);
-    await page.waitForTimeout(500);
-
-    await page.screenshot({
-      path: 'tests/screenshots/03-layout-2-player.png',
-      fullPage: true
-    });
-  });
-
-  test('capture 3-player layout', async ({ page }) => {
-    await page.goto('/');
-    await page.locator('.btn-count[data-count="3"]').click();
-    await page.locator('#btn-start').click();
-
-    await expect(page.locator('#screen-game')).toHaveClass(/active/);
-    await page.waitForTimeout(500);
-
-    await page.screenshot({
-      path: 'tests/screenshots/04-layout-3-player.png',
-      fullPage: true
-    });
-  });
-
-  test('capture 4-player layout', async ({ page }) => {
-    await page.goto('/');
-    await page.locator('.btn-count[data-count="4"]').click();
-    await page.locator('#btn-start').click();
-
-    await expect(page.locator('#screen-game')).toHaveClass(/active/);
-    await page.waitForTimeout(500);
-
-    await page.screenshot({
-      path: 'tests/screenshots/05-layout-4-player.png',
-      fullPage: true
-    });
-  });
-
-  test('capture 4-player layout - tablet portrait', async ({ page }) => {
-    await page.setViewportSize({ width: 768, height: 1024 });
-    await page.goto('/');
-    await page.locator('.btn-count[data-count="4"]').click();
-    await page.locator('#btn-start').click();
-
-    await expect(page.locator('#screen-game')).toHaveClass(/active/);
-    await page.waitForTimeout(500);
-
-    await page.screenshot({
-      path: 'tests/screenshots/06-layout-4-player-tablet-portrait.png',
-      fullPage: true
-    });
-  });
-
-  test('capture 4-player layout - tablet landscape', async ({ page }) => {
-    await page.setViewportSize({ width: 1024, height: 768 });
-    await page.goto('/');
-    await page.locator('.btn-count[data-count="4"]').click();
-    await page.locator('#btn-start').click();
-
-    await expect(page.locator('#screen-game')).toHaveClass(/active/);
-    await page.waitForTimeout(500);
-
-    await page.screenshot({
-      path: 'tests/screenshots/07-layout-4-player-tablet-landscape.png',
-      fullPage: true
-    });
-  });
-
-  test('capture 3-player layout - tablet portrait', async ({ page }) => {
-    await page.setViewportSize({ width: 768, height: 1024 });
-    await page.goto('/');
-    await page.locator('.btn-count[data-count="3"]').click();
-    await page.locator('#btn-start').click();
-
-    await expect(page.locator('#screen-game')).toHaveClass(/active/);
-    await page.waitForTimeout(500);
-
-    await page.screenshot({
-      path: 'tests/screenshots/08-layout-3-player-tablet-portrait.png',
-      fullPage: true
-    });
-  });
-
-  test('capture results screen', async ({ page }) => {
+  test('results screen', async ({ page }) => {
+    await page.setViewportSize(VIEWPORTS['phone-portrait']);
     await page.goto('/');
     await page.locator('.btn-count[data-count="1"]').click();
     await page.locator('#btn-start').click();
@@ -135,11 +94,76 @@ test.describe('Visual Layout Tests', () => {
       }
     }
 
-    await expect(page.locator('#screen-results')).toHaveClass(/active/, { timeout: 5000 });
+    await expect(page.locator('#screen-results')).toHaveClass(/active/, { timeout: 10000 });
     await page.waitForTimeout(500);
 
     await page.screenshot({
-      path: 'tests/screenshots/09-results-screen.png',
+      path: 'tests/screenshots/ui-results.png',
+      fullPage: true
+    });
+  });
+});
+
+test.describe('Visual Button States', () => {
+  test('answer button states - correct and wrong', async ({ page }) => {
+    await page.setViewportSize(VIEWPORTS['phone-portrait']);
+    await page.goto('/');
+    await page.locator('.btn-count[data-count="1"]').click();
+    await page.locator('#btn-start').click();
+
+    await expect(page.locator('#screen-game')).toHaveClass(/active/);
+    await page.waitForTimeout(500);
+
+    // Click the first answer button
+    await page.locator('#zone-0 .btn-answer').first().click();
+
+    // Capture the state showing correct/wrong feedback
+    await page.waitForTimeout(200);
+    await page.screenshot({
+      path: 'tests/screenshots/ui-answer-feedback.png',
+      fullPage: true
+    });
+  });
+
+  test('waiting state after player finishes', async ({ page }) => {
+    await page.setViewportSize(VIEWPORTS['tablet-portrait']);
+    await page.goto('/');
+    await page.locator('.btn-count[data-count="2"]').click();
+    await page.locator('#btn-start').click();
+
+    await expect(page.locator('#screen-game')).toHaveClass(/active/);
+
+    // Answer all questions for player 1 only
+    for (let i = 0; i < 10; i++) {
+      const answerBtn = page.locator('#zone-0 .btn-answer').first();
+      if (await answerBtn.isVisible()) {
+        await answerBtn.click();
+        await page.waitForTimeout(600);
+      }
+    }
+
+    // Player 1 should now be in waiting state
+    await page.waitForTimeout(300);
+    await page.screenshot({
+      path: 'tests/screenshots/ui-waiting-state.png',
+      fullPage: true
+    });
+  });
+});
+
+test.describe('Visual Text Sizing', () => {
+  test('long question text handling', async ({ page }) => {
+    // Use a larger viewport to better see text sizing
+    await page.setViewportSize(VIEWPORTS['tablet-landscape']);
+    await page.goto('/');
+    await page.locator('.btn-count[data-count="4"]').click();
+    await page.locator('#btn-start').click();
+
+    await expect(page.locator('#screen-game')).toHaveClass(/active/);
+    await page.waitForTimeout(1000); // Give typography more time to settle
+
+    await page.screenshot({
+      path: 'tests/screenshots/ui-text-sizing.png',
       fullPage: true
     });
   });

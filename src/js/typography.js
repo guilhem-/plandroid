@@ -1,52 +1,40 @@
 /**
  * typography.js - Dynamic text fitting module
  * Computes optimal font size to fit text within containers
+ *
+ * Strategy: Use direct overflow detection on the actual element.
+ * This works correctly for all writing-modes because the browser
+ * handles the layout context properly.
  */
 
 const Typography = (() => {
   /**
+   * Check if an element's content overflows its container
+   * Works correctly regardless of writing-mode
+   */
+  const isOverflowing = (element) => {
+    // scrollWidth/scrollHeight include overflow content
+    // clientWidth/clientHeight are the visible area
+    return element.scrollWidth > element.clientWidth ||
+           element.scrollHeight > element.clientHeight;
+  };
+
+  /**
    * Fit text inside an element by adjusting font size (binary search)
+   * Uses direct overflow detection on the actual element
    * @param {HTMLElement} element - The element containing text
    * @param {object} options - Configuration options
    */
   const fitElementText = (element, options = {}) => {
     const {
       minSize = 10,
-      maxSize = 32,
-      padding = 8,
-      allowWrap = false
+      maxSize = 32
     } = options;
 
-    if (!element || !element.textContent.trim()) return;
+    if (!element || !element.textContent.trim()) return minSize;
 
-    const text = element.textContent.trim();
-
-    // Get element dimensions (accounting for padding)
-    const style = getComputedStyle(element);
-    const paddingLeft = parseFloat(style.paddingLeft) || padding;
-    const paddingRight = parseFloat(style.paddingRight) || padding;
-    const paddingTop = parseFloat(style.paddingTop) || padding;
-    const paddingBottom = parseFloat(style.paddingBottom) || padding;
-
-    const maxWidth = element.clientWidth - paddingLeft - paddingRight;
-    const maxHeight = element.clientHeight - paddingTop - paddingBottom;
-
-    if (maxWidth <= 0 || maxHeight <= 0) return;
-
-    // Create a temporary element to measure text
-    const measureEl = document.createElement('span');
-    measureEl.style.cssText = `
-      position: absolute;
-      visibility: hidden;
-      font-family: ${style.fontFamily};
-      font-weight: ${style.fontWeight};
-      line-height: ${style.lineHeight};
-      ${allowWrap
-        ? `display: inline-block; width: ${maxWidth}px; white-space: normal; word-wrap: break-word;`
-        : 'white-space: nowrap;'}
-    `;
-    measureEl.textContent = text;
-    document.body.appendChild(measureEl);
+    // Store original font size to restore if needed
+    const originalFontSize = element.style.fontSize;
 
     // Binary search for optimal font size
     let low = minSize;
@@ -55,21 +43,16 @@ const Typography = (() => {
 
     while (low <= high) {
       const mid = Math.floor((low + high) / 2);
-      measureEl.style.fontSize = `${mid}px`;
+      element.style.fontSize = `${mid}px`;
 
-      const textWidth = measureEl.offsetWidth;
-      const textHeight = measureEl.offsetHeight;
-
-      if (textWidth <= maxWidth && textHeight <= maxHeight) {
+      // Check if content overflows at this size
+      if (!isOverflowing(element)) {
         optimalSize = mid;
-        low = mid + 1;
+        low = mid + 1; // Try larger
       } else {
-        high = mid - 1;
+        high = mid - 1; // Try smaller
       }
     }
-
-    // Clean up
-    document.body.removeChild(measureEl);
 
     // Apply the optimal font size
     element.style.fontSize = `${optimalSize}px`;
@@ -102,17 +85,41 @@ const Typography = (() => {
   };
 
   /**
+   * Fit text for a specific player's zone only
+   */
+  const fitPlayerZone = (playerId) => {
+    requestAnimationFrame(() => {
+      // Fit this player's question
+      const q = document.querySelector(`.zone-question-${playerId}`);
+      if (q && q.textContent.trim() && !q.closest('.hidden') && !q.closest('.waiting')) {
+        fitQuestion(q);
+      }
+
+      // Fit this player's answer buttons
+      const zone = document.getElementById(`zone-${playerId}`);
+      if (zone) {
+        zone.querySelectorAll('.btn-answer').forEach(btn => {
+          if (btn.textContent.trim() && !btn.closest('.hidden')) {
+            fitAnswer(btn);
+          }
+        });
+      }
+    });
+  };
+
+  /**
    * Fit all text elements on screen
    */
   const fitAllAnswers = () => {
     // Use requestAnimationFrame to ensure DOM is ready
     requestAnimationFrame(() => {
-      // Fit questions first (they determine available space context)
-      document.querySelectorAll('.zone-question').forEach(q => {
-        if (q.textContent.trim() && !q.closest('.hidden') && !q.closest('.waiting')) {
+      // Fit questions for each player independently using player-specific classes
+      for (let i = 0; i < 4; i++) {
+        const q = document.querySelector(`.zone-question-${i}`);
+        if (q && q.textContent.trim() && !q.closest('.hidden') && !q.closest('.waiting')) {
           fitQuestion(q);
         }
-      });
+      }
 
       // Then fit answer buttons
       document.querySelectorAll('.btn-answer').forEach(btn => {
@@ -134,6 +141,7 @@ const Typography = (() => {
   return {
     fitQuestion,
     fitAnswer,
+    fitPlayerZone,
     fitAllAnswers,
     fitElementText,
     truncate

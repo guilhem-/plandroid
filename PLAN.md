@@ -210,13 +210,19 @@ Each player gets exactly 50% of the screen.
 
 #### Layout: 3 Players (Triangle - Cross Pattern)
 
-P1 at bottom (full width), P2 top-right (90° CW), P3 top-left (90° CCW).
-Uses 90° rotations so players can sit on different edges of the device.
+P1 at bottom (full width), P2 top-right (90° via writing-mode), P3 top-left (-90° via writing-mode).
+Uses CSS `writing-mode` for vertical text orientation - NO transform rotations.
 
 **Space allocation:**
 - P1: 100% width × 50% height = 50% of screen
-- P2: 50% width × 50% height = 25% of screen
-- P3: 50% width × 50% height = 25% of screen
+- P2: 50% width × 50% height = 25% of screen (writing-mode: sideways-lr)
+- P3: 50% width × 50% height = 25% of screen (writing-mode: vertical-rl)
+
+**Writing-mode implementation:**
+- Right zones (P2): `writing-mode: sideways-lr` - text reads bottom to top
+- Left zones (P3): `writing-mode: vertical-rl` - text reads top to bottom
+- Zone-answers: `display: flex` with 2 columns minimum (4 if zone height allows)
+- Button text may need rotation for readability
 
 ```
 ┌────────────────────────────┬────────────────────────────┐
@@ -229,7 +235,7 @@ Uses 90° rotations so players can sit on different edges of the device.
 │  │ Question...          │  │  │ Question...          │  │
 │  │ [A] [B] [C] [D]      │  │  │ [A] [B] [C] [D]      │  │
 │  └──────────────────────┘  │  └──────────────────────┘  │
-│      (rotated 90° CCW)     │      (rotated 90° CW)      │
+│   (writing-mode: vertical) │   (writing-mode: sideways) │
 │                            │                            │
 ├────────────────────────────┴────────────────────────────┤
 │                                                         │
@@ -251,13 +257,19 @@ Uses 90° rotations so players can sit on different edges of the device.
 #### Layout: 4 Players (Cross Pattern)
 
 Each player sits on a different edge of the device. Equal 25% space each.
-Uses grid with 1:2:1 row ratio (25%, 50%, 25%).
+Uses grid with 1:2:1 column and row ratios.
 
 **Space allocation:**
-- P1 (bottom): 100% width × 25% height = 25%
-- P2 (right):  50% width × 50% height = 25% (rotated 90° CW)
-- P3 (top):    100% width × 25% height = 25% (rotated 180°)
-- P4 (left):   50% width × 50% height = 25% (rotated 90° CCW)
+- P1 (bottom): center × 25% height = 25% (normal)
+- P2 (right):  25% width × full height = 25% (writing-mode: sideways-lr)
+- P3 (top):    center × 25% height = 25% (rotated 180°)
+- P4 (left):   25% width × full height = 25% (writing-mode: vertical-rl)
+
+**Writing-mode implementation:**
+- Right zone (P2): `writing-mode: sideways-lr` - text reads bottom to top
+- Left zone (P4): `writing-mode: vertical-rl` - text reads top to bottom
+- Top/bottom zones use normal or 180° rotation
+- Zone-answers: `display: flex` with 2 columns minimum
 
 ```
 ┌─────────────────────────────────────────────────────────┐
@@ -275,7 +287,7 @@ Uses grid with 1:2:1 row ratio (25%, 50%, 25%).
 │  │ Question...          │  │  │ Question...          │  │
 │  │ [A] [B] [C] [D]      │  │  │ [A] [B] [C] [D]      │  │
 │  └──────────────────────┘  │  └──────────────────────┘  │
-│      (rotated 90° CCW)     │      (rotated 90° CW)      │
+│   (writing-mode: vertical) │   (writing-mode: sideways) │
 │                            │                            │
 ├────────────────────────────┴────────────────────────────┤
 │                    PLAYER 1 ZONE                        │
@@ -286,10 +298,10 @@ Uses grid with 1:2:1 row ratio (25%, 50%, 25%).
 ```
 
 **Layout Implementation Notes:**
-- Grid: `grid-template-rows: 1fr 2fr 1fr` creates 25%/50%/25% split
-- 90° rotated zones: Content sized to fit within cell after rotation
+- Grid: `grid-template-columns: 1fr 2fr 1fr` and `grid-template-rows: 1fr 2fr 1fr`
+- Side zones use `writing-mode` for vertical text - NO transform rotations on zones
 - `overflow: hidden` on all zones prevents any visual overflow
-- Content uses viewport-aware sizing for rotated cells
+- Zone-answers uses flexbox with 2-column layout minimum
 
 ---
 
