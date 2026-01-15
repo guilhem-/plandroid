@@ -154,9 +154,15 @@ button, input, select {
 }
 
 .player-count-selector,
-.round-count-selector {
+.round-count-selector,
+.question-file-selector {
   display: flex;
   gap: 12px;
+}
+
+.question-file-selector .btn-count {
+  width: auto;
+  padding: 0 16px;
 }
 
 .btn-count {

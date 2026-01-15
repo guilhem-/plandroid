@@ -33,10 +33,11 @@ const Game = (() => {
 
   /**
    * Load questions from JSON file
+   * @param {string} file - Question file name (without .json extension)
    */
-  const loadQuestions = async () => {
+  const loadQuestions = async (file = 'questions') => {
     try {
-      const response = await fetch('data/questions.json');
+      const response = await fetch(`data/${file}.json`);
       const data = await response.json();
       allQuestions = data.questions || [];
       return true;

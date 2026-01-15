@@ -20,6 +20,10 @@
     "timeUp": "Temps ecoule!",
     "selectLanguage": "Langue",
     "finalScore": "{{score}} pts",
-    "waiting": "En attente..."
+    "waiting": "En attente...",
+    "questions": "Questions",
+    "themeGeneral": "General",
+    "themeAnimals": "Animaux",
+    "themeCAH": "CAH"
   }
 }

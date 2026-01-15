@@ -27,6 +27,7 @@ const App = (() => {
 
   let playerCount = 2;
   let roundCount = 1;
+  let questionFile = 'questions';
 
   /**
    * Load saved player names from localStorage
@@ -205,6 +206,21 @@ const App = (() => {
     document.querySelectorAll('.round-count-selector .btn-count').forEach(btn => {
       btn.classList.toggle('active', parseInt(btn.dataset.rounds) === count);
     });
+  };
+
+  /**
+   * Update question file selector
+   */
+  const updateQuestionFile = async (file) => {
+    questionFile = file;
+
+    // Update button states
+    document.querySelectorAll('.question-file-selector .btn-count').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.file === file);
+    });
+
+    // Reload questions with new file
+    await Game.loadQuestions(file);
   };
 
   /**
@@ -592,6 +608,13 @@ const App = (() => {
     document.querySelectorAll('.round-count-selector .btn-count').forEach(btn => {
       btn.addEventListener('click', () => {
         updateRoundCount(parseInt(btn.dataset.rounds));
+      });
+    });
+
+    // Question file selection
+    document.querySelectorAll('.question-file-selector .btn-count').forEach(btn => {
+      btn.addEventListener('click', () => {
+        updateQuestionFile(btn.dataset.file);
       });
     });
 

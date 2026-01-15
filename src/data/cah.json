@@ -1,0 +1,1707 @@
+{
+  "version": "1.0",
+  "totalQuestions": 100,
+  "categories": ["pop-culture", "history", "science", "politics", "celebrities"],
+  "questions": [
+    {
+      "id": 1,
+      "category": "pop-culture",
+      "question": {
+        "en": "What did Britney Spears shave off in her 2007 breakdown?",
+        "fr": "Qu'est-ce que Britney Spears a rase lors de sa crise de 2007?",
+        "es": "Que se afeito Britney Spears en su crisis de 2007?",
+        "de": "Was hat Britney Spears bei ihrem Zusammenbruch 2007 abrasiert?"
+      },
+      "answers": {
+        "en": ["Her head", "Her eyebrows", "Her legs", "Her dog"],
+        "fr": ["Sa tete", "Ses sourcils", "Ses jambes", "Son chien"],
+        "es": ["Su cabeza", "Sus cejas", "Sus piernas", "Su perro"],
+        "de": ["Ihren Kopf", "Ihre Augenbrauen", "Ihre Beine", "Ihren Hund"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 2,
+      "category": "history",
+      "question": {
+        "en": "Which US president got stuck in a bathtub?",
+        "fr": "Quel president americain est reste coince dans une baignoire?",
+        "es": "Que presidente de EEUU se quedo atascado en una banera?",
+        "de": "Welcher US-Praesident blieb in einer Badewanne stecken?"
+      },
+      "answers": {
+        "en": ["William Taft", "Grover Cleveland", "Teddy Roosevelt", "Lincoln"],
+        "fr": ["William Taft", "Grover Cleveland", "Teddy Roosevelt", "Lincoln"],
+        "es": ["William Taft", "Grover Cleveland", "Teddy Roosevelt", "Lincoln"],
+        "de": ["William Taft", "Grover Cleveland", "Teddy Roosevelt", "Lincoln"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 3,
+      "category": "science",
+      "question": {
+        "en": "What animal can delay pregnancy for up to 2 years?",
+        "fr": "Quel animal peut retarder sa grossesse jusqu'a 2 ans?",
+        "es": "Que animal puede retrasar su embarazo hasta 2 anos?",
+        "de": "Welches Tier kann seine Schwangerschaft bis zu 2 Jahre verzoegern?"
+      },
+      "answers": {
+        "en": ["Armadillo", "Sloth", "Koala", "Panda"],
+        "fr": ["Tatou", "Paresseux", "Koala", "Panda"],
+        "es": ["Armadillo", "Perezoso", "Koala", "Panda"],
+        "de": ["Guerteltier", "Faultier", "Koala", "Panda"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 4,
+      "category": "celebrities",
+      "question": {
+        "en": "Which celebrity named their kid 'Apple'?",
+        "fr": "Quelle celebrite a appele son enfant 'Apple'?",
+        "es": "Que celebridad llamo a su hijo 'Apple'?",
+        "de": "Welcher Promi nannte sein Kind 'Apple'?"
+      },
+      "answers": {
+        "en": ["Gwyneth Paltrow", "Kim Kardashian", "Beyonce", "Madonna"],
+        "fr": ["Gwyneth Paltrow", "Kim Kardashian", "Beyonce", "Madonna"],
+        "es": ["Gwyneth Paltrow", "Kim Kardashian", "Beyonce", "Madonna"],
+        "de": ["Gwyneth Paltrow", "Kim Kardashian", "Beyonce", "Madonna"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 5,
+      "category": "history",
+      "question": {
+        "en": "What was sold in vending machines in 1950s America?",
+        "fr": "Qu'est-ce qui etait vendu dans des distributeurs en Amerique des annees 50?",
+        "es": "Que se vendia en maquinas expendedoras en EEUU en los anos 50?",
+        "de": "Was wurde in den 1950er Jahren in den USA aus Automaten verkauft?"
+      },
+      "answers": {
+        "en": ["Cigarettes", "Handguns", "Live lobsters", "All of these"],
+        "fr": ["Cigarettes", "Pistolets", "Homards vivants", "Tout cela"],
+        "es": ["Cigarrillos", "Pistolas", "Langostas vivas", "Todo esto"],
+        "de": ["Zigaretten", "Pistolen", "Lebende Hummer", "Alles davon"]
+      },
+      "correct": 3
+    },
+    {
+      "id": 6,
+      "category": "pop-culture",
+      "question": {
+        "en": "What body part did Van Gogh famously cut off?",
+        "fr": "Quelle partie du corps Van Gogh a-t-il coupe?",
+        "es": "Que parte del cuerpo se corto Van Gogh?",
+        "de": "Welches Koerperteil hat Van Gogh sich abgeschnitten?"
+      },
+      "answers": {
+        "en": ["His ear", "His finger", "His nose", "His toe"],
+        "fr": ["Son oreille", "Son doigt", "Son nez", "Son orteil"],
+        "es": ["Su oreja", "Su dedo", "Su nariz", "Su dedo del pie"],
+        "de": ["Sein Ohr", "Seinen Finger", "Seine Nase", "Seinen Zeh"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 7,
+      "category": "science",
+      "question": {
+        "en": "How many times does the average person fart per day?",
+        "fr": "Combien de fois une personne moyenne pete-t-elle par jour?",
+        "es": "Cuantas veces se tira pedos una persona promedio al dia?",
+        "de": "Wie oft furzt ein Mensch durchschnittlich pro Tag?"
+      },
+      "answers": {
+        "en": ["14 times", "5 times", "25 times", "2 times"],
+        "fr": ["14 fois", "5 fois", "25 fois", "2 fois"],
+        "es": ["14 veces", "5 veces", "25 veces", "2 veces"],
+        "de": ["14 mal", "5 mal", "25 mal", "2 mal"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 8,
+      "category": "politics",
+      "question": {
+        "en": "Which world leader was a certified yoga instructor?",
+        "fr": "Quel dirigeant mondial etait professeur de yoga certifie?",
+        "es": "Que lider mundial era instructor de yoga certificado?",
+        "de": "Welcher Staatschef war zertifizierter Yogalehrer?"
+      },
+      "answers": {
+        "en": ["Justin Trudeau", "Obama", "Macron", "Boris Johnson"],
+        "fr": ["Justin Trudeau", "Obama", "Macron", "Boris Johnson"],
+        "es": ["Justin Trudeau", "Obama", "Macron", "Boris Johnson"],
+        "de": ["Justin Trudeau", "Obama", "Macron", "Boris Johnson"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 9,
+      "category": "celebrities",
+      "question": {
+        "en": "Which rapper's real name is Calvin Broadus?",
+        "fr": "Quel rappeur s'appelle vraiment Calvin Broadus?",
+        "es": "Que rapero se llama realmente Calvin Broadus?",
+        "de": "Welcher Rapper heisst wirklich Calvin Broadus?"
+      },
+      "answers": {
+        "en": ["Snoop Dogg", "Eminem", "50 Cent", "Ice Cube"],
+        "fr": ["Snoop Dogg", "Eminem", "50 Cent", "Ice Cube"],
+        "es": ["Snoop Dogg", "Eminem", "50 Cent", "Ice Cube"],
+        "de": ["Snoop Dogg", "Eminem", "50 Cent", "Ice Cube"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 10,
+      "category": "history",
+      "question": {
+        "en": "What did ancient Romans use as mouthwash?",
+        "fr": "Qu'utilisaient les Romains comme bain de bouche?",
+        "es": "Que usaban los romanos como enjuague bucal?",
+        "de": "Was benutzten die alten Roemer als Mundwasser?"
+      },
+      "answers": {
+        "en": ["Urine", "Wine", "Olive oil", "Salt water"],
+        "fr": ["Urine", "Vin", "Huile d'olive", "Eau salee"],
+        "es": ["Orina", "Vino", "Aceite de oliva", "Agua salada"],
+        "de": ["Urin", "Wein", "Olivenoel", "Salzwasser"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 11,
+      "category": "science",
+      "question": {
+        "en": "What percent of your DNA do you share with a banana?",
+        "fr": "Quel pourcentage d'ADN partagez-vous avec une banane?",
+        "es": "Que porcentaje de ADN compartes con un platano?",
+        "de": "Wie viel Prozent deiner DNA teilst du mit einer Banane?"
+      },
+      "answers": {
+        "en": ["60%", "10%", "90%", "5%"],
+        "fr": ["60%", "10%", "90%", "5%"],
+        "es": ["60%", "10%", "90%", "5%"],
+        "de": ["60%", "10%", "90%", "5%"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 12,
+      "category": "pop-culture",
+      "question": {
+        "en": "What was the original color of Coca-Cola?",
+        "fr": "Quelle etait la couleur originale du Coca-Cola?",
+        "es": "Cual era el color original de Coca-Cola?",
+        "de": "Was war die urspruengliche Farbe von Coca-Cola?"
+      },
+      "answers": {
+        "en": ["Green", "Brown", "Clear", "Red"],
+        "fr": ["Vert", "Marron", "Transparent", "Rouge"],
+        "es": ["Verde", "Marron", "Transparente", "Rojo"],
+        "de": ["Gruen", "Braun", "Klar", "Rot"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 13,
+      "category": "celebrities",
+      "question": {
+        "en": "Which actor has a pilot's license for Boeing 747s?",
+        "fr": "Quel acteur a une licence de pilote pour Boeing 747?",
+        "es": "Que actor tiene licencia de piloto para Boeing 747?",
+        "de": "Welcher Schauspieler hat einen Pilotenschein fuer Boeing 747?"
+      },
+      "answers": {
+        "en": ["John Travolta", "Tom Cruise", "Brad Pitt", "George Clooney"],
+        "fr": ["John Travolta", "Tom Cruise", "Brad Pitt", "George Clooney"],
+        "es": ["John Travolta", "Tom Cruise", "Brad Pitt", "George Clooney"],
+        "de": ["John Travolta", "Tom Cruise", "Brad Pitt", "George Clooney"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 14,
+      "category": "history",
+      "question": {
+        "en": "What did Cleopatra allegedly use as a vibrator?",
+        "fr": "Qu'est-ce que Cleopatre aurait utilise comme vibrateur?",
+        "es": "Que supuestamente uso Cleopatra como vibrador?",
+        "de": "Was soll Kleopatra angeblich als Vibrator benutzt haben?"
+      },
+      "answers": {
+        "en": ["A gourd of bees", "A snake", "A fish", "A carved stone"],
+        "fr": ["Une gourde d'abeilles", "Un serpent", "Un poisson", "Une pierre sculptee"],
+        "es": ["Una calabaza con abejas", "Una serpiente", "Un pez", "Una piedra tallada"],
+        "de": ["Ein Kuerbis mit Bienen", "Eine Schlange", "Ein Fisch", "Ein geschnitzter Stein"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 15,
+      "category": "science",
+      "question": {
+        "en": "What is the technical term for a butt crack?",
+        "fr": "Quel est le terme technique pour la raie des fesses?",
+        "es": "Cual es el termino tecnico para la raja del trasero?",
+        "de": "Was ist der Fachbegriff fuer die Pofalte?"
+      },
+      "answers": {
+        "en": ["Gluteal cleft", "Posterior split", "Coccyx divide", "Lumbar groove"],
+        "fr": ["Fente gluteale", "Division posterieure", "Division du coccyx", "Sillon lombaire"],
+        "es": ["Hendidura glutea", "Division posterior", "Division del coxis", "Surco lumbar"],
+        "de": ["Glutealspalt", "Hintere Teilung", "Steissbeinteilung", "Lendenrinne"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 16,
+      "category": "politics",
+      "question": {
+        "en": "Which US president skinny-dipped in the Potomac daily?",
+        "fr": "Quel president americain se baignait nu dans le Potomac chaque jour?",
+        "es": "Que presidente de EEUU se banaba desnudo en el Potomac diariamente?",
+        "de": "Welcher US-Praesident badete taeglich nackt im Potomac?"
+      },
+      "answers": {
+        "en": ["John Q. Adams", "Jefferson", "Washington", "Lincoln"],
+        "fr": ["John Q. Adams", "Jefferson", "Washington", "Lincoln"],
+        "es": ["John Q. Adams", "Jefferson", "Washington", "Lincoln"],
+        "de": ["John Q. Adams", "Jefferson", "Washington", "Lincoln"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 17,
+      "category": "pop-culture",
+      "question": {
+        "en": "What was Hitler's favorite movie?",
+        "fr": "Quel etait le film prefere d'Hitler?",
+        "es": "Cual era la pelicula favorita de Hitler?",
+        "de": "Was war Hitlers Lieblingsfilm?"
+      },
+      "answers": {
+        "en": ["King Kong", "Snow White", "Metropolis", "Nosferatu"],
+        "fr": ["King Kong", "Blanche-Neige", "Metropolis", "Nosferatu"],
+        "es": ["King Kong", "Blancanieves", "Metropolis", "Nosferatu"],
+        "de": ["King Kong", "Schneewittchen", "Metropolis", "Nosferatu"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 18,
+      "category": "celebrities",
+      "question": {
+        "en": "Which pop star's real name is Stefani Germanotta?",
+        "fr": "Quelle pop star s'appelle vraiment Stefani Germanotta?",
+        "es": "Que estrella pop se llama realmente Stefani Germanotta?",
+        "de": "Welcher Popstar heisst wirklich Stefani Germanotta?"
+      },
+      "answers": {
+        "en": ["Lady Gaga", "Katy Perry", "Rihanna", "Beyonce"],
+        "fr": ["Lady Gaga", "Katy Perry", "Rihanna", "Beyonce"],
+        "es": ["Lady Gaga", "Katy Perry", "Rihanna", "Beyonce"],
+        "de": ["Lady Gaga", "Katy Perry", "Rihanna", "Beyonce"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 19,
+      "category": "science",
+      "question": {
+        "en": "How long can a human head remain conscious after decapitation?",
+        "fr": "Combien de temps une tete humaine peut-elle rester consciente apres decapitation?",
+        "es": "Cuanto tiempo puede permanecer consciente una cabeza humana despues de la decapitacion?",
+        "de": "Wie lange kann ein menschlicher Kopf nach der Enthauptung bei Bewusstsein bleiben?"
+      },
+      "answers": {
+        "en": ["15-20 seconds", "1 second", "5 minutes", "Instantly dead"],
+        "fr": ["15-20 secondes", "1 seconde", "5 minutes", "Mort instantanee"],
+        "es": ["15-20 segundos", "1 segundo", "5 minutos", "Muerte instantanea"],
+        "de": ["15-20 Sekunden", "1 Sekunde", "5 Minuten", "Sofort tot"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 20,
+      "category": "history",
+      "question": {
+        "en": "What did Napoleon reportedly die from?",
+        "fr": "De quoi Napoleon serait-il mort?",
+        "es": "De que murio supuestamente Napoleon?",
+        "de": "Woran soll Napoleon gestorben sein?"
+      },
+      "answers": {
+        "en": ["Stomach cancer", "Arsenic poisoning", "Battle wounds", "Old age"],
+        "fr": ["Cancer de l'estomac", "Empoisonnement a l'arsenic", "Blessures de guerre", "Vieillesse"],
+        "es": ["Cancer de estomago", "Envenenamiento por arsenico", "Heridas de batalla", "Vejez"],
+        "de": ["Magenkrebs", "Arsenvergiftung", "Kampfwunden", "Alter"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 21,
+      "category": "science",
+      "question": {
+        "en": "What animal has the largest testicles relative to body size?",
+        "fr": "Quel animal a les plus gros testicules par rapport a sa taille?",
+        "es": "Que animal tiene los testiculos mas grandes en relacion a su cuerpo?",
+        "de": "Welches Tier hat die groessten Hoden im Verhaeltnis zur Koerpergroesse?"
+      },
+      "answers": {
+        "en": ["Bush cricket", "Blue whale", "Elephant", "Gorilla"],
+        "fr": ["Grillon des buissons", "Baleine bleue", "Elephant", "Gorille"],
+        "es": ["Grillo de matorral", "Ballena azul", "Elefante", "Gorila"],
+        "de": ["Buschgrille", "Blauwal", "Elefant", "Gorilla"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 22,
+      "category": "pop-culture",
+      "question": {
+        "en": "What did Keith Richards snort mixed with cocaine?",
+        "fr": "Qu'est-ce que Keith Richards a sniffe melange a la cocaine?",
+        "es": "Que esnifio Keith Richards mezclado con cocaina?",
+        "de": "Was schnupfte Keith Richards mit Kokain gemischt?"
+      },
+      "answers": {
+        "en": ["His father's ashes", "Sand", "Sugar", "Chalk"],
+        "fr": ["Les cendres de son pere", "Du sable", "Du sucre", "De la craie"],
+        "es": ["Las cenizas de su padre", "Arena", "Azucar", "Tiza"],
+        "de": ["Die Asche seines Vaters", "Sand", "Zucker", "Kreide"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 23,
+      "category": "history",
+      "question": {
+        "en": "What did ancient Egyptians use as contraception?",
+        "fr": "Qu'utilisaient les anciens Egyptiens comme contraception?",
+        "es": "Que usaban los antiguos egipcios como anticonceptivo?",
+        "de": "Was verwendeten die alten Aegypter zur Verhuetung?"
+      },
+      "answers": {
+        "en": ["Crocodile dung", "Honey", "Olive oil", "Papyrus"],
+        "fr": ["Excrements de crocodile", "Miel", "Huile d'olive", "Papyrus"],
+        "es": ["Excremento de cocodrilo", "Miel", "Aceite de oliva", "Papiro"],
+        "de": ["Krokodilmist", "Honig", "Olivenoel", "Papyrus"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 24,
+      "category": "celebrities",
+      "question": {
+        "en": "Which celebrity is banned from China?",
+        "fr": "Quelle celebrite est interdite en Chine?",
+        "es": "Que celebridad esta prohibida en China?",
+        "de": "Welche Beruehmtheit hat Einreiseverbot in China?"
+      },
+      "answers": {
+        "en": ["Brad Pitt", "Tom Hanks", "Johnny Depp", "Leonardo DiCaprio"],
+        "fr": ["Brad Pitt", "Tom Hanks", "Johnny Depp", "Leonardo DiCaprio"],
+        "es": ["Brad Pitt", "Tom Hanks", "Johnny Depp", "Leonardo DiCaprio"],
+        "de": ["Brad Pitt", "Tom Hanks", "Johnny Depp", "Leonardo DiCaprio"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 25,
+      "category": "science",
+      "question": {
+        "en": "What percentage of people pee in swimming pools?",
+        "fr": "Quel pourcentage de personnes urinent dans les piscines?",
+        "es": "Que porcentaje de personas orina en las piscinas?",
+        "de": "Wie viel Prozent der Menschen pinkeln in Schwimmbaedern?"
+      },
+      "answers": {
+        "en": ["40%", "10%", "5%", "75%"],
+        "fr": ["40%", "10%", "5%", "75%"],
+        "es": ["40%", "10%", "5%", "75%"],
+        "de": ["40%", "10%", "5%", "75%"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 26,
+      "category": "politics",
+      "question": {
+        "en": "Which dictator wrote romance novels?",
+        "fr": "Quel dictateur ecrivait des romans d'amour?",
+        "es": "Que dictador escribia novelas romanticas?",
+        "de": "Welcher Diktator schrieb Liebesromane?"
+      },
+      "answers": {
+        "en": ["Saddam Hussein", "Stalin", "Mao", "Castro"],
+        "fr": ["Saddam Hussein", "Staline", "Mao", "Castro"],
+        "es": ["Saddam Hussein", "Stalin", "Mao", "Castro"],
+        "de": ["Saddam Hussein", "Stalin", "Mao", "Castro"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 27,
+      "category": "pop-culture",
+      "question": {
+        "en": "What was banned in Indiana schools in the 1950s?",
+        "fr": "Qu'est-ce qui etait interdit dans les ecoles de l'Indiana dans les annees 50?",
+        "es": "Que estaba prohibido en las escuelas de Indiana en los anos 50?",
+        "de": "Was war in den 1950er Jahren in Schulen von Indiana verboten?"
+      },
+      "answers": {
+        "en": ["Robin Hood", "Huckleberry Finn", "Catcher in the Rye", "1984"],
+        "fr": ["Robin des Bois", "Huckleberry Finn", "L'Attrape-coeurs", "1984"],
+        "es": ["Robin Hood", "Huckleberry Finn", "El guardian entre el centeno", "1984"],
+        "de": ["Robin Hood", "Huckleberry Finn", "Der Faenger im Roggen", "1984"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 28,
+      "category": "science",
+      "question": {
+        "en": "What flavor is human flesh closest to?",
+        "fr": "A quel gout la chair humaine ressemble-t-elle le plus?",
+        "es": "A que sabor se parece mas la carne humana?",
+        "de": "Welchem Geschmack kommt Menschenfleisch am naechsten?"
+      },
+      "answers": {
+        "en": ["Veal", "Pork", "Chicken", "Beef"],
+        "fr": ["Veau", "Porc", "Poulet", "Boeuf"],
+        "es": ["Ternera", "Cerdo", "Pollo", "Res"],
+        "de": ["Kalbfleisch", "Schwein", "Huehnchen", "Rindfleisch"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 29,
+      "category": "celebrities",
+      "question": {
+        "en": "Which famous person collected their own toenail clippings?",
+        "fr": "Quelle personne celebre collectionnait ses propres rognures d'ongles?",
+        "es": "Que persona famosa coleccionaba sus propios recortes de unas?",
+        "de": "Welche beruehmte Person sammelte ihre eigenen Zehennagelschnipsel?"
+      },
+      "answers": {
+        "en": ["Howard Hughes", "Elvis", "Michael Jackson", "Prince"],
+        "fr": ["Howard Hughes", "Elvis", "Michael Jackson", "Prince"],
+        "es": ["Howard Hughes", "Elvis", "Michael Jackson", "Prince"],
+        "de": ["Howard Hughes", "Elvis", "Michael Jackson", "Prince"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 30,
+      "category": "history",
+      "question": {
+        "en": "What was the original use of Listerine?",
+        "fr": "Quelle etait l'utilisation originale du Listerine?",
+        "es": "Cual era el uso original de Listerine?",
+        "de": "Was war die urspruengliche Verwendung von Listerine?"
+      },
+      "answers": {
+        "en": ["Floor cleaner", "Mouthwash", "Antiseptic", "Hair tonic"],
+        "fr": ["Nettoyant pour sol", "Bain de bouche", "Antiseptique", "Lotion capillaire"],
+        "es": ["Limpiador de pisos", "Enjuague bucal", "Antiseptico", "Tonico capilar"],
+        "de": ["Bodenreiniger", "Mundwasser", "Antiseptikum", "Haartonikum"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 31,
+      "category": "science",
+      "question": {
+        "en": "What do astronauts do with their dirty underwear?",
+        "fr": "Que font les astronautes de leurs sous-vetements sales?",
+        "es": "Que hacen los astronautas con su ropa interior sucia?",
+        "de": "Was machen Astronauten mit ihrer schmutzigen Unterwaesche?"
+      },
+      "answers": {
+        "en": ["Burn it up", "Wash it", "Store it", "Eject it"],
+        "fr": ["La brulent", "La lavent", "La stockent", "L'ejectent"],
+        "es": ["La queman", "La lavan", "La guardan", "La eyectan"],
+        "de": ["Verbrennen sie", "Waschen sie", "Lagern sie", "Werfen sie raus"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 32,
+      "category": "pop-culture",
+      "question": {
+        "en": "What was Marilyn Monroe's natural hair color?",
+        "fr": "Quelle etait la couleur naturelle des cheveux de Marilyn Monroe?",
+        "es": "Cual era el color natural del cabello de Marilyn Monroe?",
+        "de": "Was war Marilyn Monroes natuerliche Haarfarbe?"
+      },
+      "answers": {
+        "en": ["Brown", "Blonde", "Black", "Red"],
+        "fr": ["Brun", "Blonde", "Noir", "Roux"],
+        "es": ["Castano", "Rubio", "Negro", "Pelirrojo"],
+        "de": ["Braun", "Blond", "Schwarz", "Rot"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 33,
+      "category": "history",
+      "question": {
+        "en": "What did Victorian women use to make their eyes sparkle?",
+        "fr": "Qu'utilisaient les femmes victoriennes pour faire briller leurs yeux?",
+        "es": "Que usaban las mujeres victorianas para hacer brillar sus ojos?",
+        "de": "Was verwendeten viktorianische Frauen fuer glaenzende Augen?"
+      },
+      "answers": {
+        "en": ["Belladonna drops", "Lemon juice", "Rose water", "Honey"],
+        "fr": ["Gouttes de belladone", "Jus de citron", "Eau de rose", "Miel"],
+        "es": ["Gotas de belladona", "Jugo de limon", "Agua de rosas", "Miel"],
+        "de": ["Belladonna-Tropfen", "Zitronensaft", "Rosenwasser", "Honig"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 34,
+      "category": "celebrities",
+      "question": {
+        "en": "Which A-list actor started as a stripper?",
+        "fr": "Quel acteur de premiere liste a commence comme strip-teaseur?",
+        "es": "Que actor de primera linea empezo como stripper?",
+        "de": "Welcher A-Promi begann als Stripper?"
+      },
+      "answers": {
+        "en": ["Channing Tatum", "Brad Pitt", "Ryan Gosling", "Chris Pratt"],
+        "fr": ["Channing Tatum", "Brad Pitt", "Ryan Gosling", "Chris Pratt"],
+        "es": ["Channing Tatum", "Brad Pitt", "Ryan Gosling", "Chris Pratt"],
+        "de": ["Channing Tatum", "Brad Pitt", "Ryan Gosling", "Chris Pratt"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 35,
+      "category": "science",
+      "question": {
+        "en": "How many spiders does the average person swallow in their sleep per year?",
+        "fr": "Combien d'araignees une personne avale-t-elle en dormant par an?",
+        "es": "Cuantas aranas traga una persona promedio durmiendo al ano?",
+        "de": "Wie viele Spinnen verschluckt ein Mensch im Schlaf pro Jahr?"
+      },
+      "answers": {
+        "en": ["Zero", "3", "8", "1"],
+        "fr": ["Zero", "3", "8", "1"],
+        "es": ["Cero", "3", "8", "1"],
+        "de": ["Null", "3", "8", "1"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 36,
+      "category": "politics",
+      "question": {
+        "en": "Which US president had a pet alligator?",
+        "fr": "Quel president americain avait un alligator de compagnie?",
+        "es": "Que presidente de EEUU tenia un caiman como mascota?",
+        "de": "Welcher US-Praesident hatte einen Alligator als Haustier?"
+      },
+      "answers": {
+        "en": ["John Q. Adams", "Jefferson", "Teddy Roosevelt", "Andrew Jackson"],
+        "fr": ["John Q. Adams", "Jefferson", "Teddy Roosevelt", "Andrew Jackson"],
+        "es": ["John Q. Adams", "Jefferson", "Teddy Roosevelt", "Andrew Jackson"],
+        "de": ["John Q. Adams", "Jefferson", "Teddy Roosevelt", "Andrew Jackson"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 37,
+      "category": "pop-culture",
+      "question": {
+        "en": "What was the first item sold on eBay?",
+        "fr": "Quel a ete le premier article vendu sur eBay?",
+        "es": "Cual fue el primer articulo vendido en eBay?",
+        "de": "Was war der erste auf eBay verkaufte Artikel?"
+      },
+      "answers": {
+        "en": ["Broken laser pointer", "A book", "A coin", "A watch"],
+        "fr": ["Pointeur laser casse", "Un livre", "Une piece", "Une montre"],
+        "es": ["Puntero laser roto", "Un libro", "Una moneda", "Un reloj"],
+        "de": ["Kaputter Laserpointer", "Ein Buch", "Eine Muenze", "Eine Uhr"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 38,
+      "category": "science",
+      "question": {
+        "en": "What percentage of your body weight is bacteria?",
+        "fr": "Quel pourcentage de votre poids corporel est compose de bacteries?",
+        "es": "Que porcentaje de tu peso corporal son bacterias?",
+        "de": "Wie viel Prozent deines Koerpergewichts sind Bakterien?"
+      },
+      "answers": {
+        "en": ["1-3%", "10%", "0.1%", "25%"],
+        "fr": ["1-3%", "10%", "0,1%", "25%"],
+        "es": ["1-3%", "10%", "0,1%", "25%"],
+        "de": ["1-3%", "10%", "0,1%", "25%"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 39,
+      "category": "celebrities",
+      "question": {
+        "en": "Which musician is a licensed mortician?",
+        "fr": "Quel musicien est un thanatopracteur agree?",
+        "es": "Que musico tiene licencia de embalsamador?",
+        "de": "Welcher Musiker ist lizenzierter Bestatter?"
+      },
+      "answers": {
+        "en": ["Jon Bon Jovi", "Alice Cooper", "Ozzy Osbourne", "Marilyn Manson"],
+        "fr": ["Jon Bon Jovi", "Alice Cooper", "Ozzy Osbourne", "Marilyn Manson"],
+        "es": ["Jon Bon Jovi", "Alice Cooper", "Ozzy Osbourne", "Marilyn Manson"],
+        "de": ["Jon Bon Jovi", "Alice Cooper", "Ozzy Osbourne", "Marilyn Manson"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 40,
+      "category": "history",
+      "question": {
+        "en": "What unusual thing did Einstein's brain have?",
+        "fr": "Quelle chose inhabituelle avait le cerveau d'Einstein?",
+        "es": "Que cosa inusual tenia el cerebro de Einstein?",
+        "de": "Was hatte Einsteins Gehirn Ungewoehnliches?"
+      },
+      "answers": {
+        "en": ["Extra folds", "Larger size", "Missing lobe", "Extra neurons"],
+        "fr": ["Des plis supplementaires", "Une taille plus grande", "Un lobe manquant", "Des neurones supplementaires"],
+        "es": ["Pliegues extra", "Tamano mas grande", "Lobulo faltante", "Neuronas extra"],
+        "de": ["Zusaetzliche Falten", "Groessere Groesse", "Fehlender Lappen", "Zusaetzliche Neuronen"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 41,
+      "category": "science",
+      "question": {
+        "en": "What is the fear of long words called?",
+        "fr": "Comment s'appelle la peur des mots longs?",
+        "es": "Como se llama el miedo a las palabras largas?",
+        "de": "Wie heisst die Angst vor langen Woertern?"
+      },
+      "answers": {
+        "en": ["Hippopotomonstrosesquippedaliophobia", "Logophobia", "Verbophobia", "Lexicophobia"],
+        "fr": ["Hippopotomonstrosesquippedaliophobia", "Logophobie", "Verbophobie", "Lexicophobie"],
+        "es": ["Hippopotomonstrosesquippedaliophobia", "Logofobia", "Verbofobia", "Lexicofobia"],
+        "de": ["Hippopotomonstrosesquippedaliophobie", "Logophobie", "Verbophobie", "Lexikophobie"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 42,
+      "category": "pop-culture",
+      "question": {
+        "en": "Which serial killer inspired the character of Buffalo Bill?",
+        "fr": "Quel tueur en serie a inspire le personnage de Buffalo Bill?",
+        "es": "Que asesino en serie inspiro al personaje de Buffalo Bill?",
+        "de": "Welcher Serienkiller inspirierte Buffalo Bill?"
+      },
+      "answers": {
+        "en": ["Ed Gein", "Ted Bundy", "Jeffrey Dahmer", "John Wayne Gacy"],
+        "fr": ["Ed Gein", "Ted Bundy", "Jeffrey Dahmer", "John Wayne Gacy"],
+        "es": ["Ed Gein", "Ted Bundy", "Jeffrey Dahmer", "John Wayne Gacy"],
+        "de": ["Ed Gein", "Ted Bundy", "Jeffrey Dahmer", "John Wayne Gacy"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 43,
+      "category": "history",
+      "question": {
+        "en": "What did gladiators drink for strength?",
+        "fr": "Que buvaient les gladiateurs pour la force?",
+        "es": "Que bebian los gladiadores para tener fuerza?",
+        "de": "Was tranken Gladiatoren fuer Staerke?"
+      },
+      "answers": {
+        "en": ["Ash water", "Blood", "Wine", "Milk"],
+        "fr": ["Eau de cendres", "Du sang", "Du vin", "Du lait"],
+        "es": ["Agua de ceniza", "Sangre", "Vino", "Leche"],
+        "de": ["Aschewasser", "Blut", "Wein", "Milch"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 44,
+      "category": "celebrities",
+      "question": {
+        "en": "Which celebrity has an IQ of 160?",
+        "fr": "Quelle celebrite a un QI de 160?",
+        "es": "Que celebridad tiene un CI de 160?",
+        "de": "Welche Beruehmtheit hat einen IQ von 160?"
+      },
+      "answers": {
+        "en": ["Sharon Stone", "Madonna", "Angelina Jolie", "Meryl Streep"],
+        "fr": ["Sharon Stone", "Madonna", "Angelina Jolie", "Meryl Streep"],
+        "es": ["Sharon Stone", "Madonna", "Angelina Jolie", "Meryl Streep"],
+        "de": ["Sharon Stone", "Madonna", "Angelina Jolie", "Meryl Streep"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 45,
+      "category": "science",
+      "question": {
+        "en": "What happens to your body if you die in space?",
+        "fr": "Qu'arrive-t-il a votre corps si vous mourez dans l'espace?",
+        "es": "Que le pasa a tu cuerpo si mueres en el espacio?",
+        "de": "Was passiert mit deinem Koerper wenn du im Weltall stirbst?"
+      },
+      "answers": {
+        "en": ["Freeze-dried", "Explodes", "Burns up", "Floats forever"],
+        "fr": ["Lyophilise", "Explose", "Brule", "Flotte eternellement"],
+        "es": ["Se liofiliza", "Explota", "Se quema", "Flota para siempre"],
+        "de": ["Gefriergetrocknet", "Explodiert", "Verbrennt", "Schwebt ewig"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 46,
+      "category": "politics",
+      "question": {
+        "en": "Which country has a law requiring dogs to be walked 3x daily?",
+        "fr": "Quel pays a une loi obligeant a promener les chiens 3 fois par jour?",
+        "es": "Que pais tiene una ley que requiere pasear perros 3 veces al dia?",
+        "de": "Welches Land hat ein Gesetz das 3x taegliches Gassi-gehen vorschreibt?"
+      },
+      "answers": {
+        "en": ["Germany", "Sweden", "Switzerland", "Netherlands"],
+        "fr": ["Allemagne", "Suede", "Suisse", "Pays-Bas"],
+        "es": ["Alemania", "Suecia", "Suiza", "Paises Bajos"],
+        "de": ["Deutschland", "Schweden", "Schweiz", "Niederlande"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 47,
+      "category": "pop-culture",
+      "question": {
+        "en": "What food was invented by mistake while making wallpaper cleaner?",
+        "fr": "Quel aliment a ete invente par erreur en fabriquant un nettoyant pour papier peint?",
+        "es": "Que alimento se invento por error al hacer limpiador de papel tapiz?",
+        "de": "Welches Essen wurde versehentlich bei der Tapettenreiniger-Herstellung erfunden?"
+      },
+      "answers": {
+        "en": ["Play-Doh", "Jell-O", "Marshmallows", "Cotton candy"],
+        "fr": ["Play-Doh", "Jell-O", "Guimauves", "Barbe a papa"],
+        "es": ["Play-Doh", "Jell-O", "Malvaviscos", "Algodon de azucar"],
+        "de": ["Play-Doh", "Jell-O", "Marshmallows", "Zuckerwatte"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 48,
+      "category": "science",
+      "question": {
+        "en": "What does your stomach lining do every few days?",
+        "fr": "Que fait la paroi de votre estomac tous les quelques jours?",
+        "es": "Que hace el revestimiento de tu estomago cada pocos dias?",
+        "de": "Was macht deine Magenschleimhaut alle paar Tage?"
+      },
+      "answers": {
+        "en": ["Replaces itself", "Shrinks", "Changes color", "Hardens"],
+        "fr": ["Se renouvelle", "Retrecit", "Change de couleur", "Durcit"],
+        "es": ["Se renueva", "Se encoge", "Cambia de color", "Se endurece"],
+        "de": ["Erneuert sich", "Schrumpft", "Wechselt die Farbe", "Haertet"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 49,
+      "category": "celebrities",
+      "question": {
+        "en": "Which billionaire dropped out of Harvard?",
+        "fr": "Quel milliardaire a abandonne Harvard?",
+        "es": "Que multimillonario abandono Harvard?",
+        "de": "Welcher Milliardaer brach Harvard ab?"
+      },
+      "answers": {
+        "en": ["Bill Gates", "Elon Musk", "Jeff Bezos", "Warren Buffett"],
+        "fr": ["Bill Gates", "Elon Musk", "Jeff Bezos", "Warren Buffett"],
+        "es": ["Bill Gates", "Elon Musk", "Jeff Bezos", "Warren Buffett"],
+        "de": ["Bill Gates", "Elon Musk", "Jeff Bezos", "Warren Buffett"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 50,
+      "category": "history",
+      "question": {
+        "en": "What did pirates wear eyepatches for?",
+        "fr": "Pourquoi les pirates portaient-ils des cache-oeil?",
+        "es": "Para que usaban los piratas parches en el ojo?",
+        "de": "Warum trugen Piraten Augenklappen?"
+      },
+      "answers": {
+        "en": ["Night vision", "Lost an eye", "Fashion", "Sun protection"],
+        "fr": ["Vision nocturne", "Oeil perdu", "Mode", "Protection solaire"],
+        "es": ["Vision nocturna", "Perdieron un ojo", "Moda", "Proteccion solar"],
+        "de": ["Nachtsicht", "Auge verloren", "Mode", "Sonnenschutz"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 51,
+      "category": "science",
+      "question": {
+        "en": "What bodily function is impossible to do with your eyes open?",
+        "fr": "Quelle fonction corporelle est impossible a faire les yeux ouverts?",
+        "es": "Que funcion corporal es imposible hacer con los ojos abiertos?",
+        "de": "Welche Koerperfunktion ist mit offenen Augen unmoeglich?"
+      },
+      "answers": {
+        "en": ["Sneezing", "Yawning", "Burping", "Hiccuping"],
+        "fr": ["Eternuer", "Bailler", "Roter", "Avoir le hoquet"],
+        "es": ["Estornudar", "Bostezar", "Eructar", "Tener hipo"],
+        "de": ["Niesen", "Gaehnen", "Ruelpsen", "Schluckauf"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 52,
+      "category": "pop-culture",
+      "question": {
+        "en": "What was Bubble Wrap originally invented for?",
+        "fr": "A quoi le papier bulle a-t-il ete originellement invente?",
+        "es": "Para que se invento originalmente el plastico de burbujas?",
+        "de": "Wofuer wurde Luftpolsterfolie urspruenglich erfunden?"
+      },
+      "answers": {
+        "en": ["Wallpaper", "Packaging", "Insulation", "Toys"],
+        "fr": ["Papier peint", "Emballage", "Isolation", "Jouets"],
+        "es": ["Papel tapiz", "Embalaje", "Aislamiento", "Juguetes"],
+        "de": ["Tapete", "Verpackung", "Isolation", "Spielzeug"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 53,
+      "category": "history",
+      "question": {
+        "en": "What did ketchup used to be sold as in the 1800s?",
+        "fr": "Comme quoi le ketchup etait-il vendu dans les annees 1800?",
+        "es": "Como que se vendia el ketchup en el siglo XIX?",
+        "de": "Als was wurde Ketchup im 19. Jahrhundert verkauft?"
+      },
+      "answers": {
+        "en": ["Medicine", "Sauce", "Cleaning agent", "Paint"],
+        "fr": ["Medicament", "Sauce", "Nettoyant", "Peinture"],
+        "es": ["Medicina", "Salsa", "Limpiador", "Pintura"],
+        "de": ["Medizin", "Sosse", "Reiniger", "Farbe"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 54,
+      "category": "celebrities",
+      "question": {
+        "en": "Which actor was a lion tamer before Hollywood?",
+        "fr": "Quel acteur etait dompteur de lions avant Hollywood?",
+        "es": "Que actor fue domador de leones antes de Hollywood?",
+        "de": "Welcher Schauspieler war vor Hollywood Loewendompteur?"
+      },
+      "answers": {
+        "en": ["Christopher Walken", "Jack Nicholson", "Robert De Niro", "Al Pacino"],
+        "fr": ["Christopher Walken", "Jack Nicholson", "Robert De Niro", "Al Pacino"],
+        "es": ["Christopher Walken", "Jack Nicholson", "Robert De Niro", "Al Pacino"],
+        "de": ["Christopher Walken", "Jack Nicholson", "Robert De Niro", "Al Pacino"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 55,
+      "category": "science",
+      "question": {
+        "en": "How many taste buds does a catfish have on its body?",
+        "fr": "Combien de papilles gustatives un poisson-chat a-t-il sur son corps?",
+        "es": "Cuantas papilas gustativas tiene un pez gato en su cuerpo?",
+        "de": "Wie viele Geschmacksknospen hat ein Wels am Koerper?"
+      },
+      "answers": {
+        "en": ["100,000+", "1,000", "10,000", "500"],
+        "fr": ["100 000+", "1 000", "10 000", "500"],
+        "es": ["100,000+", "1,000", "10,000", "500"],
+        "de": ["100.000+", "1.000", "10.000", "500"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 56,
+      "category": "politics",
+      "question": {
+        "en": "Which president installed the first White House bowling alley?",
+        "fr": "Quel president a installe la premiere piste de bowling a la Maison Blanche?",
+        "es": "Que presidente instalo la primera bolera en la Casa Blanca?",
+        "de": "Welcher Praesident installierte die erste Bowlingbahn im Weissen Haus?"
+      },
+      "answers": {
+        "en": ["Truman", "Nixon", "JFK", "Eisenhower"],
+        "fr": ["Truman", "Nixon", "JFK", "Eisenhower"],
+        "es": ["Truman", "Nixon", "JFK", "Eisenhower"],
+        "de": ["Truman", "Nixon", "JFK", "Eisenhower"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 57,
+      "category": "pop-culture",
+      "question": {
+        "en": "What was the ice cream cone invented to replace?",
+        "fr": "Qu'est-ce que le cornet de glace a ete invente pour remplacer?",
+        "es": "Para reemplazar que se invento el cono de helado?",
+        "de": "Was sollte die Eiswaffel ersetzen?"
+      },
+      "answers": {
+        "en": ["Dishes shortage", "Spoons", "Cups", "Bowls"],
+        "fr": ["Penurie de vaisselle", "Cuilleres", "Verres", "Bols"],
+        "es": ["Escasez de platos", "Cucharas", "Vasos", "Tazones"],
+        "de": ["Geschirrmangel", "Loeffel", "Becher", "Schalen"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 58,
+      "category": "science",
+      "question": {
+        "en": "What is the only food that never spoils?",
+        "fr": "Quel est le seul aliment qui ne se gate jamais?",
+        "es": "Cual es el unico alimento que nunca se echa a perder?",
+        "de": "Welches Lebensmittel verdirbt nie?"
+      },
+      "answers": {
+        "en": ["Honey", "Salt", "Sugar", "Rice"],
+        "fr": ["Miel", "Sel", "Sucre", "Riz"],
+        "es": ["Miel", "Sal", "Azucar", "Arroz"],
+        "de": ["Honig", "Salz", "Zucker", "Reis"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 59,
+      "category": "celebrities",
+      "question": {
+        "en": "Which rock legend was a grave digger before fame?",
+        "fr": "Quelle legende du rock etait fossoyeur avant la gloire?",
+        "es": "Que leyenda del rock era sepulturero antes de la fama?",
+        "de": "Welche Rocklegende war vor dem Ruhm Totengraeber?"
+      },
+      "answers": {
+        "en": ["Rod Stewart", "Mick Jagger", "Ozzy Osbourne", "Keith Richards"],
+        "fr": ["Rod Stewart", "Mick Jagger", "Ozzy Osbourne", "Keith Richards"],
+        "es": ["Rod Stewart", "Mick Jagger", "Ozzy Osbourne", "Keith Richards"],
+        "de": ["Rod Stewart", "Mick Jagger", "Ozzy Osbourne", "Keith Richards"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 60,
+      "category": "history",
+      "question": {
+        "en": "What color were carrots originally?",
+        "fr": "Quelle couleur avaient les carottes a l'origine?",
+        "es": "De que color eran las zanahorias originalmente?",
+        "de": "Welche Farbe hatten Karotten urspruenglich?"
+      },
+      "answers": {
+        "en": ["Purple", "Orange", "White", "Yellow"],
+        "fr": ["Violet", "Orange", "Blanc", "Jaune"],
+        "es": ["Morado", "Naranja", "Blanco", "Amarillo"],
+        "de": ["Lila", "Orange", "Weiss", "Gelb"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 61,
+      "category": "science",
+      "question": {
+        "en": "What is the world's deadliest animal to humans?",
+        "fr": "Quel est l'animal le plus mortel pour les humains?",
+        "es": "Cual es el animal mas mortifero para los humanos?",
+        "de": "Welches ist das toedlichste Tier fuer Menschen?"
+      },
+      "answers": {
+        "en": ["Mosquito", "Snake", "Shark", "Lion"],
+        "fr": ["Moustique", "Serpent", "Requin", "Lion"],
+        "es": ["Mosquito", "Serpiente", "Tiburon", "Leon"],
+        "de": ["Muecke", "Schlange", "Hai", "Loewe"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 62,
+      "category": "pop-culture",
+      "question": {
+        "en": "Which Disney character's full name is Daffy Duck?",
+        "fr": "Quel personnage Disney s'appelle Daffy Duck en entier?",
+        "es": "Cual personaje de Disney se llama Daffy Duck?",
+        "de": "Welche Disney-Figur heisst mit vollem Namen Daffy Duck?"
+      },
+      "answers": {
+        "en": ["None - Warner Bros", "Donald Duck", "Mickey Mouse", "Goofy"],
+        "fr": ["Aucun - Warner Bros", "Donald Duck", "Mickey Mouse", "Goofy"],
+        "es": ["Ninguno - Warner Bros", "Donald Duck", "Mickey Mouse", "Goofy"],
+        "de": ["Keiner - Warner Bros", "Donald Duck", "Mickey Mouse", "Goofy"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 63,
+      "category": "history",
+      "question": {
+        "en": "What did ancient Greeks use as deodorant?",
+        "fr": "Qu'utilisaient les Grecs anciens comme deodorant?",
+        "es": "Que usaban los antiguos griegos como desodorante?",
+        "de": "Was benutzten die alten Griechen als Deo?"
+      },
+      "answers": {
+        "en": ["Crushed flowers", "Animal fat", "Olive oil", "Nothing"],
+        "fr": ["Fleurs ecrasees", "Graisse animale", "Huile d'olive", "Rien"],
+        "es": ["Flores trituradas", "Grasa animal", "Aceite de oliva", "Nada"],
+        "de": ["Zerquetschte Blumen", "Tierfett", "Olivenoel", "Nichts"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 64,
+      "category": "celebrities",
+      "question": {
+        "en": "Which famous inventor was afraid of pearls?",
+        "fr": "Quel inventeur celebre avait peur des perles?",
+        "es": "Que inventor famoso le tenia miedo a las perlas?",
+        "de": "Welcher beruehmte Erfinder hatte Angst vor Perlen?"
+      },
+      "answers": {
+        "en": ["Nikola Tesla", "Thomas Edison", "Einstein", "Da Vinci"],
+        "fr": ["Nikola Tesla", "Thomas Edison", "Einstein", "De Vinci"],
+        "es": ["Nikola Tesla", "Thomas Edison", "Einstein", "Da Vinci"],
+        "de": ["Nikola Tesla", "Thomas Edison", "Einstein", "Da Vinci"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 65,
+      "category": "science",
+      "question": {
+        "en": "How many times can paper be folded in half?",
+        "fr": "Combien de fois peut-on plier un papier en deux?",
+        "es": "Cuantas veces se puede doblar un papel por la mitad?",
+        "de": "Wie oft kann man Papier in der Mitte falten?"
+      },
+      "answers": {
+        "en": ["7 times max", "Unlimited", "12 times", "3 times"],
+        "fr": ["7 fois max", "Illimite", "12 fois", "3 fois"],
+        "es": ["7 veces max", "Ilimitado", "12 veces", "3 veces"],
+        "de": ["Maximal 7 mal", "Unbegrenzt", "12 mal", "3 mal"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 66,
+      "category": "politics",
+      "question": {
+        "en": "Which country has no official capital city?",
+        "fr": "Quel pays n'a pas de capitale officielle?",
+        "es": "Que pais no tiene capital oficial?",
+        "de": "Welches Land hat keine offizielle Hauptstadt?"
+      },
+      "answers": {
+        "en": ["Nauru", "Vatican", "Monaco", "Singapore"],
+        "fr": ["Nauru", "Vatican", "Monaco", "Singapour"],
+        "es": ["Nauru", "Vaticano", "Monaco", "Singapur"],
+        "de": ["Nauru", "Vatikan", "Monaco", "Singapur"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 67,
+      "category": "pop-culture",
+      "question": {
+        "en": "What was Mr. Clean's first name revealed to be?",
+        "fr": "Quel est le prenom de M. Propre revele?",
+        "es": "Cual es el nombre de pila revelado de Don Limpio?",
+        "de": "Was ist Meister Propers Vorname?"
+      },
+      "answers": {
+        "en": ["Veritably", "Robert", "James", "William"],
+        "fr": ["Veritably", "Robert", "James", "William"],
+        "es": ["Veritably", "Robert", "James", "William"],
+        "de": ["Veritably", "Robert", "James", "William"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 68,
+      "category": "science",
+      "question": {
+        "en": "What are baby puffins called?",
+        "fr": "Comment appelle-t-on les bebes macareux?",
+        "es": "Como se llaman las crias de frailecillo?",
+        "de": "Wie nennt man Baby-Papageientaucher?"
+      },
+      "answers": {
+        "en": ["Pufflings", "Chicks", "Pups", "Cubs"],
+        "fr": ["Pufflings", "Poussins", "Chiots", "Oursons"],
+        "es": ["Pufflings", "Polluelos", "Cachorros", "Crías"],
+        "de": ["Pufflings", "Kueken", "Welpen", "Jungtiere"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 69,
+      "category": "celebrities",
+      "question": {
+        "en": "Which action star's birth name is Carlos Ray?",
+        "fr": "Quelle star d'action s'appelle Carlos Ray a la naissance?",
+        "es": "Que estrella de accion nacio como Carlos Ray?",
+        "de": "Welcher Action-Star heisst mit Geburtsnamen Carlos Ray?"
+      },
+      "answers": {
+        "en": ["Chuck Norris", "Jean-Claude Van Damme", "Steven Seagal", "Arnold Schwarzenegger"],
+        "fr": ["Chuck Norris", "Jean-Claude Van Damme", "Steven Seagal", "Arnold Schwarzenegger"],
+        "es": ["Chuck Norris", "Jean-Claude Van Damme", "Steven Seagal", "Arnold Schwarzenegger"],
+        "de": ["Chuck Norris", "Jean-Claude Van Damme", "Steven Seagal", "Arnold Schwarzenegger"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 70,
+      "category": "history",
+      "question": {
+        "en": "What was the shortest war in history?",
+        "fr": "Quelle a ete la guerre la plus courte de l'histoire?",
+        "es": "Cual fue la guerra mas corta de la historia?",
+        "de": "Was war der kuerzeste Krieg der Geschichte?"
+      },
+      "answers": {
+        "en": ["38-45 minutes", "1 day", "1 week", "2 hours"],
+        "fr": ["38-45 minutes", "1 jour", "1 semaine", "2 heures"],
+        "es": ["38-45 minutos", "1 dia", "1 semana", "2 horas"],
+        "de": ["38-45 Minuten", "1 Tag", "1 Woche", "2 Stunden"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 71,
+      "category": "science",
+      "question": {
+        "en": "What percentage of your bones are in your feet?",
+        "fr": "Quel pourcentage de vos os se trouve dans vos pieds?",
+        "es": "Que porcentaje de tus huesos estan en tus pies?",
+        "de": "Wie viel Prozent deiner Knochen sind in deinen Fuessen?"
+      },
+      "answers": {
+        "en": ["25%", "10%", "50%", "5%"],
+        "fr": ["25%", "10%", "50%", "5%"],
+        "es": ["25%", "10%", "50%", "5%"],
+        "de": ["25%", "10%", "50%", "5%"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 72,
+      "category": "pop-culture",
+      "question": {
+        "en": "What was the original color of Fanta?",
+        "fr": "Quelle etait la couleur originale du Fanta?",
+        "es": "Cual era el color original de Fanta?",
+        "de": "Was war die urspruengliche Farbe von Fanta?"
+      },
+      "answers": {
+        "en": ["Clear/Yellow", "Orange", "Red", "Green"],
+        "fr": ["Transparent/Jaune", "Orange", "Rouge", "Vert"],
+        "es": ["Transparente/Amarillo", "Naranja", "Rojo", "Verde"],
+        "de": ["Klar/Gelb", "Orange", "Rot", "Gruen"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 73,
+      "category": "history",
+      "question": {
+        "en": "What did Genghis Khan do that was environmentally positive?",
+        "fr": "Qu'a fait Gengis Khan de positif pour l'environnement?",
+        "es": "Que hizo Genghis Khan que fue positivo para el medio ambiente?",
+        "de": "Was machte Dschingis Khan das umweltfreundlich war?"
+      },
+      "answers": {
+        "en": ["Killed so many CO2 dropped", "Planted trees", "Protected forests", "Banned hunting"],
+        "fr": ["A tue tant que le CO2 a baisse", "A plante des arbres", "A protege les forets", "A interdit la chasse"],
+        "es": ["Mato tantos que el CO2 bajo", "Planto arboles", "Protegio bosques", "Prohibio la caza"],
+        "de": ["Toetete so viele dass CO2 sank", "Pflanzte Baeume", "Schuetzte Waelder", "Verbot Jagd"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 74,
+      "category": "celebrities",
+      "question": {
+        "en": "Which singer is afraid of flying?",
+        "fr": "Quel chanteur a peur de voler?",
+        "es": "Que cantante tiene miedo de volar?",
+        "de": "Welcher Saenger hat Flugangst?"
+      },
+      "answers": {
+        "en": ["Aretha Franklin", "Beyonce", "Adele", "Taylor Swift"],
+        "fr": ["Aretha Franklin", "Beyonce", "Adele", "Taylor Swift"],
+        "es": ["Aretha Franklin", "Beyonce", "Adele", "Taylor Swift"],
+        "de": ["Aretha Franklin", "Beyonce", "Adele", "Taylor Swift"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 75,
+      "category": "science",
+      "question": {
+        "en": "How much saliva do you produce in a lifetime?",
+        "fr": "Combien de salive produisez-vous au cours d'une vie?",
+        "es": "Cuanta saliva produces en toda tu vida?",
+        "de": "Wie viel Speichel produzierst du in deinem Leben?"
+      },
+      "answers": {
+        "en": ["2 swimming pools", "1 bathtub", "100 liters", "1 pool"],
+        "fr": ["2 piscines", "1 baignoire", "100 litres", "1 piscine"],
+        "es": ["2 piscinas", "1 banera", "100 litros", "1 piscina"],
+        "de": ["2 Schwimmbecken", "1 Badewanne", "100 Liter", "1 Pool"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 76,
+      "category": "politics",
+      "question": {
+        "en": "Which US president was a licensed bartender?",
+        "fr": "Quel president americain avait une licence de barman?",
+        "es": "Que presidente de EEUU era cantinero con licencia?",
+        "de": "Welcher US-Praesident hatte eine Barkeeper-Lizenz?"
+      },
+      "answers": {
+        "en": ["Abraham Lincoln", "JFK", "Nixon", "Reagan"],
+        "fr": ["Abraham Lincoln", "JFK", "Nixon", "Reagan"],
+        "es": ["Abraham Lincoln", "JFK", "Nixon", "Reagan"],
+        "de": ["Abraham Lincoln", "JFK", "Nixon", "Reagan"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 77,
+      "category": "pop-culture",
+      "question": {
+        "en": "What company was originally called 'BackRub'?",
+        "fr": "Quelle entreprise s'appelait a l'origine 'BackRub'?",
+        "es": "Que empresa se llamaba originalmente 'BackRub'?",
+        "de": "Welches Unternehmen hiess urspruenglich 'BackRub'?"
+      },
+      "answers": {
+        "en": ["Google", "Facebook", "Amazon", "Netflix"],
+        "fr": ["Google", "Facebook", "Amazon", "Netflix"],
+        "es": ["Google", "Facebook", "Amazon", "Netflix"],
+        "de": ["Google", "Facebook", "Amazon", "Netflix"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 78,
+      "category": "science",
+      "question": {
+        "en": "What do you call a group of flamingos?",
+        "fr": "Comment appelle-t-on un groupe de flamants roses?",
+        "es": "Como se llama un grupo de flamencos?",
+        "de": "Wie nennt man eine Gruppe Flamingos?"
+      },
+      "answers": {
+        "en": ["A flamboyance", "A flock", "A colony", "A stand"],
+        "fr": ["Une flamboyance", "Un troupeau", "Une colonie", "Un groupe"],
+        "es": ["Una flamboyance", "Una bandada", "Una colonia", "Un grupo"],
+        "de": ["Eine Flamboyance", "Eine Herde", "Eine Kolonie", "Eine Gruppe"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 79,
+      "category": "celebrities",
+      "question": {
+        "en": "Which famous author worked for British intelligence?",
+        "fr": "Quel auteur celebre a travaille pour les services secrets britanniques?",
+        "es": "Que autor famoso trabajo para la inteligencia britanica?",
+        "de": "Welcher beruehmte Autor arbeitete fuer den britischen Geheimdienst?"
+      },
+      "answers": {
+        "en": ["Ian Fleming", "J.K. Rowling", "George Orwell", "Roald Dahl"],
+        "fr": ["Ian Fleming", "J.K. Rowling", "George Orwell", "Roald Dahl"],
+        "es": ["Ian Fleming", "J.K. Rowling", "George Orwell", "Roald Dahl"],
+        "de": ["Ian Fleming", "J.K. Rowling", "George Orwell", "Roald Dahl"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 80,
+      "category": "history",
+      "question": {
+        "en": "What was the first webcam used to monitor?",
+        "fr": "Qu'est-ce que la premiere webcam surveillait?",
+        "es": "Que monitoreaba la primera webcam?",
+        "de": "Was ueberwachte die erste Webcam?"
+      },
+      "answers": {
+        "en": ["A coffee pot", "A parking lot", "A baby", "A door"],
+        "fr": ["Une cafetiere", "Un parking", "Un bebe", "Une porte"],
+        "es": ["Una cafetera", "Un estacionamiento", "Un bebe", "Una puerta"],
+        "de": ["Eine Kaffeekanne", "Einen Parkplatz", "Ein Baby", "Eine Tuer"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 81,
+      "category": "science",
+      "question": {
+        "en": "What part of your body has no blood supply?",
+        "fr": "Quelle partie de votre corps n'a pas de circulation sanguine?",
+        "es": "Que parte de tu cuerpo no tiene suministro de sangre?",
+        "de": "Welcher Koerperteil hat keine Blutversorgung?"
+      },
+      "answers": {
+        "en": ["Cornea", "Nails", "Hair", "Teeth enamel"],
+        "fr": ["Cornee", "Ongles", "Cheveux", "Email dentaire"],
+        "es": ["Cornea", "Unas", "Cabello", "Esmalte dental"],
+        "de": ["Hornhaut", "Naegel", "Haare", "Zahnschmelz"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 82,
+      "category": "pop-culture",
+      "question": {
+        "en": "What was Nintendo originally selling before video games?",
+        "fr": "Que vendait Nintendo avant les jeux video?",
+        "es": "Que vendia Nintendo antes de los videojuegos?",
+        "de": "Was verkaufte Nintendo vor Videospielen?"
+      },
+      "answers": {
+        "en": ["Playing cards", "Toys", "Electronics", "Watches"],
+        "fr": ["Cartes a jouer", "Jouets", "Electronique", "Montres"],
+        "es": ["Cartas de juego", "Juguetes", "Electronica", "Relojes"],
+        "de": ["Spielkarten", "Spielzeug", "Elektronik", "Uhren"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 83,
+      "category": "history",
+      "question": {
+        "en": "Who invented the electric chair?",
+        "fr": "Qui a invente la chaise electrique?",
+        "es": "Quien invento la silla electrica?",
+        "de": "Wer erfand den elektrischen Stuhl?"
+      },
+      "answers": {
+        "en": ["A dentist", "An electrician", "A doctor", "A judge"],
+        "fr": ["Un dentiste", "Un electricien", "Un docteur", "Un juge"],
+        "es": ["Un dentista", "Un electricista", "Un doctor", "Un juez"],
+        "de": ["Ein Zahnarzt", "Ein Elektriker", "Ein Arzt", "Ein Richter"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 84,
+      "category": "celebrities",
+      "question": {
+        "en": "Which Hollywood star has an asteroid named after them?",
+        "fr": "Quelle star d'Hollywood a un asteroide nomme d'apres elle?",
+        "es": "Que estrella de Hollywood tiene un asteroide con su nombre?",
+        "de": "Welcher Hollywood-Star hat einen Asteroiden nach sich benannt?"
+      },
+      "answers": {
+        "en": ["Tom Hanks", "Leonardo DiCaprio", "Brad Pitt", "Johnny Depp"],
+        "fr": ["Tom Hanks", "Leonardo DiCaprio", "Brad Pitt", "Johnny Depp"],
+        "es": ["Tom Hanks", "Leonardo DiCaprio", "Brad Pitt", "Johnny Depp"],
+        "de": ["Tom Hanks", "Leonardo DiCaprio", "Brad Pitt", "Johnny Depp"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 85,
+      "category": "science",
+      "question": {
+        "en": "How many muscles does it take to frown?",
+        "fr": "Combien de muscles faut-il pour froncer les sourcils?",
+        "es": "Cuantos musculos se necesitan para fruncir el ceno?",
+        "de": "Wie viele Muskeln braucht man zum Stirnrunzeln?"
+      },
+      "answers": {
+        "en": ["11 muscles", "3 muscles", "25 muscles", "1 muscle"],
+        "fr": ["11 muscles", "3 muscles", "25 muscles", "1 muscle"],
+        "es": ["11 musculos", "3 musculos", "25 musculos", "1 musculo"],
+        "de": ["11 Muskeln", "3 Muskeln", "25 Muskeln", "1 Muskel"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 86,
+      "category": "politics",
+      "question": {
+        "en": "Which country makes it illegal to own only one guinea pig?",
+        "fr": "Dans quel pays est-il illegal de posseder un seul cochon d'Inde?",
+        "es": "En que pais es ilegal tener solo un conejillo de indias?",
+        "de": "In welchem Land ist es illegal nur ein Meerschweinchen zu halten?"
+      },
+      "answers": {
+        "en": ["Switzerland", "Germany", "Austria", "Netherlands"],
+        "fr": ["Suisse", "Allemagne", "Autriche", "Pays-Bas"],
+        "es": ["Suiza", "Alemania", "Austria", "Paises Bajos"],
+        "de": ["Schweiz", "Deutschland", "Oesterreich", "Niederlande"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 87,
+      "category": "pop-culture",
+      "question": {
+        "en": "What was the name of the first iPhone?",
+        "fr": "Quel etait le nom du premier iPhone?",
+        "es": "Cual fue el nombre del primer iPhone?",
+        "de": "Wie hiess das erste iPhone?"
+      },
+      "answers": {
+        "en": ["iPhone (just iPhone)", "iPhone 1", "iPhone Original", "iPhone Classic"],
+        "fr": ["iPhone (juste iPhone)", "iPhone 1", "iPhone Original", "iPhone Classic"],
+        "es": ["iPhone (solo iPhone)", "iPhone 1", "iPhone Original", "iPhone Classic"],
+        "de": ["iPhone (nur iPhone)", "iPhone 1", "iPhone Original", "iPhone Classic"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 88,
+      "category": "science",
+      "question": {
+        "en": "What animal never stops growing its entire life?",
+        "fr": "Quel animal ne cesse jamais de grandir tout au long de sa vie?",
+        "es": "Que animal nunca deja de crecer durante toda su vida?",
+        "de": "Welches Tier hoert nie auf zu wachsen?"
+      },
+      "answers": {
+        "en": ["Lobster", "Turtle", "Whale", "Elephant"],
+        "fr": ["Homard", "Tortue", "Baleine", "Elephant"],
+        "es": ["Langosta", "Tortuga", "Ballena", "Elefante"],
+        "de": ["Hummer", "Schildkroete", "Wal", "Elefant"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 89,
+      "category": "celebrities",
+      "question": {
+        "en": "Which famous singer was a backup dancer for Janet Jackson?",
+        "fr": "Quelle chanteuse celebre etait danseuse de backup pour Janet Jackson?",
+        "es": "Que cantante famosa fue bailarina de respaldo de Janet Jackson?",
+        "de": "Welche beruehmte Saengerin war Backup-Taenzerin fuer Janet Jackson?"
+      },
+      "answers": {
+        "en": ["Jennifer Lopez", "Beyonce", "Rihanna", "Shakira"],
+        "fr": ["Jennifer Lopez", "Beyonce", "Rihanna", "Shakira"],
+        "es": ["Jennifer Lopez", "Beyonce", "Rihanna", "Shakira"],
+        "de": ["Jennifer Lopez", "Beyonce", "Rihanna", "Shakira"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 90,
+      "category": "history",
+      "question": {
+        "en": "What was toothpaste sold in before tubes?",
+        "fr": "Dans quoi le dentifrice etait-il vendu avant les tubes?",
+        "es": "En que se vendia la pasta de dientes antes de los tubos?",
+        "de": "Worin wurde Zahnpasta vor Tuben verkauft?"
+      },
+      "answers": {
+        "en": ["Jars", "Cans", "Boxes", "Bottles"],
+        "fr": ["Pots", "Boites de conserve", "Boites", "Bouteilles"],
+        "es": ["Frascos", "Latas", "Cajas", "Botellas"],
+        "de": ["Glaesern", "Dosen", "Schachteln", "Flaschen"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 91,
+      "category": "science",
+      "question": {
+        "en": "What color does blood turn when exposed to copper?",
+        "fr": "De quelle couleur le sang devient-il expose au cuivre?",
+        "es": "De que color se vuelve la sangre expuesta al cobre?",
+        "de": "Welche Farbe bekommt Blut bei Kontakt mit Kupfer?"
+      },
+      "answers": {
+        "en": ["Green", "Blue", "Black", "Orange"],
+        "fr": ["Vert", "Bleu", "Noir", "Orange"],
+        "es": ["Verde", "Azul", "Negro", "Naranja"],
+        "de": ["Gruen", "Blau", "Schwarz", "Orange"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 92,
+      "category": "pop-culture",
+      "question": {
+        "en": "What does 'Yahoo' stand for?",
+        "fr": "Que signifie 'Yahoo'?",
+        "es": "Que significa 'Yahoo'?",
+        "de": "Wofuer steht 'Yahoo'?"
+      },
+      "answers": {
+        "en": ["Yet Another Hierarchical Officious Oracle", "Your Access to Help Online", "Young Americans Helping Others", "Nothing specific"],
+        "fr": ["Yet Another Hierarchical Officious Oracle", "Your Access to Help Online", "Young Americans Helping Others", "Rien de specifique"],
+        "es": ["Yet Another Hierarchical Officious Oracle", "Your Access to Help Online", "Young Americans Helping Others", "Nada especifico"],
+        "de": ["Yet Another Hierarchical Officious Oracle", "Your Access to Help Online", "Young Americans Helping Others", "Nichts Bestimmtes"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 93,
+      "category": "history",
+      "question": {
+        "en": "What did Victorians put in babies' bottles to make them sleep?",
+        "fr": "Que mettaient les Victoriens dans les biberons pour faire dormir les bebes?",
+        "es": "Que ponian los victorianos en los biberones para que los bebes durmieran?",
+        "de": "Was gaben Viktorianer in Babyflaschen zum Einschlafen?"
+      },
+      "answers": {
+        "en": ["Opium/Laudanum", "Alcohol", "Honey", "Herbs"],
+        "fr": ["Opium/Laudanum", "Alcool", "Miel", "Herbes"],
+        "es": ["Opio/Laudano", "Alcohol", "Miel", "Hierbas"],
+        "de": ["Opium/Laudanum", "Alkohol", "Honig", "Kraeuter"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 94,
+      "category": "celebrities",
+      "question": {
+        "en": "Which actor was almost cast as The Terminator's villain?",
+        "fr": "Quel acteur a failli jouer le mechant de Terminator?",
+        "es": "Que actor casi fue el villano de Terminator?",
+        "de": "Welcher Schauspieler waere fast der Boesewicht in Terminator gewesen?"
+      },
+      "answers": {
+        "en": ["O.J. Simpson", "Sylvester Stallone", "Bruce Willis", "Jean-Claude Van Damme"],
+        "fr": ["O.J. Simpson", "Sylvester Stallone", "Bruce Willis", "Jean-Claude Van Damme"],
+        "es": ["O.J. Simpson", "Sylvester Stallone", "Bruce Willis", "Jean-Claude Van Damme"],
+        "de": ["O.J. Simpson", "Sylvester Stallone", "Bruce Willis", "Jean-Claude Van Damme"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 95,
+      "category": "science",
+      "question": {
+        "en": "What percentage of the ocean has been explored?",
+        "fr": "Quel pourcentage de l'ocean a ete explore?",
+        "es": "Que porcentaje del oceano ha sido explorado?",
+        "de": "Wie viel Prozent des Ozeans wurden erforscht?"
+      },
+      "answers": {
+        "en": ["5%", "25%", "50%", "75%"],
+        "fr": ["5%", "25%", "50%", "75%"],
+        "es": ["5%", "25%", "50%", "75%"],
+        "de": ["5%", "25%", "50%", "75%"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 96,
+      "category": "politics",
+      "question": {
+        "en": "Which country banned chewing gum?",
+        "fr": "Quel pays a interdit le chewing-gum?",
+        "es": "Que pais prohibio el chicle?",
+        "de": "Welches Land verbot Kaugummi?"
+      },
+      "answers": {
+        "en": ["Singapore", "Japan", "China", "North Korea"],
+        "fr": ["Singapour", "Japon", "Chine", "Coree du Nord"],
+        "es": ["Singapur", "Japon", "China", "Corea del Norte"],
+        "de": ["Singapur", "Japan", "China", "Nordkorea"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 97,
+      "category": "pop-culture",
+      "question": {
+        "en": "What was Barbie's original job?",
+        "fr": "Quel etait le premier metier de Barbie?",
+        "es": "Cual fue el primer trabajo de Barbie?",
+        "de": "Was war Barbies urspruenglicher Beruf?"
+      },
+      "answers": {
+        "en": ["Teen model", "Doctor", "Teacher", "Astronaut"],
+        "fr": ["Mannequin adolescente", "Docteur", "Professeure", "Astronaute"],
+        "es": ["Modelo adolescente", "Doctora", "Maestra", "Astronauta"],
+        "de": ["Teenager-Model", "Aerztin", "Lehrerin", "Astronautin"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 98,
+      "category": "science",
+      "question": {
+        "en": "What's the strongest muscle in the human body?",
+        "fr": "Quel est le muscle le plus fort du corps humain?",
+        "es": "Cual es el musculo mas fuerte del cuerpo humano?",
+        "de": "Was ist der staerkste Muskel im menschlichen Koerper?"
+      },
+      "answers": {
+        "en": ["Masseter (jaw)", "Heart", "Quadriceps", "Gluteus"],
+        "fr": ["Masseter (machoire)", "Coeur", "Quadriceps", "Fessier"],
+        "es": ["Masetero (mandibula)", "Corazon", "Cuadriceps", "Gluteo"],
+        "de": ["Masseter (Kiefer)", "Herz", "Quadrizeps", "Gesaess"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 99,
+      "category": "celebrities",
+      "question": {
+        "en": "Which actor is terrified of clowns?",
+        "fr": "Quel acteur est terrifie par les clowns?",
+        "es": "Que actor esta aterrorizado por los payasos?",
+        "de": "Welcher Schauspieler hat panische Angst vor Clowns?"
+      },
+      "answers": {
+        "en": ["Johnny Depp", "Brad Pitt", "Tom Hanks", "George Clooney"],
+        "fr": ["Johnny Depp", "Brad Pitt", "Tom Hanks", "George Clooney"],
+        "es": ["Johnny Depp", "Brad Pitt", "Tom Hanks", "George Clooney"],
+        "de": ["Johnny Depp", "Brad Pitt", "Tom Hanks", "George Clooney"]
+      },
+      "correct": 0
+    },
+    {
+      "id": 100,
+      "category": "history",
+      "question": {
+        "en": "What did ancient Aztecs use as currency?",
+        "fr": "Qu'est-ce que les anciens Azteques utilisaient comme monnaie?",
+        "es": "Que usaban los antiguos aztecas como moneda?",
+        "de": "Was verwendeten die alten Azteken als Waehrung?"
+      },
+      "answers": {
+        "en": ["Cacao beans", "Gold", "Shells", "Feathers"],
+        "fr": ["Feves de cacao", "Or", "Coquillages", "Plumes"],
+        "es": ["Granos de cacao", "Oro", "Conchas", "Plumas"],
+        "de": ["Kakaobohnen", "Gold", "Muscheln", "Federn"]
+      },
+      "correct": 0
+    }
+  ]
+}
