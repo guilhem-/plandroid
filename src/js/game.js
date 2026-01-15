@@ -19,8 +19,17 @@ const Game = (() => {
     playerQuestionOrder: [],   // Each player's question order
     playerAnswerMappings: [],  // Each player's answer shuffle per question
     winner: null,
-    gameComplete: false
+    gameComplete: false,
+    // Round tracking
+    totalRounds: 1,
+    currentRound: 1,
+    isSuddenDeath: false,
+    roundComplete: false,
+    matchComplete: false
   };
+
+  // Store total rounds setting (persists across rounds)
+  let totalRoundsConfig = 1;
 
   /**
    * Load questions from JSON file
@@ -76,9 +85,17 @@ const Game = (() => {
         totalResponseTime: 0,
         currentQuestionIndex: 0,  // Track each player's progress
         questionStartTime: null,  // Per-player timing
-        isFinished: false         // Has completed all questions
+        isFinished: false,        // Has completed all questions
+        roundWins: 0              // Number of rounds won
       });
     }
+
+    // Set round tracking from config
+    state.totalRounds = totalRoundsConfig;
+    state.currentRound = 1;
+    state.isSuddenDeath = false;
+    state.roundComplete = false;
+    state.matchComplete = false;
 
     // Select random questions for the game
     state.questions = selectRandomQuestions(QUESTIONS_PER_GAME);
@@ -434,6 +451,158 @@ const Game = (() => {
     };
   };
 
+  /**
+   * Set total rounds for the match (call before init)
+   * @param {number} rounds - Number of rounds (1, 3, or 5)
+   */
+  const setTotalRounds = (rounds) => {
+    totalRoundsConfig = rounds;
+  };
+
+  /**
+   * Get number of rounds won by a player
+   * @param {number} playerId - The player ID
+   * @returns {number} Number of rounds won
+   */
+  const getRoundWins = (playerId) => {
+    const player = state.players[playerId];
+    return player?.roundWins || 0;
+  };
+
+  /**
+   * Get round information
+   */
+  const getRoundInfo = () => ({
+    currentRound: state.currentRound,
+    totalRounds: state.totalRounds,
+    isSuddenDeath: state.isSuddenDeath,
+    roundComplete: state.roundComplete,
+    matchComplete: state.matchComplete
+  });
+
+  /**
+   * Determine round winner and record the win
+   * @returns {object} Round result with winner(s) and match status
+   */
+  const recordRoundWin = () => {
+    // Sort players by score then response time
+    const sorted = [...state.players].sort((a, b) => {
+      if (b.score !== a.score) return b.score - a.score;
+      return a.totalResponseTime - b.totalResponseTime;
+    });
+
+    const topScore = sorted[0].score;
+    const topTime = sorted[0].totalResponseTime;
+
+    // Find all players tied for top position
+    const roundWinners = sorted.filter(p =>
+      p.score === topScore && p.totalResponseTime === topTime
+    );
+
+    // Award round wins
+    roundWinners.forEach(winner => {
+      const player = state.players[winner.id];
+      if (player) player.roundWins++;
+    });
+
+    state.roundComplete = true;
+
+    // Check if match is complete
+    const matchStatus = checkMatchComplete();
+
+    return {
+      roundWinners,
+      isTie: roundWinners.length > 1,
+      ...matchStatus
+    };
+  };
+
+  /**
+   * Check if the match is complete
+   * @returns {object} Match status with winner info
+   */
+  const checkMatchComplete = () => {
+    // Find max round wins
+    const maxWins = Math.max(...state.players.map(p => p.roundWins));
+    const leaders = state.players.filter(p => p.roundWins === maxWins);
+
+    // In sudden death, any round winner wins the match
+    if (state.isSuddenDeath && leaders.length === 1) {
+      state.matchComplete = true;
+      state.winner = leaders[0];
+      return { matchComplete: true, matchWinner: leaders[0], needsSuddenDeath: false };
+    }
+
+    // Check if all planned rounds are complete
+    if (state.currentRound >= state.totalRounds) {
+      if (leaders.length === 1) {
+        // Clear winner
+        state.matchComplete = true;
+        state.winner = leaders[0];
+        return { matchComplete: true, matchWinner: leaders[0], needsSuddenDeath: false };
+      } else {
+        // Tie - need sudden death
+        return { matchComplete: false, matchWinner: null, needsSuddenDeath: true };
+      }
+    }
+
+    // More rounds to play
+    return { matchComplete: false, matchWinner: null, needsSuddenDeath: false };
+  };
+
+  /**
+   * Start the next round (keeps round wins, resets scores)
+   * @param {boolean} isSuddenDeath - Whether this is a sudden death round
+   */
+  const startNextRound = (isSuddenDeath = false) => {
+    state.currentRound++;
+    state.isSuddenDeath = isSuddenDeath;
+    state.roundComplete = false;
+    state.gameComplete = false;
+
+    // Reset player scores but keep round wins
+    state.players.forEach(player => {
+      player.score = 0;
+      player.totalResponseTime = 0;
+      player.currentQuestionIndex = 0;
+      player.questionStartTime = null;
+      player.isFinished = false;
+    });
+
+    // Select new random questions
+    state.questions = selectRandomQuestions(QUESTIONS_PER_GAME);
+
+    // Regenerate question order for each player
+    const questionIndices = state.questions.map((_, i) => i);
+    for (let p = 0; p < state.playerCount; p++) {
+      state.playerQuestionOrder[p] = shuffle(questionIndices);
+    }
+
+    // Regenerate answer mappings for each player
+    for (let p = 0; p < state.playerCount; p++) {
+      state.playerAnswerMappings[p] = [];
+      for (let q = 0; q < state.questions.length; q++) {
+        const answerIndices = [0, 1, 2, 3];
+        state.playerAnswerMappings[p][q] = shuffle(answerIndices);
+      }
+    }
+
+    state.winner = null;
+  };
+
+  /**
+   * Get the overall match winner
+   */
+  const getMatchWinner = () => {
+    if (!state.matchComplete) return null;
+    return state.winner;
+  };
+
+  /**
+   * Check if match is complete
+   */
+  const isMatchComplete = () => state.matchComplete;
+
   return {
     loadQuestions,
     init,
@@ -452,6 +621,14 @@ const Game = (() => {
     getWinner,
     getProgress,
     getPlayerProgress,
-    QUESTIONS_PER_GAME
+    QUESTIONS_PER_GAME,
+    // Round management
+    setTotalRounds,
+    getRoundWins,
+    getRoundInfo,
+    recordRoundWin,
+    startNextRound,
+    getMatchWinner,
+    isMatchComplete
   };
 })();

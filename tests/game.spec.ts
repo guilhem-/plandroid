@@ -20,7 +20,7 @@ test.describe('Start Screen', () => {
   test('should have player count selector with default of 2', async ({ page }) => {
     await page.goto('/');
 
-    const activeCount = page.locator('.btn-count.active');
+    const activeCount = page.locator('.player-count-selector .btn-count.active');
     await expect(activeCount).toHaveText('2');
   });
 
@@ -127,12 +127,12 @@ test.describe('Game Screen', () => {
     await expect(zone0Answers).toHaveCount(4);
   });
 
-  test('should show player scores initialized to 0', async ({ page }) => {
+  test('should show player scores initialized to 0/0', async ({ page }) => {
     await page.goto('/');
     await page.locator('#btn-start').click();
 
     const zone0Score = page.locator('#zone-0 .zone-score');
-    await expect(zone0Score).toHaveText('0');
+    await expect(zone0Score).toHaveText('0/0');
   });
 });
 

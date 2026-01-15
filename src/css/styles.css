@@ -153,7 +153,8 @@ button, input, select {
   color: var(--color-text-muted);
 }
 
-.player-count-selector {
+.player-count-selector,
+.round-count-selector {
   display: flex;
   gap: 12px;
 }
@@ -243,6 +244,27 @@ button, input, select {
   width: 100%;
   height: 100%;
   overflow: hidden; /* Strict containment */
+  transition: opacity 1.5s ease-out;
+}
+
+.zone-content.fading {
+  opacity: 0;
+}
+
+/* Large cup shown in winner zone between rounds */
+.round-win-cup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: min(40vw, 40vh);
+  opacity: 0;
+  transition: opacity 0.3s ease-in;
+  z-index: 100;
+}
+
+.round-win-cup.visible {
+  opacity: 1;
 }
 
 .zone-header {
@@ -271,6 +293,12 @@ button, input, select {
   background: rgba(0, 0, 0, 0.4);
   padding: 2px 8px;
   border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.zone-cups {
+  font-size: 14px;
+  margin: 0 4px;
   flex-shrink: 0;
 }
 
@@ -623,6 +651,10 @@ button, input, select {
   font-weight: bold;
 }
 
+.btn-next-round {
+  margin-top: 16px;
+}
+
 /* Confetti particle */
 .confetti {
   position: absolute;
@@ -751,7 +783,8 @@ button, input, select {
     font-size: 18px;
   }
 
-  .zone-score {
+  .zone-score,
+  .zone-cups {
     font-size: 24px;
   }
 
@@ -805,6 +838,10 @@ button, input, select {
   .zone-score {
     font-size: 28px;
     padding: 6px 16px;
+  }
+
+  .zone-cups {
+    font-size: 28px;
   }
 
   .btn-answer {
@@ -899,7 +936,8 @@ button, input, select {
     font-size: 14px;
   }
 
-  .player-count-selector {
+  .player-count-selector,
+  .round-count-selector {
     gap: 8px;
   }
 
@@ -963,6 +1001,10 @@ button, input, select {
   .zone-score {
     font-size: 12px;
     padding: 2px 6px;
+  }
+
+  .zone-cups {
+    font-size: 12px;
   }
 }
 

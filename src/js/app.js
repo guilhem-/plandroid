@@ -26,6 +26,7 @@ const App = (() => {
   };
 
   let playerCount = 2;
+  let roundCount = 1;
 
   /**
    * Load saved player names from localStorage
@@ -149,7 +150,7 @@ const App = (() => {
       if (zone) {
         const scoreEl = zone.querySelector('.zone-score');
         if (scoreEl) {
-          scoreEl.textContent = player.score;
+          scoreEl.textContent = `${player.score}/${player.currentQuestionIndex}`;
         }
       }
     }
@@ -190,6 +191,51 @@ const App = (() => {
           nameEl.textContent = player.name;
         }
       }
+    }
+  };
+
+  /**
+   * Update round count selector
+   */
+  const updateRoundCount = (count) => {
+    roundCount = count;
+    Game.setTotalRounds(count);
+
+    // Update button states
+    document.querySelectorAll('.round-count-selector .btn-count').forEach(btn => {
+      btn.classList.toggle('active', parseInt(btn.dataset.rounds) === count);
+    });
+  };
+
+  /**
+   * Update cups display in zone headers
+   */
+  const updateZoneCups = () => {
+    for (let i = 0; i < playerCount; i++) {
+      const zone = document.getElementById(`zone-${i}`);
+      if (zone) {
+        const cupsEl = zone.querySelector('.zone-cups');
+        if (cupsEl) {
+          const wins = Game.getRoundWins(i);
+          cupsEl.textContent = '🏆'.repeat(wins);
+        }
+      }
+    }
+  };
+
+  /**
+   * Update round counter in header
+   */
+  const updateRoundCounter = () => {
+    const roundInfo = Game.getRoundInfo();
+    const progress = Game.getProgress();
+
+    if (roundInfo.isSuddenDeath) {
+      elements.questionCounter.textContent = `⚡ ${progress.current}/${progress.total}`;
+    } else if (roundInfo.totalRounds > 1) {
+      elements.questionCounter.textContent = `R${roundInfo.currentRound}: ${progress.current}/${progress.total}`;
+    } else {
+      elements.questionCounter.textContent = `${progress.current}/${progress.total}`;
     }
   };
 
@@ -289,7 +335,8 @@ const App = (() => {
 
     Typography.fitAllAnswers();
     updateScores();
-    updateQuestionCounter();
+    updateRoundCounter();
+    updateZoneCups();
   };
 
   /**
@@ -329,10 +376,10 @@ const App = (() => {
     // Update score immediately
     updateScores();
 
-    // Check if game ended (perfect score or all finished)
+    // Check if round ended (perfect score or all finished)
     if (result.gameEnded) {
       setTimeout(() => {
-        showResults();
+        handleRoundEnd();
       }, 800);
       return;
     }
@@ -346,18 +393,91 @@ const App = (() => {
         displayPlayerQuestion(playerId);
         Typography.fitPlayerZone(playerId);
       }
-      updateQuestionCounter();
+      updateRoundCounter();
     }, delay);
   };
 
   /**
-   * Show results screen
+   * Handle end of a round
+   */
+  const handleRoundEnd = () => {
+    const roundResult = Game.recordRoundWin();
+
+    if (roundResult.matchComplete) {
+      // Match is over - show final results
+      updateZoneCups();
+      showResults();
+    } else {
+      // More rounds to play - show in-place animation
+      const winnerId = roundResult.roundWinners[0]?.id ?? 0;
+      showRoundWinAnimation(winnerId, roundResult.needsSuddenDeath);
+    }
+  };
+
+  /**
+   * Show round win animation in-place, then start next round
+   * Animation: fade content (1.5s) -> show cup (0.3s fade-in, 0.5s display) -> new round
+   */
+  const showRoundWinAnimation = (winnerId, isSuddenDeath) => {
+    // Step 1: Fade out all zone content (1.5s)
+    for (let i = 0; i < playerCount; i++) {
+      const zone = document.getElementById(`zone-${i}`);
+      const content = zone?.querySelector('.zone-content');
+      if (content) {
+        content.classList.add('fading');
+      }
+    }
+
+    // Step 2: After fade, show large cup in winner's zone (0.3s fade-in)
+    setTimeout(() => {
+      const winnerZone = document.getElementById(`zone-${winnerId}`);
+      if (winnerZone) {
+        // Create large cup element
+        const cupEl = document.createElement('div');
+        cupEl.className = 'round-win-cup';
+        cupEl.textContent = '🏆';
+        winnerZone.appendChild(cupEl);
+
+        // Trigger fade-in animation
+        requestAnimationFrame(() => {
+          cupEl.classList.add('visible');
+        });
+
+        // Step 3: After cup display (0.5s), start next round
+        setTimeout(() => {
+          // Remove cup and fading state
+          cupEl.remove();
+          for (let i = 0; i < playerCount; i++) {
+            const zone = document.getElementById(`zone-${i}`);
+            const content = zone?.querySelector('.zone-content');
+            if (content) {
+              content.classList.remove('fading');
+            }
+          }
+
+          // Update cups in header after animation
+          updateZoneCups();
+
+          // Start next round
+          Game.startNextRound(isSuddenDeath);
+          displayQuestion();
+        }, 500);
+      }
+    }, 1500);
+
+    // Play sound
+    playSound('correct');
+  };
+
+  /**
+   * Show results screen (final match results)
    */
   const showResults = () => {
     showScreen('results');
 
     const winner = Game.getWinner();
     const scoreboard = Game.getScoreboard();
+    const roundInfo = Game.getRoundInfo();
     const colors = ['#f472b6', '#60a5fa', '#34d399', '#fbbf24'];
 
     // Winner text
@@ -367,17 +487,22 @@ const App = (() => {
       elements.winnerText.textContent = I18n.t('app.winner', { name: winner.name });
     }
 
-    // Final scores
+    // Final scores with cups for multi-round games
     let html = '';
-    scoreboard.forEach((player, rank) => {
+    scoreboard.forEach((player) => {
       const isWinner = Array.isArray(winner)
         ? winner.some(w => w.id === player.id)
         : winner.id === player.id;
 
+      const cups = roundInfo.totalRounds > 1 ? '🏆'.repeat(player.roundWins) : '';
+      const scoreText = roundInfo.totalRounds > 1
+        ? `${player.roundWins}/${roundInfo.currentRound}`
+        : `${player.score}/${Game.QUESTIONS_PER_GAME}`;
+
       html += `
         <div class="final-score-row ${isWinner ? 'winner' : ''}" style="border-left: 4px solid ${colors[player.id]}">
-          <span class="final-score-name">${player.name}</span>
-          <span class="final-score-value">${player.score}/${Game.QUESTIONS_PER_GAME}</span>
+          <span class="final-score-name">${player.name} ${cups}</span>
+          <span class="final-score-value">${scoreText}</span>
         </div>
       `;
     });
@@ -402,11 +527,28 @@ const App = (() => {
     const names = getPlayerNames();
     const lang = I18n.getCurrentLanguage();
 
+    // Set total rounds before init (init reads this config)
+    Game.setTotalRounds(roundCount);
     Game.init(playerCount, names, lang);
+
     setLayout();
     showScreen('game');
     updateZonePlayerNames();
+    clearZoneCups();
     displayQuestion();
+  };
+
+  /**
+   * Clear cups display in zone headers
+   */
+  const clearZoneCups = () => {
+    for (let i = 0; i < 4; i++) {
+      const zone = document.getElementById(`zone-${i}`);
+      if (zone) {
+        const cupsEl = zone.querySelector('.zone-cups');
+        if (cupsEl) cupsEl.textContent = '';
+      }
+    }
   };
 
   /**
@@ -440,9 +582,16 @@ const App = (() => {
    */
   const setupEventListeners = () => {
     // Player count selection
-    document.querySelectorAll('.btn-count').forEach(btn => {
+    document.querySelectorAll('.player-count-selector .btn-count').forEach(btn => {
       btn.addEventListener('click', () => {
         updatePlayerCount(parseInt(btn.dataset.count));
+      });
+    });
+
+    // Round count selection
+    document.querySelectorAll('.round-count-selector .btn-count').forEach(btn => {
+      btn.addEventListener('click', () => {
+        updateRoundCount(parseInt(btn.dataset.rounds));
       });
     });
 
